@@ -12,4 +12,4 @@ from http://kynosarges.org/Tektosyne.html
 
 **Tektosyne for .NET**
 
-> ... Tektosyne originally targeted the .NET Framework, hence the version number 6.0.0 for the initial Java release. I no longer maintain the .NET edition but you can download the final version here
+> ... Tektosyne originally targeted the .NET Framework, hence the version number 6.0.0 for the initial Java release. **I no longer maintain the .NET edition** ...
