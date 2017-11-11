@@ -1,0 +1,45 @@
+﻿<Window x:Class="Tektosyne.GuiTest.ConcurrentDrawingTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Concurrent Drawing Test" Width="400" Height="400" ResizeMode="CanMinimize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+  <DockPanel>
+    <Grid DockPanel.Dock="Top" Margin="0,4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Button Grid.Column="0" Grid.Row="0" Click="OnSequential" ToolTip="Redraw all tiles sequentially">_Sequential</Button>
+      <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+        Draws all tiles sequentially, blocking until completion.<LineBreak />
+        → Simulates normal drawing on a single GUI thread.
+      </TextBlock>
+      <Separator Grid.Column="1" Grid.Row="1" />
+      <Button Grid.Column="0" Grid.Row="2" Click="OnConcurrent" ToolTip="Redraw all tiles concurrently">_Concurrent</Button>
+      <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+        Draws all tiles concurrently, without any blocking.<LineBreak />
+        → Demonstrates drawing on multiple worker threads.
+      </TextBlock>
+    </Grid>
+    <Separator DockPanel.Dock="Top" />
+    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+      <Button Click="OnClear" ToolTip="Clear all tile contents">C_lear</Button>
+      <Button IsCancel="True" IsDefault="True" ToolTip="Close the dialog (Escape, Alt+F4)">Close</Button>
+    </StackPanel>
+    <Separator DockPanel.Dock="Bottom" />
+    <Grid Name="HostGrid" x:FieldModifier="private" ClipToBounds="True" ShowGridLines="True">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+    </Grid>
+  </DockPanel>
+</Window>

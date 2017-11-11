@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActualValue" xml:space="preserve">
+    <value>Actual value was {0}.</value>
+  </data>
+  <data name="ArgumentConflict" xml:space="preserve">
+    <value>Argument conflicts with value of {0} argument.</value>
+  </data>
+  <data name="ArgumentConflictSign" xml:space="preserve">
+    <value>Argument specifies conflicting signs.</value>
+  </data>
+  <data name="ArgumentContainsDifferent" xml:space="preserve">
+    <value>Argument cannot contain object with different {0}.</value>
+  </data>
+  <data name="ArgumentContainsEmpty" xml:space="preserve">
+    <value>Argument cannot contain an empty {0} object.</value>
+  </data>
+  <data name="ArgumentContainsNegative" xml:space="preserve">
+    <value>Argument cannot contain negative values.</value>
+  </data>
+  <data name="ArgumentContainsNotPositive" xml:space="preserve">
+    <value>Argument must contain positive values.</value>
+  </data>
+  <data name="ArgumentContainsNull" xml:space="preserve">
+    <value>Argument cannot contain a null reference.</value>
+  </data>
+  <data name="ArgumentContainsNullKey" xml:space="preserve">
+    <value>Argument cannot contain a key that is a null reference.</value>
+  </data>
+  <data name="ArgumentContainsNullOrEmpty" xml:space="preserve">
+    <value>Argument cannot contain a null reference or an empty object.</value>
+  </data>
+  <data name="ArgumentCoordinatesInvalid" xml:space="preserve">
+    <value>Argument must specify valid coordinates.</value>
+  </data>
+  <data name="ArgumentEquals" xml:space="preserve">
+    <value>Argument cannot equal {0}.</value>
+  </data>
+  <data name="ArgumentFalse" xml:space="preserve">
+    <value>Argument cannot be false.</value>
+  </data>
+  <data name="ArgumentGreaterAndLess" xml:space="preserve">
+    <value>Argument cannot be greater than {0} and less than {1}.</value>
+  </data>
+  <data name="ArgumentGreaterValue" xml:space="preserve">
+    <value>Argument cannot be greater than {0}.</value>
+  </data>
+  <data name="ArgumentInCollection" xml:space="preserve">
+    <value>Argument already exists in collection.</value>
+  </data>
+  <data name="ArgumentLessOrGreater" xml:space="preserve">
+    <value>Argument cannot be less than {0} or greater than {1}.</value>
+  </data>
+  <data name="ArgumentLessValue" xml:space="preserve">
+    <value>Argument cannot be less than {0}.</value>
+  </data>
+  <data name="ArgumentMultidimensional" xml:space="preserve">
+    <value>Argument cannot be multidimensional.</value>
+  </data>
+  <data name="ArgumentNegative" xml:space="preserve">
+    <value>Argument cannot be negative.</value>
+  </data>
+  <data name="ArgumentNotDivisible" xml:space="preserve">
+    <value>Argument must be divisible by {0}.</value>
+  </data>
+  <data name="ArgumentNotEquals" xml:space="preserve">
+    <value>Argument must equal {0}.</value>
+  </data>
+  <data name="ArgumentNotGreaterValue" xml:space="preserve">
+    <value>Argument must be greater than {0}.</value>
+  </data>
+  <data name="ArgumentNotInCollection" xml:space="preserve">
+    <value>Argument was not found in collection.</value>
+  </data>
+  <data name="ArgumentNotInTypes" xml:space="preserve">
+    <value>Argument must be one of these types: </value>
+  </data>
+  <data name="ArgumentNotInValues" xml:space="preserve">
+    <value>Argument must have one of these values: </value>
+  </data>
+  <data name="ArgumentNotLessValue" xml:space="preserve">
+    <value>Argument must be less than {0}.</value>
+  </data>
+  <data name="ArgumentNotLessLength" xml:space="preserve">
+    <value>Argument must be less than array length.</value>
+  </data>
+  <data name="ArgumentNotNegative" xml:space="preserve">
+    <value>Argument must be negative.</value>
+  </data>
+  <data name="ArgumentNotNeighbor" xml:space="preserve">
+    <value>Argument must specify a neighboring location.</value>
+  </data>
+  <data name="ArgumentNotNull" xml:space="preserve">
+    <value>Argument must be a null reference.</value>
+  </data>
+  <data name="ArgumentNotPositive" xml:space="preserve">
+    <value>Argument must be positive.</value>
+  </data>
+  <data name="ArgumentNotReadOnly" xml:space="preserve">
+    <value>Argument must be read-only.</value>
+  </data>
+  <data name="ArgumentNotRooted" xml:space="preserve">
+    <value>Argument must be an absolute file path.</value>
+  </data>
+  <data name="ArgumentNullOrEmpty" xml:space="preserve">
+    <value>Argument cannot be a null reference or an empty object.</value>
+  </data>
+  <data name="ArgumentPropertyConflict" xml:space="preserve">
+    <value>Argument conflicts with value of {0} property.</value>
+  </data>
+  <data name="ArgumentPropertyInvalid" xml:space="preserve">
+    <value>Argument contains invalid {0} property.</value>
+  </data>
+  <data name="ArgumentPositive" xml:space="preserve">
+    <value>Argument cannot be positive.</value>
+  </data>
+  <data name="ArgumentReadOnly" xml:space="preserve">
+    <value>Argument cannot be read-only.</value>
+  </data>
+  <data name="ArgumentSectionLessCollection" xml:space="preserve">
+    <value>Argument section must be large enough for collection.</value>
+  </data>
+  <data name="ArgumentSpecifiesInvalid" xml:space="preserve">
+    <value>Argument specifies invalid {0}.</value>
+  </data>
+  <data name="ArgumentTrue" xml:space="preserve">
+    <value>Argument cannot be true.</value>
+  </data>
+  <data name="ArgumentTypeMismatch" xml:space="preserve">
+    <value>Argument must be of type {0}.</value>
+  </data>
+  <data name="ButtonAbort" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ButtonIgnore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonRetry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="BooleanFlagUnclearable" xml:space="preserve">
+    <value>Value set to false, and Clearable is false.</value>
+  </data>
+  <data name="ClipboardCopy" xml:space="preserve">
+    <value>Clipboard Copy</value>
+  </data>
+  <data name="ClipboardCopyError" xml:space="preserve">
+    <value>Clipboard Copy Error</value>
+  </data>
+  <data name="ClipboardPaste" xml:space="preserve">
+    <value>Clipboard Paste</value>
+  </data>
+  <data name="ClipboardPasteError" xml:space="preserve">
+    <value>Clipboard Paste Error</value>
+  </data>
+  <data name="CollectionEmpty" xml:space="preserve">
+    <value>Collection contains no elements.</value>
+  </data>
+  <data name="CollectionFixedSize" xml:space="preserve">
+    <value>Fixed-size collections cannot add or remove elements.</value>
+  </data>
+  <data name="CollectionReadOnly" xml:space="preserve">
+    <value>Read-only collections cannot be modified.</value>
+  </data>
+  <data name="CollectionUnique" xml:space="preserve">
+    <value>Unique-element collections cannot contain duplicate elements.</value>
+  </data>
+  <data name="ControlRangeError" xml:space="preserve">
+    <value>The current value is not between {0} and {1}, and
+will be replaced with {0} or {1} unless corrected.</value>
+  </data>
+  <data name="ControlRangeInfo" xml:space="preserve">
+    <value>Enter a value between {0} and {1}.</value>
+  </data>
+  <data name="CtorNotSupported" xml:space="preserve">
+    <value>Construction of this type is not supported.</value>
+  </data>
+  <data name="DictionaryKey" xml:space="preserve">
+    <value>Dictionary key was {0}.</value>
+  </data>
+  <data name="DictionaryKeyMismatch" xml:space="preserve">
+    <value>Dictionary key differs from object key.</value>
+  </data>
+  <data name="EnumeratorIndex" xml:space="preserve">
+    <value>Enumerator is not on a collection element.</value>
+  </data>
+  <data name="EnumeratorVersion" xml:space="preserve">
+    <value>Enumerator invalidated by modification to collection.</value>
+  </data>
+  <data name="FormatAtColumn" xml:space="preserve">
+    <value>, column {0}</value>
+  </data>
+  <data name="FormatAtLine" xml:space="preserve">
+    <value> at line {0}</value>
+  </data>
+  <data name="FormatCode" xml:space="preserve">
+    <value> (Code {0})</value>
+  </data>
+  <data name="IKeyedValueKey" xml:space="preserve">
+    <value>IKeyedValue key was {0}.</value>
+  </data>
+  <data name="InformationMemory" xml:space="preserve">
+    <value>System physical: {0} of {1} MB available. 
+System virtual: {2} of {3} MB available. 
+Process memory: {4} of {5} MB available. </value>
+  </data>
+  <data name="KeyNotFound" xml:space="preserve">
+    <value>Collection does not contain key {0}.</value>
+  </data>
+  <data name="MapiUnknown" xml:space="preserve">
+    <value>Unknown error code.</value>
+  </data>
+  <data name="MapiUserAbort" xml:space="preserve">
+    <value>User aborted operation.</value>
+  </data>
+  <data name="MapiFailure" xml:space="preserve">
+    <value>Unspecified MAPI error.</value>
+  </data>
+  <data name="MapiLoginFailure" xml:space="preserve">
+    <value>MAPI login failure.</value>
+  </data>
+  <data name="MapiDiskFull" xml:space="preserve">
+    <value>Insufficient disk space.</value>
+  </data>
+  <data name="MapiInsufficientMemory" xml:space="preserve">
+    <value>Insufficient memory.</value>
+  </data>
+  <data name="MapiAccessDenied" xml:space="preserve">
+    <value>Access denied.</value>
+  </data>
+  <data name="MapiTooManySessions" xml:space="preserve">
+    <value>Too many MAPI sessions.</value>
+  </data>
+  <data name="MapiTooManyFiles" xml:space="preserve">
+    <value>Too many file attachments.</value>
+  </data>
+  <data name="MapiTooManyRecipients" xml:space="preserve">
+    <value>Too many recipients.</value>
+  </data>
+  <data name="MapiAttachmentNotFound" xml:space="preserve">
+    <value>Attachment not found.</value>
+  </data>
+  <data name="MapiAttachmentOpenFailure" xml:space="preserve">
+    <value>Attachment open failure.</value>
+  </data>
+  <data name="MapiAttachmentWriteFailure" xml:space="preserve">
+    <value>Attachment write failure.</value>
+  </data>
+  <data name="MapiUnknownRecipient" xml:space="preserve">
+    <value>Unknown recipient.</value>
+  </data>
+  <data name="MapiBadRecipType" xml:space="preserve">
+    <value>Invalid recipient type.</value>
+  </data>
+  <data name="MapiNoMessages" xml:space="preserve">
+    <value>No messages found.</value>
+  </data>
+  <data name="MapiInvalidMessage" xml:space="preserve">
+    <value>Invalid message identifier.</value>
+  </data>
+  <data name="MapiTextTooLarge" xml:space="preserve">
+    <value>Message text too large.</value>
+  </data>
+  <data name="MapiInvalidSession" xml:space="preserve">
+    <value>Invalid MAPI session handle.</value>
+  </data>
+  <data name="MapiTypeNotSupported" xml:space="preserve">
+    <value>Type not supported.</value>
+  </data>
+  <data name="MapiAmbiguousRecipient" xml:space="preserve">
+    <value>Ambiguous recipient.</value>
+  </data>
+  <data name="MapiMessageInUse" xml:space="preserve">
+    <value>Message in use.</value>
+  </data>
+  <data name="MapiNetworkFailure" xml:space="preserve">
+    <value>Network failure.</value>
+  </data>
+  <data name="MapiInvalidEditFields" xml:space="preserve">
+    <value>Invalid edit fields parameter.</value>
+  </data>
+  <data name="MapiInvalidRecips" xml:space="preserve">
+    <value>One or more invalid recipients.</value>
+  </data>
+  <data name="MapiNotSupported" xml:space="preserve">
+    <value>Unsupported operation.</value>
+  </data>
+  <data name="MenuAlt" xml:space="preserve">
+    <value>Alt+</value>
+  </data>
+  <data name="MenuControl" xml:space="preserve">
+    <value>Ctrl+</value>
+  </data>
+  <data name="MenuShift" xml:space="preserve">
+    <value>Shift+</value>
+  </data>
+  <data name="MethodInvalidValue" xml:space="preserve">
+    <value>Method {0} returned an invalid value.</value>
+  </data>
+  <data name="PropertyAbstract" xml:space="preserve">
+    <value>Property not implemented on abstract class.</value>
+  </data>
+  <data name="PropertyDerived" xml:space="preserve">
+    <value>Property not implemented on derived class.</value>
+  </data>
+  <data name="PropertyEmpty" xml:space="preserve">
+    <value>Property cannot be empty.</value>
+  </data>
+  <data name="PropertyFalse" xml:space="preserve">
+    <value>Property cannot be false.</value>
+  </data>
+  <data name="PropertyInvalidValue" xml:space="preserve">
+    <value>Property has an invalid value.</value>
+  </data>
+  <data name="PropertyIsInValues" xml:space="preserve">
+    <value>Property cannot have one of these values: </value>
+  </data>
+  <data name="PropertyIsValue" xml:space="preserve">
+    <value>Property cannot be {0}.</value>
+  </data>
+  <data name="PropertyName" xml:space="preserve">
+    <value>Property name: {0}</value>
+  </data>
+  <data name="PropertyNegative" xml:space="preserve">
+    <value>Property cannot be negative.</value>
+  </data>
+  <data name="PropertyNotDivisible" xml:space="preserve">
+    <value>Property must be divisible by {0}.</value>
+  </data>
+  <data name="PropertyNotEmpty" xml:space="preserve">
+    <value>Property must be empty.</value>
+  </data>
+  <data name="PropertyNotInValues" xml:space="preserve">
+    <value>Property must have one of these values: </value>
+  </data>
+  <data name="PropertyNotNegative" xml:space="preserve">
+    <value>Property must be negative.</value>
+  </data>
+  <data name="PropertyNotNull" xml:space="preserve">
+    <value>Property must be a null reference.</value>
+  </data>
+  <data name="PropertyNotPositive" xml:space="preserve">
+    <value>Property must be positive.</value>
+  </data>
+  <data name="PropertyNotValue" xml:space="preserve">
+    <value>Property must be {0}.</value>
+  </data>
+  <data name="PropertyNull" xml:space="preserve">
+    <value>Property cannot be a null reference.</value>
+  </data>
+  <data name="PropertyNullOrEmpty" xml:space="preserve">
+    <value>Property cannot be a null reference or an empty object.</value>
+  </data>
+  <data name="PropertyPositive" xml:space="preserve">
+    <value>Property cannot be positive.</value>
+  </data>
+  <data name="PropertySet" xml:space="preserve">
+    <value>Property cannot be set.</value>
+  </data>
+  <data name="PropertySetOnce" xml:space="preserve">
+    <value>Property cannot be set more than once.</value>
+  </data>
+  <data name="PropertyTrue" xml:space="preserve">
+    <value>Property cannot be true.</value>
+  </data>
+  <data name="SearchStructureCorrupted" xml:space="preserve">
+    <value>Search structure corrupted.</value>
+  </data>
+  <data name="SuccessSuccess" xml:space="preserve">
+    <value>Operation succeeded.</value>
+  </data>
+  <data name="SynchronizedNotImplemented" xml:space="preserve">
+    <value>Synchronized access is not implemented.</value>
+  </data>
+  <data name="TechnicalDetails" xml:space="preserve">
+    <value>Technical Details:</value>
+  </data>
+  <data name="ThreadForeground" xml:space="preserve">
+    <value>Method cannot execute on foreground thread.</value>
+  </data>
+  <data name="TypeMemberNotFound" xml:space="preserve">
+    <value>Member {0} not found in type {1}.</value>
+  </data>
+  <data name="TypeNotFound" xml:space="preserve">
+    <value>Type {0} not found.</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Unknown error.</value>
+  </data>
+  <data name="ViewReadOnly" xml:space="preserve">
+    <value>Read-only views cannot be modified.</value>
+  </data>
+  <data name="XmlContentNotElement" xml:space="preserve">
+    <value>Content node must be an element tag.</value>
+  </data>
+  <data name="XmlContentNotElementName" xml:space="preserve">
+    <value>Content node must be an element tag named "{0}".</value>
+  </data>
+  <data name="XmlContentNotEmpty" xml:space="preserve">
+    <value>Content node must be empty.</value>
+  </data>
+  <data name="XmlContentNotText" xml:space="preserve">
+    <value>Content node must be simple text or CDATA block.</value>
+  </data>
+  <data name="XmlDocumentError" xml:space="preserve">
+    <value>An error occurred while parsing the XML document.</value>
+  </data>
+  <data name="XmlError" xml:space="preserve">
+    <value>XML error</value>
+  </data>
+  <data name="XmlSchemaError" xml:space="preserve">
+    <value>XML Schema error</value>
+  </data>
+</root>

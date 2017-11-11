@@ -1,0 +1,22 @@
+﻿<Window x:Class="Tektosyne.GuiTest.BitmapPaintTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Bitmap Paint Test" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+  <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Horizontal">
+      <GroupBox Header="Drawing Method">
+        <StackPanel Orientation="Vertical">
+          <RadioButton Name="BitmapUtilityToggle" x:FieldModifier="private" Checked="OnMethodChanged" IsChecked="True">_BackBuffer (IntPtr)</RadioButton>
+          <RadioButton Name="BitmapBufferToggle" x:FieldModifier="private" Checked="OnMethodChanged">_WritePixels (Array)</RadioButton>
+        </StackPanel>
+      </GroupBox>
+      <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,4,4,0" Width="310" TextWrapping="Wrap">
+      Click on a color block to pick a color, then draw in the empty area. Opaque colors use SetPixel, translucent colors use BlendPixel. Left-click for single pixels, right-click for 9x9 squares. Hold button for continuous painting.
+      </TextBlock>
+    </StackPanel>
+    <GroupBox Header="Drawing Surface">
+      <Image Name="BitmapImage" x:FieldModifier="private" Stretch="None" MouseDown="OnBitmapMouseDown" MouseMove="OnBitmapMouseMove" />
+    </GroupBox>
+    <Button IsCancel="True" IsDefault="True" HorizontalAlignment="Center">Close</Button>
+  </StackPanel>
+</Window>

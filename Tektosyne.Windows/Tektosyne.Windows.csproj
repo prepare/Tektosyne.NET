@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Tektosyne.Windows</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Tektosyne</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DocumentationFile>..\bin\Tektosyne.Windows.xml</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0419</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DocumentationFile>..\bin\Tektosyne.Windows.xml</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0419</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DocumentationFile>..\bin\Tektosyne.Windows.xml</DocumentationFile>
+    <NoWarn>0419</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\bin\Tektosyne.Windows.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>0419</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Geometry\GdiConversions.cs" />
+    <Compile Include="Geometry\PolygonExtensions.cs" />
+    <Compile Include="Geometry\WpfConversions.cs" />
+    <Compile Include="Net\MapiAddress.cs" />
+    <Compile Include="Net\MapiException.cs" />
+    <Compile Include="Net\MapiMail.cs" />
+    <Compile Include="Windows\BitmapBuffer.cs" />
+    <Compile Include="Windows\BitmapUtility.cs" />
+    <Compile Include="Windows\ColorVector.cs" />
+    <Compile Include="Windows\ConcurrentVisualHost.cs" />
+    <Compile Include="Windows\DefaultTheme.cs" />
+    <Compile Include="Windows\DefaultThemeSetter.cs" />
+    <Compile Include="Windows\ComponentControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ContainerVisualHost.cs" />
+    <Compile Include="Windows\CustomColorDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\FormatTextBlock.cs" />
+    <Compile Include="Windows\HwndWrapper.cs" />
+    <Compile Include="Windows\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NumericUpDownEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\NumericUpDownHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ScrollDirection.cs" />
+    <Compile Include="Windows\StackTextBlock.cs" />
+    <Compile Include="Windows\TaskEvents.cs" />
+    <Compile Include="Windows\TreeHelper.cs" />
+    <Compile Include="Windows\VisualSource.cs" />
+    <Compile Include="Windows\WindowsExtensions.cs" />
+    <Compile Include="Windows\WindowsFormsHostEx.cs" />
+    <Compile Include="Windows\WindowsUtility.cs" />
+    <Compile Include="Win32Api\Kernel.cs" />
+    <Compile Include="Win32Api\Mapi.cs" />
+    <Compile Include="Win32Api\MapiError.cs" />
+    <Compile Include="Win32Api\MapiFileDesc.cs" />
+    <Compile Include="Win32Api\MapiFileFlags.cs" />
+    <Compile Include="Win32Api\MapiFileTagExt.cs" />
+    <Compile Include="Win32Api\MapiFlags.cs" />
+    <Compile Include="Win32Api\MapiMessage.cs" />
+    <Compile Include="Win32Api\MapiMessageFlags.cs" />
+    <Compile Include="Win32Api\MapiRecipClass.cs" />
+    <Compile Include="Win32Api\MapiRecipDesc.cs" />
+    <Compile Include="Win32Api\MemoryStatus.cs" />
+    <Compile Include="Win32Api\MemoryStatusEx.cs" />
+    <Compile Include="Win32Api\SafeMemoryHandle.cs" />
+    <Compile Include="Win32Api\User.cs" />
+    <Compile Include="Xml\XmlSerialization.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Windows\MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tektosyne.Core\Tektosyne.Core.csproj">
+      <Project>{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}</Project>
+      <Name>Tektosyne.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

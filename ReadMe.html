@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ReadMe for Tektosyne 5.6.6</title>
+</head>
+<body>
+  <h1>ReadMe for Tektosyne 5.6.6</h1>
+  <table frame="void" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="width:6em;"><strong>Program:</strong></td>
+      <td>Tektosyne Library for the .NET Framework</td>
+    </tr><tr>
+      <td><strong>Version:</strong></td>
+      <td>5.6.6 (<a href="WhatsNew.html">History</a>)</td>
+    </tr><tr>
+      <td><strong>Released:</strong></td>
+      <td>30 September 2015</td>
+    </tr><tr>
+      <td><strong>Author:</strong></td>
+      <td>Christoph Nahr (<a href="#Copyright">Copyright</a>)</td>
+    </tr><tr>
+      <td><strong>Contact:</strong></td>
+      <td><a href="mailto:webmaster@kynosarges.org">webmaster@kynosarges.org</a></td>
+    </tr><tr>
+      <td><strong>Website:</strong></td>
+      <td><a href="http://kynosarges.org/Tektosyne.html">http://kynosarges.org/Tektosyne.html</a></td>
+    </tr>
+  </table>
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#System">System Requirements</a></li>
+    <li><a href="#Code">Code Package</a></li>
+    <li><a href="#Docs">Documentation</a></li>
+    <li><a href="#Copyright">Copyright Notice</a></li>
+    <li><a href="#Issues">Known Issues</a></li>
+  </ol>
+  <h2><a name="System">1. System Requirements</a></h2>
+  <p>The Tektosyne library for the .NET Framework consists of two assemblies:</p>
+  <ul>
+    <li>Tektosyne.Core provides the bulk of platform-independent functionality.</li>
+    <li>Tektosyne.Windows provides extended functionality on Microsoft Windows.</li>
+  </ul>
+  <p>The full Tektosyne library and the precompiled assemblies require a Microsoft Windows system capable of running the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=24872">Microsoft .NET Framework 4 Client Profile</a> or any newer .NET 4.<em>x</em> release. This includes the following operating systems:</p>
+  <ul>
+    <li>Microsoft Windows XP SP3</li>
+    <li>Microsoft Windows Vista SP1 or later</li>
+    <li>Microsoft Windows Server 2003 SP2</li>
+    <li>Microsoft Windows Server 2008 or later (except Server Core Role)</li>
+  </ul>
+  <p>On all of these systems, Microsoft Internet Explorer 5.01 or later and Microsoft Windows Installer 3.1 or later are also required. Any post-XP system will already have those.</p>
+  <p>Either Microsoft Visual Studio (2010 or later) or the free <a href="http://www.microsoft.com/en-us/download/details.aspx?id=8279">Microsoft Windows SDK 7.1 for Windows 7 and .NET 4</a> is required to write programs that use the full Tektosyne library. Windows SDK 7.1 has the same system requirements as the .NET Framework 4 itself but also requires that you first install the full <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17851">.NET Framework 4</a> – not just the Client Profile.</p>
+  <h3>Tektosyne.Core Requirements</h3>
+  <p>Tektosyne.Core requires only four BCL assemblies: mscorlib.dll, System.dll, System.Core.dll, and System.Xml.dll. These four “core” assemblies should be available on any platform compatible with .NET 4, including <a href="http://www.mono-project.com/Compatibility">Mono</a> and Microsoft’s older .NET-based environments (Silverlight, Windows Phone 7/8). Unfortunately Microsoft’s mobile platform strategy has been very erratic, so I cannot say which current environments other than .NET 4.<em>x</em> for desktop fully support Tektosyne.Core.</p>
+  <h2><a name="Code">2. Code Package</a></h2>
+  <p>The directory to which the archive was unpacked (and its various subdirectories corresponding to namespaces) contains all source files required to build the Tektosyne library. The output directory <code>bin</code> contains the following files:</p>
+  <ul>
+    <li><code>Tektosyne.Core.dll</code> – platform-independent components, compiled in release mode and signed with a strong name.</li>
+    <li><code>Tektosyne.Core.xml</code> – the XML documentation file generated for the Tektosyne.Core assembly.</li>
+    <li><code>Tektosyne.Windows.dll</code> – Windows-specific components, compiled in release mode and signed with a strong name.</li>
+    <li><code>Tektosyne.Windows.xml</code> – the XML documentation file generated for the Tektosyne.Windows assembly.</li>
+    <li><code>Tektosyne.GuiTest.*</code> – a WPF demo application and its associated files. See <a href="#Tests">Testing Projects</a> and <a href="#Grids">Saving &amp; Printing Grids</a> for details.</li>
+    <li><code>Tektosyne.UnitTest.dll</code> and <code>nunit.framework.*</code> – a suite of unit tests and its NUnit support library. See <a href="#Tests">Testing Projects</a> for details.</li>
+  </ul>
+  <h3><a name="Building">Building Tektosyne</a></h3>
+  <p>Use Visual Studio or MSBuild to load or build the solution <code>Tektosyne.sln</code>, or to reference the C# project <code>Tektosyne\Tektosyne.csproj</code> from another solution. The two <a href="#Tests">testing projects</a>, <code>Tektosyne.GuiTest.csproj</code> and <code>Tektosyne.UnitTest.csproj</code> in the eponymous directories, should be ignored when using the library from another solution.</p>
+  <p>You can use the free Visual C# Express IDE instead of Visual Studio 2010. However, the Express edition has several artificial limitations, including a lack of support for “solution items”. These are files that are linked to a solution but not to any particular project, such as this ReadMe file. Express users will have to locate and open these files manually.</p>
+  <p>The distribution package was created by running MSBuild on the separate build script <code>Publish.proj</code>. This script offers the following targets:</p>
+  <ul>
+    <li><strong>CleanAll</strong> deletes all files and directories created by any previous builds or NUnit runs. This is much more thorough than Microsoft’s default “Clean” target.</li>
+    <li><strong>Publish</strong> invokes “CleanAll”, creates a signed release build in subdirectory <code>bin</code>, and a distribution package <code>Tektosyne.zip</code> containing the entire directory tree.</li>
+  </ul>
+  <p>The default target is “Publish”. You need a key container named “Kynosarges” and the archiver <a href="http://www.7-zip.org/">7-Zip</a> for this target to succeed.</p>
+  <h3><a name="Tests">Testing Projects</a></h3>
+  <p>The solution <code>Tektosyne.sln</code> contains two testing projects, <code>Tektosyne.GuiTest</code> and <code>Tektosyne.UnitTest</code>. These projects are not required to use or deploy the library. They are included in the distribution package to verify the integrity of the precompiled library and to demonstrate the use of various library classes.</p>
+  <p><code>Tektosyne.GuiTest</code> is a small WPF application that exercises several Tektosyne types which are unsuitable for a unit testing harness, such as the geometric and user interface classes. Choose <b>General: Public Key Token</b> to show the public key token for the signed distribution build, which should be 4A-81-84-5B-DA-6D-59-57.</p>
+  <p><em>Security Permissions.</em> The <code>GuiTest</code> executable requires a number of .NET security permissions that are available only when the executable is running with “Full Trust”. This is usually the case for all .NET programs that are run from a local hard disk or a shared network drive. The executable does not require administrator privileges.</p>
+  <p><code>Tektosyne.UnitTest</code> is a unit testing library designed for <a href="http://nunit.com/">NUnit</a> 2.6.4. To run the tests, use either <code>nunit.exe</code> or <code>nunit-console.exe</code> to load the control file <code>Tektosyne.nunit</code> in the Tektosyne root directory. The testing project references the NUnit assembly <code>bin\nunit.framework.dll</code> which is distributed with Tektosyne (see <a href="#Copyright">Copyright Notice</a>). Note that NUnit currently still requires the .NET Framework 2.0, so you’ll have to install that (via “Turn Windows features on or off” in the Control Panel) alongside .NET Framework 4.<em>x</em> if you want to run these tests.</p>
+  <p><em>Integrated Testing.</em> You can also start the project <code>Tektosyne.UnitTest</code> from within Visual Studio to run <code>nunit-console.exe</code> on the unit tests. You’ll have to adjust the executable path in the project’s Properties to match your NUnit installation. Test results will appear in the Visual Studio output window as well as in the file <code>TestResult.xml</code> in the Tektosyne root directory.</p>
+  <h3><a name="Grids">Saving &amp; Printing Grids</a></h3>
+  <p><code>Tektosyne.GuiTest</code> contains a useful feature that helps with the creation of game maps based on real-world terrain. Choose <b>Geometry: Save &amp; Print Grid</b> to show a dialog that allows you to save or print grids of arbitrary size that are composed of squares or hexagons of any side length and orientation.</p>
+  <p>You can print a grid on transparent film and overlay it on an atlas page to determine your map layout, or you can save a grid to a PNG file and use your favorite paint program to superimpose it on an image file with your real-world map. This is how I created the “Roman Empire” and “Battle of Crécy” demo scenarios that ship with <a href="http://kynosarges.org/Hexkit.html">Hexkit</a>.</p>
+  <h2><a name="Docs">3. Documentation</a></h2>
+  <h3>User’s Guide</h3>
+  <p>The <em>Tektosyne User’s Guide</em> presents an overview of the library’s contents, organized into thematically related groups. Unusual features such as the graph algorithms are covered in greater detail. The guide is an Adobe PDF document, available as a separate download at the <a href="http://kynosarges.org/Tektosyne.html">Tektosyne</a> home page.</p>
+  <h3>Class Reference</h3>
+  <p>A comprehensive class reference for the Tektosyne library is also available as a separate download at the <a href="http://kynosarges.org/Tektosyne.html">Tektosyne</a> home page. This reference is a collection of HTML pages that was created from XML source code comments using the free <a href="https://github.com/EWSoftware/SHFB">Sandcastle</a> help compiler.</p>
+  <h2><a name="Copyright">4. Copyright Notice</a></h2>
+  <p>All files – individual files, multi-file packages, and individual files contained in multi-file packages – that constitute the original distribution of the Tektosyne Library for the .NET Framework are Copyright © 2002–2015 by Christoph Nahr, except where otherwise noted.</p>
+  <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+  <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+  <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+  <h3>Exceptions</h3>
+  <p>The assembly <code>bin\nunit.framework.dll</code> and the corresponding XML documentation file are part of the <a href="http://nunit.com/">NUnit</a> distribution and therefore Copyright © 2002-2014 Charlie Poole, Copyright © 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov, Copyright © 2000-2002 Philip A. Craig.</p>
+  <h2><a name="Issues">5. Known Issues</a></h2>
+  <p>The current Sandcastle release that was used to build the Class Reference still has a few bugs. You may encounter the following issues:</p>
+  <ul>
+    <li>Method links without arguments go to the first method in a group of overloads, rather than to the overload page.</li>
+    <li>Documentation for classes that back XAML pages repeats the class name below the summary.</li>
+    <li>Some documentation missing for explicit interface implementations in <code>Collections</code> classes.</li>
+  </ul>
+  <p>When in doubt, please refer to the source code for the correct documentation.</p>
+</body>
+</html>

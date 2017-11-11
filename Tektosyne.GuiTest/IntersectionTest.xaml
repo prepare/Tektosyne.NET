@@ -1,0 +1,39 @@
+﻿<Window x:Class="Tektosyne.GuiTest.IntersectionTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tw="clr-namespace:Tektosyne.Windows;assembly=Tektosyne.Windows"
+    Title="Line Intersection Test" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+  <Window.CommandBindings>
+    <CommandBinding Command="Copy" Executed="CopyCommandExecuted" />
+    <CommandBinding Command="New" Executed="NewCommandExecuted" />
+    <CommandBinding Command="Paste" Executed="PasteCommandExecuted" CanExecute="PasteCommandCanExecute" />
+  </Window.CommandBindings>
+  <StackPanel Orientation="Vertical">
+    <TextBlock HorizontalAlignment="Left" Margin="4">
+      Points of intersection are marked by hollow red circles.<LineBreak/>
+      Use Tolerance to adjust intersection proximity matching.
+    </TextBlock>
+    <Separator />
+    <StackPanel Orientation="Horizontal">
+      <Label>Lines &amp; Intersections:</Label>
+      <Label x:Name="LinesLabel" x:FieldModifier="private" Width="50">0/0</Label>
+      <Label Target="{Binding ElementName=ToleranceUpDownHost}">_Tolerance:</Label>
+      <tw:WindowsFormsHostEx x:Name="ToleranceUpDownHost" x:FieldModifier="private" Width="60">
+        <tw:NumericUpDownHost x:Name="ToleranceUpDown" x:FieldModifier="private" Minimum="0" Maximum="10" DecimalPlaces="1" Increment="0.1" TextAlign="Right" ValueChanged="OnToleranceChanged" />
+      </tw:WindowsFormsHostEx>
+      <Button Click="OnToleranceMaximum" ToolTip="Set tolerance to maximum" MinWidth="0">M_ax</Button>
+      <Button Click="OnToleranceMinimum" ToolTip="Set tolerance to minimum" MinWidth="0">M_in</Button>
+      <Button Click="OnSplit" ToolTip="Split lines on intersection points" MinWidth="0">_Split</Button>
+    </StackPanel>
+    <Canvas Width="438" Height="308">
+      <Rectangle Canvas.Left="3" Canvas.Top="3" Width="432" Height="302" Stroke="Black" />
+      <Canvas x:Name="OutputBox" x:FieldModifier="private" Canvas.Left="4" Canvas.Top="4" ClipToBounds="True" Width="430" Height="300" />
+    </Canvas>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+      <Button Command="Copy" ToolTip="Copy current line set to the clipboard (Ctrl+C)">_Copy</Button>
+      <Button Command="Paste" ToolTip="Paste existing line set from the clipboard (Ctrl+V)">_Paste</Button>
+      <Button Command="New" ToolTip="Generate new random line set (Ctrl+N)">_New</Button>
+      <Button IsCancel="True" IsDefault="True" ToolTip="Close the dialog (Escape, Alt+F4)">Close</Button>
+    </StackPanel>
+  </StackPanel>
+</Window>

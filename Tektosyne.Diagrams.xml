@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.kynosarges.de/Diagrammer.Project">
+  <application product="Class Diagrammer" version="1.4.5" />
+  <title>Tektosyne Diagrams</title>
+  <description>This project defines all UML diagrams for the Tektosyne User’s Guide.</description>
+  <display>
+    <showFamily value="false" />
+    <showMember value="false">Equals</showMember>
+    <showMember value="false">GetHashCode</showMember>
+    <showMember value="false">ToString</showMember>
+    <font size="10" headerSize="12">Myriad Pro</font>
+    <colorRight red="250" green="234" blue="209" />
+  </display>
+  <relativePaths value="true" />
+  <assembly>bin\Tektosyne.Core.dll</assembly>
+  <assembly>bin\Tektosyne.Windows.dll</assembly>
+  <diagram>
+    <name>Assemblies</name>
+    <display>
+      <showBaseType value="false" />
+      <showInterface value="false" />
+      <showNamespace value="true" />
+    </display>
+    <element>
+      <name>Tektosyne.Core</name>
+    </element>
+    <element left="168">
+      <name>Tektosyne.Windows</name>
+    </element>
+    <relation alignment="SourceToTarget" dashedLine="true">
+      <source anchor="Left">
+        <element>Tektosyne.Windows</element>
+      </source>
+      <target anchor="Right" symbol="Arrow">
+        <element>Tektosyne.Core</element>
+      </target>
+    </relation>
+  </diagram>
+  <diagram>
+    <name>Graph</name>
+    <display>
+      <showAttributes value="true" />
+      <showOperations value="true" />
+      <hiddenNamespace>Tektosyne</hiddenNamespace>
+    </display>
+    <element left="600" top="144" minWidth="145">
+      <name>Tektosyne.Geometry.PolygonGrid</name>
+      <display>
+        <showNamespace value="true" />
+        <showAttributes value="false" />
+        <showOperations value="false" />
+      </display>
+    </element>
+    <element left="600" top="456" minWidth="145">
+      <name>Tektosyne.Geometry.Subdivision</name>
+      <display>
+        <showNamespace value="true" />
+        <showAttributes value="false" />
+        <showOperations value="false" />
+      </display>
+    </element>
+    <element left="264" minWidth="244">
+      <name>Tektosyne.Graph.AStar`1</name>
+    </element>
+    <element left="264" top="216">
+      <name>Tektosyne.Graph.Coverage`1</name>
+    </element>
+    <element left="264" top="336" minWidth="244">
+      <name>Tektosyne.Graph.FloodFill`1</name>
+    </element>
+    <element left="600" top="240">
+      <name>Tektosyne.Graph.IGraph2D`1</name>
+    </element>
+    <element top="120">
+      <name>Tektosyne.Graph.IGraphAgent`1</name>
+    </element>
+    <element left="48">
+      <name>Tektosyne.Graph.IGraphPath`1</name>
+    </element>
+    <element left="24" top="456">
+      <name>Tektosyne.Graph.NodeArc</name>
+    </element>
+    <element left="576">
+      <name>Tektosyne.Graph.PathNode`1</name>
+    </element>
+    <element left="264" top="456" minWidth="244">
+      <name>Tektosyne.Graph.Visibility`1</name>
+    </element>
+    <relation>
+      <name>Graph</name>
+      <source anchor="BottomRight" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.AStar`1</element>
+      </source>
+      <target anchor="TopLeft" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>Graph</name>
+      <source anchor="Right" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.Coverage`1</element>
+      </source>
+      <target anchor="Left" offset="24" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>Graph</name>
+      <source anchor="Right" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.FloodFill`1</element>
+      </source>
+      <target anchor="Left" offset="-24" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation>
+      <name>Graph</name>
+      <source anchor="TopRight" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.Visibility`1</element>
+      </source>
+      <target anchor="BottomLeft" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget" dashedLine="true">
+      <source anchor="Left">
+        <element>Tektosyne.Graph.AStar`1</element>
+      </source>
+      <target anchor="Right" symbol="HollowArrow">
+        <element>Tektosyne.Graph.IGraphPath`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>Agent</name>
+      <source anchor="Left" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.AStar`1</element>
+      </source>
+      <target anchor="Right" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraphAgent`1</element>
+      </target>
+    </relation>
+    <relation>
+      <name>Agent</name>
+      <source anchor="Left" symbol="HollowDiamond">
+        <element>Tektosyne.Graph.Coverage`1</element>
+      </source>
+      <target anchor="BottomRight" symbol="Arrow">
+        <element>Tektosyne.Graph.IGraphAgent`1</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource" dashedLine="true">
+      <source anchor="Bottom">
+        <element>Tektosyne.Geometry.PolygonGrid</element>
+      </source>
+      <target anchor="Top" symbol="HollowArrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource" dashedLine="true">
+      <source anchor="Top">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </source>
+      <target anchor="Bottom" symbol="HollowArrow">
+        <element>Tektosyne.Graph.IGraph2D`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <source anchor="Right">
+        <element>Tektosyne.Graph.AStar`1</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Graph.PathNode`1</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>NodeArcs</name>
+      <source anchor="Left" symbol="FilledDiamond">
+        <element>Tektosyne.Graph.Visibility`1</element>
+      </source>
+      <target anchor="Right" symbol="Arrow">
+        <element>Tektosyne.Graph.NodeArc</element>
+      </target>
+    </relation>
+  </diagram>
+  <diagram>
+    <name>NumericUpDown</name>
+    <element left="408" top="24">
+      <name>Tektosyne.Windows.ComponentControl</name>
+    </element>
+    <element left="408" top="192">
+      <name>Tektosyne.Windows.NumericUpDownEx</name>
+    </element>
+    <element top="144">
+      <name>Tektosyne.Windows.NumericUpDownHost</name>
+    </element>
+    <element left="72">
+      <name>Tektosyne.Windows.WindowsFormsHostEx</name>
+    </element>
+    <relation alignment="SourceToTarget">
+      <name>HostedControl</name>
+      <source anchor="Right" symbol="FilledDiamond">
+        <element>Tektosyne.Windows.NumericUpDownHost</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Windows.NumericUpDownEx</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget" dashedLine="true">
+      <source anchor="TopRight">
+        <element>Tektosyne.Windows.NumericUpDownHost</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Windows.ComponentControl</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>Child</name>
+      <source anchor="Bottom" symbol="FilledDiamond">
+        <element>Tektosyne.Windows.WindowsFormsHostEx</element>
+      </source>
+      <target anchor="Top" symbol="Arrow">
+        <element>Tektosyne.Windows.NumericUpDownHost</element>
+      </target>
+    </relation>
+  </diagram>
+  <diagram>
+    <name>Subdivision</name>
+    <display>
+      <showMember value="false">StructureEquals</showMember>
+      <showMember value="false">Validate</showMember>
+    </display>
+    <element left="504" top="648">
+      <name>Tektosyne.Geometry.ISubdivisionMap`1</name>
+    </element>
+    <element top="216">
+      <name>Tektosyne.Geometry.Subdivision</name>
+    </element>
+    <element left="456" top="144">
+      <name>Tektosyne.Geometry.SubdivisionEdge</name>
+    </element>
+    <element left="456">
+      <name>Tektosyne.Geometry.SubdivisionElement</name>
+      <display>
+        <showOperations value="false" />
+      </display>
+    </element>
+    <element left="192" top="72">
+      <name>Tektosyne.Geometry.SubdivisionElementType</name>
+    </element>
+    <element left="456" top="456">
+      <name>Tektosyne.Geometry.SubdivisionFace</name>
+    </element>
+    <element>
+      <name>Tektosyne.Geometry.SubdivisionSearch</name>
+      <display>
+        <showMember value="false">Format</showMember>
+      </display>
+    </element>
+    <relation alignment="SourceToTarget">
+      <name>Edges</name>
+      <source anchor="Right" symbol="FilledDiamond">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionEdge</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>Faces</name>
+      <source anchor="Right" symbol="FilledDiamond">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionFace</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource">
+      <name>Find</name>
+      <source anchor="TopRight">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </source>
+      <target anchor="BottomLeft" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionElement</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource">
+      <name>Find</name>
+      <source anchor="Right">
+        <element>Tektosyne.Geometry.SubdivisionSearch</element>
+      </source>
+      <target anchor="Left" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionElement</element>
+      </target>
+    </relation>
+    <relation alignment="SourceToTarget">
+      <name>ElementType</name>
+      <source anchor="Left">
+        <element>Tektosyne.Geometry.SubdivisionElement</element>
+      </source>
+      <target anchor="Right" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionElementType</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource">
+      <name>Source</name>
+      <source anchor="Left" symbol="HollowDiamond">
+        <element>Tektosyne.Geometry.ISubdivisionMap`1</element>
+      </source>
+      <target anchor="Right" symbol="Arrow">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource">
+      <name>From/ToFace</name>
+      <source anchor="Top">
+        <element>Tektosyne.Geometry.ISubdivisionMap`1</element>
+      </source>
+      <target anchor="Bottom" symbol="Arrow">
+        <element>Tektosyne.Geometry.SubdivisionFace</element>
+      </target>
+    </relation>
+    <relation alignment="TargetToSource">
+      <name>Source</name>
+      <source anchor="Bottom" symbol="HollowDiamond">
+        <element>Tektosyne.Geometry.SubdivisionSearch</element>
+      </source>
+      <target anchor="Top" symbol="Arrow">
+        <element>Tektosyne.Geometry.Subdivision</element>
+      </target>
+    </relation>
+  </diagram>
+  <output includeAll="true" format="Pdf" margin="0,8,0,0">
+    <name>Adobe PDF Output</name>
+    <target>C:\Users\Bonsai\Documents\TektosyneGuide\Images</target>
+  </output>
+</project>

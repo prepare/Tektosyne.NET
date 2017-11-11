@@ -1,0 +1,35 @@
+﻿<Project DefaultTargets="Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Target Name="CleanAll">
+    <Message Text="Removing all temporary files..." />
+    <Delete Files="@(CleanFiles)" />
+    <!-- remove temporary files in each project directory -->
+    <RemoveDir Directories="@(Projects->'%(RelativeDir)obj\')" />
+  </Target>
+  <Target Name="Publish" DependsOnTargets="CleanAll">
+    <Message Text="Creating signed release build..." />
+    <MSBuild Projects="@(Projects)" Properties="$(BuildOptions)" />
+    <Message Text="Creating distribution package..." />
+    <!-- remove temporary files that were just recreated -->
+    <RemoveDir Directories="@(Projects->'%(RelativeDir)obj\')" />
+    <!-- create ZIP archive using 7-Zip executable -->
+    <Exec Command="%22$(ProgramFiles)\7-Zip\7z.exe%22 a -r -mx=9 Tektosyne.zip * -x!*.cache -x!*.docstates -x!*.suo -x!.vs" />
+  </Target>
+  <PropertyGroup>
+    <!-- MSBuild project build options -->
+    <BuildOptions>Configuration=Release;DefineConstants=SIGNED,TRACE;KeyContainerName=Kynosarges</BuildOptions>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- input projects to be published -->
+    <Projects Include="Tektosyne.Core\Tektosyne.Core.csproj" />
+    <Projects Include="Tektosyne.Windows\Tektosyne.Windows.csproj" />
+    <Projects Include="Tektosyne.GuiTest\Tektosyne.GuiTest.csproj" />
+    <Projects Include="Tektosyne.UnitTest\Tektosyne.UnitTest.csproj" />
+    <!-- output files created by all builds -->
+    <CleanFiles Include="bin\*" Exclude="bin\*.xsd;bin\nunit.framework.*" />
+    <!-- output files created by Publish builds -->
+    <CleanFiles Include="Tektosyne.zip" />
+    <!-- output files created by NUnit test runs -->
+    <CleanFiles Include="TestResult.xml;Tektosyne.VisualState.xml" />
+  </ItemGroup>
+</Project>

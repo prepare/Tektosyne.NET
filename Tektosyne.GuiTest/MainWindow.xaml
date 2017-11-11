@@ -1,0 +1,159 @@
+﻿<Window x:Class="Tektosyne.GuiTest.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Tektosyne GUI Test" Height="300" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+  <Window.Resources>
+    <RoutedUICommand x:Key="exitCommand" Text="Exit">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Alt+F4</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="assemblyCommand" Text="Assembly Information">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+A</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="benchmarkCommand" Text="Benchmark Tests">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+B</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="simpleMapiCommand" Text="Simple MAPI E-mail">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+E</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="convexHullCommand" Text="Convex Hull">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+H</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="intersectionCommand" Text="Intersections">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+I</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="pointInPolygonCommand" Text="Point in Polygon">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+P</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="subdivisionCommand" Text="Planar Subdivision">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+S</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="subdivisionIntersectionCommand" Text="Subdivision Intersection">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+T</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="voronoiCommand" Text="Voronoi Diagram">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+V</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="regularPolygonCommand" Text="Regular Polygon">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+R</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="polygonGridCommand" Text="Polygon Grid">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+G</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="makeGridCommand" Text="Save &amp; Print Grid">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+S</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="graphCommand" Text="Graph Algorithms">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+A</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="concurrentDrawingCommand" Text="Concurrent Drawing">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+C</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="messageDialogCommand" Text="Message Dialog">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+M</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="bitmapPaintCommand" Text="Bitmap Painting">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+B</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+    <RoutedUICommand x:Key="bitmapOverlayCommand" Text="Bitmap Overlays">
+      <RoutedUICommand.InputGestures>
+        <KeyGesture>Ctrl+Shift+O</KeyGesture>
+      </RoutedUICommand.InputGestures>
+    </RoutedUICommand>
+  </Window.Resources>
+  <Window.CommandBindings>
+    <CommandBinding Command="{StaticResource exitCommand}" Executed="ExitCommandExecuted" />
+    <CommandBinding Command="{StaticResource assemblyCommand}" Executed="AssemblyCommandExecuted" />
+    <CommandBinding Command="{StaticResource benchmarkCommand}" Executed="BenchmarkCommandExecuted" />
+    <CommandBinding Command="{StaticResource simpleMapiCommand}" Executed="SimpleMapiCommandExecuted" />
+    <CommandBinding Command="{StaticResource convexHullCommand}" Executed="ConvexHullCommandExecuted" />
+    <CommandBinding Command="{StaticResource intersectionCommand}" Executed="IntersectionCommandExecuted" />
+    <CommandBinding Command="{StaticResource pointInPolygonCommand}" Executed="PointInPolygonCommandExecuted" />
+    <CommandBinding Command="{StaticResource subdivisionCommand}" Executed="SubdivisionCommandExecuted" />
+    <CommandBinding Command="{StaticResource subdivisionIntersectionCommand}" Executed="SubdivisionIntersectionCommandExecuted" />
+    <CommandBinding Command="{StaticResource voronoiCommand}" Executed="VoronoiCommandExecuted" />
+    <CommandBinding Command="{StaticResource regularPolygonCommand}" Executed="RegularPolygonCommandExecuted" />
+    <CommandBinding Command="{StaticResource polygonGridCommand}" Executed="PolygonGridCommandExecuted" />
+    <CommandBinding Command="{StaticResource makeGridCommand}" Executed="MakeGridCommandExecuted" />
+    <CommandBinding Command="{StaticResource graphCommand}" Executed="GraphCommandExecuted" />
+    <CommandBinding Command="{StaticResource concurrentDrawingCommand}" Executed="ConcurrentDrawingCommandExecuted" />
+    <CommandBinding Command="{StaticResource messageDialogCommand}" Executed="MessageDialogCommandExecuted" />
+    <CommandBinding Command="{StaticResource bitmapPaintCommand}" Executed="BitmapPaintCommandExecuted" />
+    <CommandBinding Command="{StaticResource bitmapOverlayCommand}" Executed="BitmapOverlayCommandExecuted" />
+  </Window.CommandBindings>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Menu Grid.Row="0" GotFocus="MenuGotFocus" MenuItem.SubmenuClosed="SubmenuClosed">
+      <MenuItem Header="_File">
+        <MenuItem Header="_Assembly Information" Command="{StaticResource assemblyCommand}" ToolTip="Show assembly information gained by reflection." />
+        <MenuItem Header="_Benchmark Tests" Command="{StaticResource benchmarkCommand}" ToolTip="Run benchmarks on various algorithms." />
+        <Separator />
+        <MenuItem Header="E_xit" Command="{StaticResource exitCommand}" ToolTip="Exit the application." />
+      </MenuItem>
+      <MenuItem Header="_Geometry">
+        <MenuItem Header="Convex _Hull" Command="{StaticResource convexHullCommand}" ToolTip="Find convex hull of point set." />
+        <MenuItem Header="Line _Intersection" Command="{StaticResource intersectionCommand}" ToolTip="Find intersections of line segments." />
+        <MenuItem Header="_Point in Polygon" Command="{StaticResource pointInPolygonCommand}" ToolTip="Locate point relative to polygon." />
+        <MenuItem Header="_Subdivision" Command="{StaticResource subdivisionCommand}" ToolTip="Explore planar subdivisions." />
+        <MenuItem Header="Subdivision In_tersection" Command="{StaticResource subdivisionIntersectionCommand}" ToolTip="Intersect planar subdivisions." />
+        <MenuItem Header="_Voronoi &amp; Delaunay" Command="{StaticResource voronoiCommand}" ToolTip="Find Voronoi &amp; Delaunay diagrams." />
+      </MenuItem>
+      <MenuItem Header="Grid &amp; Gr_aph">
+        <MenuItem Header="_Regular Polygon" Command="{StaticResource regularPolygonCommand}" ToolTip="Draw a regular polygon." />
+        <MenuItem Header="Polygon _Grid" Command="{StaticResource polygonGridCommand}" ToolTip="Draw a grid of regular polygons." />
+        <MenuItem Header="_Save &amp; Print Grid" Command="{StaticResource makeGridCommand}" ToolTip="Save and/or print a regular polygon grid." />
+        <MenuItem Header="Graph _Algorithms" Command="{StaticResource graphCommand}" ToolTip="Demonstrate all graph algorithms." />
+      </MenuItem>
+      <MenuItem Header="_Windows">
+        <MenuItem Header="_Concurrent Drawing" Command="{StaticResource concurrentDrawingCommand}" ToolTip="Draw on multiple threads within one window." />
+        <MenuItem Header="_Message Dialog" Command="{StaticResource messageDialogCommand}" ToolTip="Demonstrate the MessageDialog class." />
+        <MenuItem Header="Simple MAPI _E-mail" Command="{StaticResource simpleMapiCommand}" ToolTip="Access e-mail client via Simple MAPI." />
+        <MenuItem Header="_Bitmap Painting" Command="{StaticResource bitmapPaintCommand}" ToolTip="Demonstrate painting directly to a bitmap." />
+        <MenuItem Header="Bitmap _Overlays" Command="{StaticResource bitmapOverlayCommand}" ToolTip="Demonstrate overlaying bitmap contents." />
+      </MenuItem>
+    </Menu>
+    <Label Grid.Row="1" FontSize="16" FontWeight="Bold">Tektosyne GUI Test Application</Label>
+    <Label Grid.Row="2" VerticalAlignment="Top">Select a menu item to demonstrate Tektosyne features.</Label>
+    <StatusBar Grid.Row="3">
+      <Label Name="StatusMessage" x:FieldModifier="private" Height="20" Padding="2" />
+    </StatusBar>
+  </Grid>
+</Window>

@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{19F2A89E-FD6B-4955-918B-EEB5EFF12982}"
+	ProjectSection(SolutionItems) = preProject
+		Publish.proj = Publish.proj
+		ReadMe.html = ReadMe.html
+		Tektosyne.Diagrams.xml = Tektosyne.Diagrams.xml
+		Tektosyne.nunit = Tektosyne.nunit
+		WhatsNew.html = WhatsNew.html
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tektosyne.Core", "Tektosyne.Core\Tektosyne.Core.csproj", "{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tektosyne.UnitTest", "Tektosyne.UnitTest\Tektosyne.UnitTest.csproj", "{993510F8-C0D9-4347-A761-5BBD67BAE505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tektosyne.GuiTest", "Tektosyne.GuiTest\Tektosyne.GuiTest.csproj", "{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tektosyne.Windows", "Tektosyne.Windows\Tektosyne.Windows.csproj", "{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Debug|x86.ActiveCfg = Debug|x86
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Debug|x86.Build.0 = Debug|x86
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Release|x86.ActiveCfg = Release|x86
+		{52F55B71-58AD-4231-8AB9-D2DF79ECCB73}.Release|x86.Build.0 = Release|x86
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Debug|x86.ActiveCfg = Debug|x86
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Debug|x86.Build.0 = Debug|x86
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Release|x86.ActiveCfg = Release|x86
+		{993510F8-C0D9-4347-A761-5BBD67BAE505}.Release|x86.Build.0 = Release|x86
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Debug|x86.ActiveCfg = Debug|x86
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Debug|x86.Build.0 = Debug|x86
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Release|x86.ActiveCfg = Release|x86
+		{5E016A65-6BA0-4995-B86C-D2A3EC23C2EA}.Release|x86.Build.0 = Release|x86
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Debug|x86.ActiveCfg = Debug|x86
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Debug|x86.Build.0 = Debug|x86
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Release|x86.ActiveCfg = Release|x86
+		{2DAF2FD2-A2CF-4630-873A-CBCFFC5C91F1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

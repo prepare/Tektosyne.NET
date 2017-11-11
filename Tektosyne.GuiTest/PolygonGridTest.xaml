@@ -1,0 +1,68 @@
+﻿<Window x:Class="Tektosyne.GuiTest.PolygonGridTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Tektosyne.GuiTest"
+    Title="Polygon Grid Test" MinWidth="580" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+  <Grid Margin="4">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left" Margin="8,4,0,4" TextWrapping="Wrap" Width="540">
+      Resize the dialog to change the grid size. Mouse over the grid to highlight an element. Left-click to show immediate neighbors. Middle-click to show third neighbors. Right-click to show distances.
+    </TextBlock>
+    <GroupBox Header="Element" Grid.Column="0" Grid.Row="1">
+      <StackPanel Orientation="Vertical" RadioButton.Checked="OnElementChanged">
+        <RadioButton Name="SquareToggle" x:FieldModifier="private" IsChecked="true">_Square</RadioButton>
+        <RadioButton Name="HexagonToggle" x:FieldModifier="private">_Hexagon</RadioButton>
+        <CheckBox Name="VertexNeighborsToggle" x:FieldModifier="private" Click="OnElementChanged">V-_Neighbors</CheckBox>
+      </StackPanel>
+    </GroupBox>
+    <GroupBox Header="Orientation" Grid.Column="0" Grid.Row="2">
+      <StackPanel Orientation="Vertical" RadioButton.Checked="OnElementChanged">
+        <RadioButton Name="OnEdgeToggle" x:FieldModifier="private" IsChecked="true">On _Edge</RadioButton>
+        <RadioButton Name="OnVertexToggle" x:FieldModifier="private">On _Vertex</RadioButton>
+      </StackPanel>
+    </GroupBox>
+    <GroupBox Header="Grid Shift" Grid.Column="0" Grid.Row="3">
+      <StackPanel Orientation="Vertical" RadioButton.Checked="OnGridChanged">
+        <RadioButton Name="ShiftNoneToggle" x:FieldModifier="private" IsChecked="true">None</RadioButton>
+        <RadioButton Name="ColumnUpToggle" x:FieldModifier="private">Column _Up</RadioButton>
+        <RadioButton Name="ColumnDownToggle" x:FieldModifier="private">Column _Down</RadioButton>
+        <RadioButton Name="RowLeftToggle" x:FieldModifier="private">Row _Left</RadioButton>
+        <RadioButton Name="RowRightToggle" x:FieldModifier="private">Row _Right</RadioButton>
+      </StackPanel>
+    </GroupBox>
+    <GroupBox Header="Grid Size" Grid.Column="0" Grid.Row="4" VerticalAlignment="Top">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0">Columns:</Label>
+        <TextBox Name="ColumnsBox" x:FieldModifier="private" Grid.Column="1" Grid.Row="0" Width="40" IsReadOnly="true" TextAlignment="Right" />
+        <Label Grid.Column="0" Grid.Row="1">Rows:</Label>
+        <TextBox Name="RowsBox" x:FieldModifier="private" Grid.Column="1" Grid.Row="1" Width="40" IsReadOnly="true" TextAlignment="Right" />
+        <Label Grid.Column="0" Grid.Row="2">Cursor:</Label>
+        <TextBox Name="CursorBox" x:FieldModifier="internal" Grid.Column="1" Grid.Row="2" Width="40" IsReadOnly="true" TextAlignment="Right" />
+      </Grid>
+    </GroupBox>
+    <GroupBox Header="Polygon Grid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4">
+      <local:PolygonGridRenderer x:Name="PolygonGridBox" x:FieldModifier="private" ClipToBounds="True" />
+    </GroupBox>
+    <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" IsCancel="True" IsDefault="True" HorizontalAlignment="Center">Close</Button>
+  </Grid>
+</Window>

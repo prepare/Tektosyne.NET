@@ -1,0 +1,2272 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>WhatsNew for Tektosyne 5.6.6</title>
+</head>
+<body>
+  <h1>WhatsNew for Tektosyne 5.6.6</h1>
+  <p>This file contains the version history for the Tektosyne Library for the .NET Framework. Please refer to the separate <a href="ReadMe.html">ReadMe</a> file for general information.</p>
+  <h4>Version 5.6.6 (released 2015-09-30)</h4>
+  <p>Recompiled &amp; tested with Visual Studio 2015 and .NET Framework 4.6. The minimum requirement is still .NET 4 Client Profile, and the solution &amp; project files are still in VS2010 format which is directly compatible with VS2015.</p>
+  <ul>
+    <li>Windows.DefaultTheme/Setter: Added values Aero2 &amp; AeroLite for Windows 8 themes.</li>
+    <li>ReadMe: Updated link to Sandcastle Help Compiler.</li>
+    <li>Class Reference: Changed format from Microsoft HTML Help to loose HTML pages.</li>
+    <li>Tektosyne.GuiTest: app.config: Added .NET 4.6 switch for better WPF control border scaling.</li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.6.4.</li>
+  </ul>
+  <h4>Version 5.6.5 (released 2012-09-10)</h4>
+  <p>Corrected usage &amp; documentation of MersenneTwister.Default. This static instance is <em>not</em> thread-safe, and should be used only by auxiliary methods intended for testing.</p>
+  <ul>
+    <li>Collections.BraidedTreeNode&lt;TKey, TValue&gt;: Changed random priority generation from MersenneTwister.Default to private instance in parent BraidedTree&lt;TKey, TValue&gt;.</li>
+    <li>Geometry.GeoAlgorithms.Random…: Documented use of MersenneTwister.Default by these auxiliary methods.</li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.6.1 and fixed project execution path.</li>
+  </ul>
+  <h4>Version 5.6.4 (released 2012-07-23)</h4>
+  <ul>
+    <li>Collections.QuadTree&lt;TValue&gt;.FindNodeByValue: Fixed embarrassing null reference exception.</li>
+    <li>Tektosyne.UnitTest.QuadTreeTest.WalkTree: Added FindNodeByValue test which would have found this bug…</li>
+  </ul>
+  <h4>Version 5.6.3 (released 2012-05-30)</h4>
+  <p>Geometry:</p>
+  <ul>
+    <li>Added enumeration RectLocation that specifies the location of a point relative to a rectangle.</li>
+    <li>RectD/F/I: Added method GetDistanceVector that finds the distance vector from a given PointD/F/I to the nearest outside edges.</li>
+    <li>RectD/F: Added overloaded method Locate to determine the RectLocation for a given PointD/F, using exact coordinate comparisons or a given comparison epsilon.</li>
+    <li>RectD/F.Bottom &amp; Right: Fixed XML comments to specify the coordinates of the bottom &amp; right edge, respectively, not “just beyond” that edge.</li>
+    <li>RectI: Added methods Locate &amp; LocateClosed to determine the RectLocation for a given PointI, either excluding or including the Right &amp; Bottom coordinates.</li>
+  </ul>
+  <h4>Version 5.6.2 (released 2012-04-18)</h4>
+  <ul>
+    <li>Class Reference: Updated to Sandcastle Help File Builder version 1.9.4.0 which fixed the missing GetEnumerator overloads in two dictionary classes.</li>
+    <li>MutableTuple &amp; ValueTuple: Added missing type parameter documentation.</li>
+    <li>Fixed various references in XML comments.</li>
+  </ul>
+  <h4>Version 5.6.1 (released 2012-02-29)</h4>
+  <p>AssemblyExtensions: Fixed version number retrieval.</p>
+  <ul>
+    <li>As it turns out, AssemblyVersionAttribute is not actually stored as a custom attribute. This version number is available only through AssemblyName.Version, and there’s no way to determine whether that property has a user-defined value or its default value.</li>
+    <li>Version: Fixed to return AssemblyName.Version, which also changed the default value from “1.0.0.0” to “0.0.0.0”, i.e. that property’s default value.</li>
+    <li>FileVersion &amp; InformationalVersion: Changed default values from “1.0.0.0” to Version if there is no AssemblyFile/InformationalVersionAttribute. This is the same fallback used by .NET internally.</li>
+  </ul>
+  <h4>Version 5.6.0 (released 2012-02-26)</h4>
+  <p>Added multithreaded drawing within a single WPF Window.</p>
+  <ul>
+    <li>Windows:
+      <ul>
+        <li>Added class VisualSource that manages cross-thread marshalling for a Visual running on a background thread, as described by <a href="http://blogs.msdn.com/b/dwayneneed/archive/2007/04/26/multithreaded-ui-hostvisual.aspx">Dwayne Need</a>.</li>
+        <li>Added class ConcurrentVisualHost that combines the functionality of ContainerVisualHost, VisualSource, and a Dispatcher background thread to concurrently draw an arbitrary Visual.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Added dialog “Concurrent Drawing Test” that demonstrates four ConcurrentVisualHost instances running in parallel.</li>
+    <li>Updated <em>User’s Guide</em> with a section on ConcurrentVisualHost &amp; VisualSource.</li>
+  </ul>
+  <p>Miscellaneous changes.</p>
+  <ul>
+    <li>Collections.QuadTree&lt;TValue&gt;:
+      <ul>
+        <li>ContainsKey/Value: Added overloads that take a QuadTreeNode&lt;TValue&gt; to examine before conducting a full tree search, and that return the result of FindNode/ByValue in the same parameter.</li>
+        <li>FindNodeByValue: Corrected documentation to estimate this method as an O(Count) operation, not an O(Nodes) operation.</li>
+      </ul>
+    </li>
+    <li>Windows.TreeHelper: Added methods GetLogical/VisualChildren&lt;T&gt; that return all children of a given type in a logical or visual tree, respectively.</li>
+    <li>Xml.XmlUtility.ReadTextElement: Now accepts CDATA blocks and sequences of adjacent simple text and CDATA blocks, emulating the behavior of System.Xml.XmlReader.ReadElementString.</li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.6.0.</li>
+  </ul>
+  <h4>Version 5.5.6 (released 2012-01-09)</h4>
+  <p>Revised and enhanced assembly helper methods.</p>
+  <ul>
+    <li>Tektosyne.Core: Added static class AssemblyExtensions with extension methods to retrieve an assembly’s informational attributes and public key token.</li>
+    <li>Tektosyne.Windows: WindowsUtility.Copyright &amp; PublicKeyToken: Moved to new class AssemblyExtensions. Both properties only need System.Reflection, so they were out of place in Tektosyne.Windows. Please note that Copyright now returns an empty string if the corresponding attribute is not found, whereas WindowsUtility.Copyright returned the literal string “Copyright”.</li>
+    <li>Tektosyne.GuiTest: Replaced dialog “Public Key Token” with “Assembly Information”, showing all information extracted by AssemblyExtensions methods from the GuiTest executable.</li>
+    <li>Updated <em>User’s Guide</em> with the above changes.</li>
+  </ul>
+  <p>Various minor changes.</p>
+  <ul>
+    <li>Strings.resx: Renamed ErrorUnknown/Xml/XmlSchema to Unknown/Xml/XmlSchemaError for consistency with general naming scheme. Also added XmlContentNotEmpty &amp; XmlDocumentError.</li>
+    <li>StringUtility: Added static method ValidOrNull that returns a null reference unless a specified string has valid content, i.e. roughly the opposite of the Validate methods.</li>
+  </ul>
+  <h4>Version 5.5.5 (released 2011-10-22)</h4>
+  <p>Geometry.Angle:</p>
+  <ul>
+    <li>Added methods DistanceDegrees &amp; DistanceRadians that compute the shortest distance between two angles specified as normalized degrees or radians, respectively. The distance is signed to indicate its rotational direction.</li>
+  </ul>
+  <h4>Version 5.5.4 (released 2011-09-12)</h4>
+  <p>Collections.QuadTreeNode&lt;TValue&gt;.FindNode(PointD):</p>
+  <ul>
+    <li>Added mathematically redundant check against node bounds during depth probe. This was necessary due to floating-point inaccuracies which could otherwise cause search failures.</li>
+  </ul>
+  <h4>Version 5.5.3 (released 2011-07-03)</h4>
+  <p>Collections.QuadTreeNode&lt;TValue&gt;.Capacity:</p>
+  <ul>
+    <li>Moved to QuadTree&lt;TValue&gt;, changed from constant to read-only field, added constructor overload to set field, and changed default value from 16 to 128.</li>
+    <li>Capacity defines the number of elements that are stored in a leaf node’s hashtable. Raising this value always speeds up all operations, except for range searches which eventually become more expensive as they require linear searches through larger hashtables.</li>
+    <li>Range searches are the reason why we use a quadrant tree in the first place, rather than just one giant hashtable, so we try to optimize for them. In the Tektosyne.GuiTest benchmark, a capacity of 128 yielded the best results, accelerating range searches by 40% compared to the previous capacity of 16. Other tested operations showed a similar speedup.</li>
+    <li>However, the optimal capacity may depend on the actual element distribution, so this parameter is now configurable during construction of the QuadTree&lt;TValue&gt;.</li>
+  </ul>
+  <h4>Version 5.5.2 (released 2011-06-24)</h4>
+  <ul>
+    <li>Collections.QuadTree&lt;TValue&gt;:
+      <ul>
+        <li>Added method Move that changes an element’s key. Unlike a normal Remove/Add sequence, Move is an O(log m) or even O(1) operation for nearby keys and short movements.</li>
+        <li>FindRange: Added overload that searches a circular range with a given center and radius.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>RectD/F: Added overloaded method ContainsOpen that excludes Right &amp; Bottom coordinates, emulating RectI behavior.</li>
+        <li>RectI: Added overloaded method ContainsClosed that includes Right &amp; Bottom coordinates, emulating RectD/F behavior.</li>
+      </ul>
+    </li>
+    <li>Graph.IGraph2D&lt;T&gt;.GetDistance: Documented another invariant required by A* pathfinding. The sum of the distances between all successive nodes within a sequence is never less than the distance between any two nodes from the same sequence.</li>
+    <li>Updated <em>User’s Guide</em> with the above changes, fixed link to Tektosyne home page, and changed all URL domains from kynosarges.de to kynosarges.org.</li>
+  </ul>
+  <h4>Version 5.5.1 (released 2011-05-31)</h4>
+  <p>Added <em>Tektosyne User’s Guide</em>.</p>
+  <ul>
+    <li>The guide is now available for download at the <a href="http://kynosarges.org/Tektosyne.html">Tektosyne</a> home page.</li>
+    <li>Added project <code>Tektosyne.Diagrams.xml</code> for <a href="http://kynosarges.org/Diagrammer.html">Class Diagrammer</a> which was used to create all UML diagrams in the guide.</li>
+  </ul>
+  <p>Fixed a variety of minor issues that surfaced while writing the guide.</p>
+  <ul>
+    <li>Collections.IKeyedValue&lt;TKey&gt;: Key does not have to be unique within a collection, although that is usually the case. Fixed XML comments accordingly.</li>
+    <li>Geometry:
+      <ul>
+        <li>RegularPolygon.AngleToCompass: Replaced with new method Angle.DegreesToCompass which maps zero degrees to North rather than East, for consistency with Compass values.</li>
+      </ul>
+    </li>
+    <li>Graph:
+      <ul>
+        <li>Added class NodeArc that stores the source distance, tangential arc, and visible fraction for any graph node visited by the Visibility&lt;T&gt; algorithm.</li>
+        <li>Visibility&lt;T&gt;:
+          <ul>
+            <li>Added property NodeArcs that holds the NodeArc instances for all visited graph nodes. This data was being computed anyway, so I figured I might as well expose a read-only view to interested clients.</li>
+            <li>Improved performance on graphs with many opaque nodes by skipping redundant calculations on opaque nodes that are completely obscured.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Geometry, Graph &amp; Tektosyne.GuiTest: Changed generic term “pathfinding algorithms” in XML comments and GUI labels to “graph algorithms”. Only two of the four Tektosyne.Graph algorithms are actually concerned with pathfinding, but all operate on IGraph2D&lt;T&gt; instances.</li>
+  </ul>
+  <h4>Version 5.5.0 (released 2011-04-20)</h4>
+  <p>Split Tektosyne Library in two assemblies: Tektosyne.Core and Tektosyne.Windows.</p>
+  <ul>
+    <li>Please refer to the <a href="http://kynosarges.org/Tektosyne.html">Tektosyne</a> home page and the <a href="ReadMe.html">ReadMe</a> file for a description of the new library structure. Here we list only type removals and changes within types.</li>
+    <li>Removed BooleanFlag and derived classes which provided too little value, compared to simple properties.</li>
+    <li>DetailException:
+      <ul>
+        <li>Added constructors that explicitly set the Detail property, with or without an inner exception.</li>
+        <li>Detail: Changed to read-only, as usual with exception properties.</li>
+      </ul>
+    </li>
+    <li>ThrowHelper:
+      <ul>
+        <li>ThrowDetailException(WithFormat): Added overloads for the two new constructors.</li>
+        <li>ThrowMapiException: Moved to static class Net.MapiMail in assembly Tektosyne.Windows, as nothing else throws this exception anyway.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Gdi/WpfConversion: Renamed to Gdi/WpfConversions (plural) which appears to be the usual convention. This should not affect users since all members were extension methods anyway.</li>
+        <li>IPointComparer &amp; PointComparerX/Y: Renamed to IPointDComparer &amp; PointDComparerX/Y since all three types operate only on PointD instances.</li>
+        <li>PolygonGrid.Draw &amp; DrawOptimized, RegularPolygon.Draw &amp; ToFigure: Moved as extension methods to static class PolygonExtensions in assembly Tektosyne.Windows. Accordingly, the PathFigure returned by ToFigure is no longer cached with its RegularPolygon.</li>
+        <li>PolygonGrid.Figures: Replaced with extension method PolygonExtensions.ToFigures in assembly Tektosyne.Windows. Accordingly, the returned PathFigureCollection is no longer cached with its PolygonGrid.</li>
+        <li>Subdivision.GetEdge/Face &amp; GetNearestEdge/Vertex: Renamed to FindEdge/Face &amp; FindNearestEdge/Vertex since all these operations are non-trivial.</li>
+        <li>SubdivisionFace.GetNearestEdge: Renamed to FindNearestEdge, for the same reason.</li>
+      </ul>
+    </li>
+    <li>Windows.WindowsUtility:
+      <ul>
+        <li>Removed method CreateLineFigure which provided too little value.</li>
+        <li>Split off all Find… extension methods as new static class TreeHelper.</li>
+        <li>Split off all other extension methods as new static class WindowsExtensions.</li>
+      </ul>
+    </li>
+    <li>Xml:
+      <ul>
+        <li>Removed interface IXmlSerializable which provided too little value. You can still find a copy in assembly Hexkit.Global of the <a href="http://kynosarges.org/Hexkit.html">Hexkit</a> project.</li>
+        <li>XmlUtility: Moved generic methods AttributeAsEnum&lt;T&gt;, Deserialize&lt;T&gt; &amp; Serialize&lt;T&gt; to new static class XmlSerialization in assembly Tektosyne.Windows, as they require non-core assemblies.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.UnitTest: Updated NUnit version to 2.5.10.</p>
+  <h4>Version 5.4.6 (released 2011-04-13)</h4>
+  <p>Redesigned Visibility algorithm.</p>
+  <ul>
+    <li>Completely rewritten to produce correct results even for (almost) arbitrary graphs, without requiring a special VisibilityGraph with full nearest-neighbor connectivity.</li>
+    <li>The old implementation proceeded by generations of neighbor connections from the source node. The angles obscured by each node generation were accumulated in a 360-degree bit flag array which allowed very efficient testing. However, obscuration was determined by neighbor generations, i.e. step distances, rather than world distances. That limited correct results to graphs with connections of roughly equal length between all nearest neighbors, i.e. PolygonGrid with hexagons or with corner-connected squares.</li>
+    <li>The new implementation performs two passes over all nodes within a given maximum world range. First, we calculate the visibility angles of all nodes within range, and also store those opaque nodes that are not fully obscured by another opaque node. A second pass then determines visible nodes by comparing all nodes within range to the opaque subset.</li>
+    <li>The new implementation only moderately increases the number of angle calculations if opaque nodes are rare, and does not require equal-length nearest-neighbor connections. Specifying a maximum search range does require that all nodes are reachable by paths with monotonically increasing world distances, but that’s a much weaker condition.</li>
+    <li>To support arbitrary Subdivision graphs, nodes are now associated with a polygonal world region, not just a radius around their world location. A node’s visibility angle spans the arc between the extreme vertices of its region polygon, as seen from a given source location.</li>
+    <li>As in the old implementation, a node is considered visible while a certain fraction (1/3) of its visibility angle remains unobscured. This can cause odd results when nodes that are obviously in the line of sight are considered obscured, but that’s a necessary compromise when determining visibility on the basis of entire regions rather than individual points.</li>
+  </ul>
+  <p>Tektosyne.Geometry:</p>
+  <ul>
+    <li>PolygonGrid &amp; Subdivision: Updated IGraph2D&lt;2D&gt; members to reflect interface changes (see below).</li>
+    <li>PolygonGrid: Fixed various methods calling the wrong overload of GridToDisplay, for a slight performance improvement.</li>
+    <li>RectD/F.Intersect: Added overload that implements the Sutherland–Hodgman polygon clipping algorithm for a given PointD/F array, representing the vertices of an arbitrary polygon.</li>
+    <li>Subdivision: Added property VertexRegions that allows clients to determine which polygonal region GetWorldRegion should return for a given graph node, i.e. Subdivision vertex.</li>
+    <li>VoronoiResults.ToDelaunaySubdivision:
+      <ul>
+        <li>Added optional Boolean parameter to determine whether all pairs of GeneratorSites and VoronoiRegions are automatically added to the VertexRegions collection of the new Subdivision.</li>
+        <li>Added overload that takes a RectD parameter to automatically invoke ClipDelaunayEdges before the new Subdivision is created, and to clip all added VertexRegions to the same bounds.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.Graph:</p>
+  <ul>
+    <li>IGraph2D&lt;T&gt;:
+      <ul>
+        <li>Added property NodeCount that returns the total number of graph nodes.</li>
+        <li>Added property Nodes that returns an IEnumerable&lt;T&gt; for all graph nodes.</li>
+        <li>Removed obsolete property VisibilityGraph which is no longer required by the new Visibility algorithm.</li>
+        <li>Added method GetNearestNode that returns the graph node nearest to the given world coordinates.</li>
+        <li>GetWorldCenter: Renamed to GetWorldLocation since a graph node’s world location is no longer necessarily the center of its world region.</li>
+        <li>GetWorldRadius: Replaced with GetWorldRegion which returns the exact polygonal region covered by the graph node.</li>
+      </ul>
+    </li>
+    <li>Visibility:
+      <ul>
+        <li>Graph field always equals the supplied IGraph2D&lt;T&gt;, as in other pathfinding algorithms.</li>
+        <li>Removed obsolete field SkipOpaqueNeighbors which no longer applies to the new non-generational algorithm.</li>
+        <li>FindVisible: Replaced Int32 argument for maximum recursion depth with optional Double argument for maximum world distance, measured from the source node to the nearest world region vertex of any found node.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.GuiTest: Pathfinding:</p>
+  <ul>
+    <li>Graph: Removed “(8 neighbors)” variants of square grids, and added Vertex Neighbors checkbox instead. You can now toggle this flag without creating a new graph, and observe how the pathfinding results change.</li>
+    <li>Algorithm: The Visibility algorithm has been revised (see above), and Voronoi regions are now clipped to the bounds of the output panel which may also affect its output.</li>
+    <li>Added button Random Source that re-runs the current algorithm on the current graph with a new random source node. A* always finds a path from the top left to the bottom right node, however.</li>
+  </ul>
+  <h4>Version 5.4.5 (released 2011-03-31)</h4>
+  <p>Tektosyne.GuiTest: Pathfinding: Fixed A* on Delaunay triangulation</p>
+  <ul>
+    <li>A* could find suboptimal paths because I had forgotten that IGraph2D&lt;T&gt;.GetDistance cannot be less than IGraphAgent&lt;T&gt;.GetStepCost for any two graph nodes. Subdivision.GetDistance returns world distances rather than step distances, like PolygonGrid.GetDistance. World distances are much greater than step distances, so Subdivision.GetStepCost must scale up accordingly.</li>
+    <li>One option is to multiply assigned step costs by the world distance between the current source and target. This means that world distances strongly influence effective step costs, which would be an appropriate choice for planar subdivisions based on real-world terrain.</li>
+    <li>Another option is to multiply assigned step costs by some value that equals or exceeds any possible world distance in the graph. This means that world distances are effectively eliminated from step cost considerations, as in a PolygonGrid.</li>
+    <li>I chose the second option for the dialog, for conformance with the various PolygonGrid choices. See the comments in Tektosyne.GuiTest.GraphDialog.SubdivisionGraph.GetStepCost for an implementation of the first option.</li>
+  </ul>
+  <h4>Version 5.4.4 (released 2011-03-30)</h4>
+  <p>Geometry:</p>
+  <ul>
+    <li>GeoAlgorithms: Added overloaded method RandomPoints that creates a given number of random PointD coordinates within a given area, optionally observing a pairwise minimum distance.</li>
+    <li>LineD: Added static method FromIndexPoints that converts an array of PointD coordinates and an array of index pairs into an equivalent array of LineD instances.</li>
+    <li>Added interface IPointComparer that extends IComparer&lt;PointD&gt; and IComparer with the lexicographic epsilon comparison already implemented by PointComparerX/Y.</li>
+    <li>PointComparerX/Y: Now implement interface IPointComparer to allow polymorphic Epsilon control and invocation of FindNearest.</li>
+    <li>PointD/F: Added method Move that moves the PointD/F a given distance in a given direction.</li>
+    <li>RectD/F/I:
+      <ul>
+        <li>Intersect: Changed return type from RectD/F/I to Boolean and added out parameter for the actual intersection, if any.</li>
+        <li>RectD/F.Intersect &amp; IntersectsWith: Added overloads that implement the Liang-Barsky line clipping algorithm for a given LineD/F.</li>
+      </ul>
+    </li>
+    <li>Voronoi:
+      <ul>
+        <li>FindAll: Slightly reduced memory consumption, as the Delaunay triangulation is no longer stored separately when the Voronoi diagram is computed.</li>
+        <li>FindAll(PointD[], RectD): Empty clipping bounds are now permitted and have the same effect as calling the basic FindAll(PointD[]) overload.</li>
+      </ul>
+    </li>
+    <li>VoronoiResults:
+      <ul>
+        <li>DelaunayEdges: Changed from stored GeneratorSites index array to computed LineD array. The GeneratorSites indices for all Delaunay edges are already present as the Site1/2 indices of the VoronoiEdges array, so there’s no need to store them separately.</li>
+        <li>Added method ClipDelaunayEdges that returns only those DelaunayEdges which fall into the given clipping bounds, and which connect two Voronoi regions whose shared border also falls within the clipping bounds.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.GuiTest: Pathfinding:</p>
+  <ul>
+    <li>Replaced menu with a single Pathfinding dialog that offers all available IGraph2D&lt;T&gt; implementations and pathfinding algorithms.</li>
+    <li>The newly available IGraph2D&lt;T&gt; implementations include grids of squares with and without vertex neighbors, as well as a random Delaunay triangulation (with nodes represented by the corresponding Voronoi regions).</li>
+  </ul>
+  <h4>Version 5.4.3 (released 2011-02-26)</h4>
+  <ul>
+    <li>Collections.CollectionsUtility: Added generic method AnyRandom that tests a given predicate on one randomly selected list element, repeating the attempt for every remaining element until the predicate succeeds or the list is exhausted.</li>
+    <li>Geometry.Subdivision:
+      <ul>
+        <li>Added overloaded method AddEdge that creates a new edge between two given coordinates, which may coincide with existing vertices. A new face is also created if necessary.</li>
+        <li>Added method RemoveVertex that removes a given vertex with exactly two incident edges, joining their two twin half-edges into a new half-edge pair.</li>
+        <li>RemoveEdge: Now uses the current Epsilon rather than exact comparisons for cycle identification. I got test failures when attempting to use exact comparisons for this purpose during Subdivision construction, and while RemoveEdge did not (yet) exhibit similar errors I decided to play it safe.</li>
+      </ul>
+    </li>
+    <li>Geometry.SubdivisionEdge.GetOtherCycleEdge: Lowered visibility to internal. This helper method is really of no use to external clients and should never have been public in the first place.</li>
+    <li>Tektosyne.GuiTest: Geometry: Subdivision: Added radio buttons Add Edge, Connect Vertex &amp; Remove Vertex that demonstrate the new Subdivision methods AddEdge &amp; RemoveVertex.</li>
+  </ul>
+  <h4>Version 5.4.2 (released 2011-02-21)</h4>
+  <p>Geometry:</p>
+  <ul>
+    <li>LineIntersection: Added Boolean property ExistsBetween that checks whether the two line segments properly intersect one another, i.e. at least one segment registers a Between hit.</li>
+    <li>Subdivision:
+      <ul>
+        <li>Added method MoveVertex that moves a given vertex to new coordinates, provided this change does not create any new edge intersections.</li>
+        <li>Added method SplitEdge that splits a given edge in half by creating a new vertex in the middle of the edge.</li>
+        <li>Added methods RenumberEdges &amp; RenumberFaces that renumber all Edges &amp; Faces, respectively, to remove any gaps between consecutive keys. The element order is unchanged.</li>
+        <li>Intersection &amp; RemoveEdge: Now correctly force the Connectivity property to re-scan all vertices to determine the new maximum vertex degree.</li>
+      </ul>
+    </li>
+    <li>SubdivisionEdge &amp; SubdivisionFace:
+      <ul>
+        <li>Both classes now implement IKeyedValue&lt;Int32&gt; with their Key properties.</li>
+        <li>Key: Changed to property with mutable backing field. This field is changed only by the new Subdivision.RenumberEdges/Faces methods, however.</li>
+      </ul>
+    </li>
+    <li>SubdivisionEdge:
+      <ul>
+        <li>Added property OriginEdges that returns an IEnumerable&lt;SubdivisionEdge&gt; for all half-edges with the same Origin.</li>
+        <li>GetOtherFaceEdge: Renamed to GetOtherCycleEdge, in accordance with the revised naming of Cycle… properties.</li>
+      </ul>
+    </li>
+    <li>SubdivisionFace.AllEdges: Renamed to AllCycleEdges for conformance with SubdivisionEdge.CycleEdges.</li>
+  </ul>
+  <p>Tektosyne.GuiTest: Geometry: Subdivision:</p>
+  <ul>
+    <li>Moving the mouse cursor now also highlights the nearest vertex, in addition to the nearest half-edge.</li>
+    <li>Added radio buttons Remove Edge, Split Edge &amp; Move Vertex to select the action performed by clicking near a highlighted element, corresponding to the eponymous Subdivision methods.</li>
+    <li>Added buttons Renumber Edges &amp; Renumber Faces that demonstrate the eponymous new Subdivision methods.</li>
+  </ul>
+  <h4>Version 5.4.1 (released 2011-02-15)</h4>
+  <p>Geometry:</p>
+  <ul>
+    <li>Subdivision: Added method GetZeroAreaCycles that efficiently finds all half-edge cycles for which IsCycleAreaZero succeeds.</li>
+    <li>Subdivision.Validate &amp; SubdivisionSearch.Validate: Removed attribute Conditional("DEBUG") and replaced Debug.Assert calls with ThrowHelper.Assert calls. This allows structural validation with programmatic failure handling in release code.</li>
+    <li>SubdivisionEdge:
+      <ul>
+        <li>Replaced method ForEach with property CycleEdges that returns an IEnumerable&lt;SubdivisionEdge&gt; for all half-edges in the same cycle.</li>
+        <li>Renamed FaceArea/Centroid/Polygon &amp; IsFaceAreaZero to CycleArea/Centroid/Polygon &amp; IsCycleAreaZero since the incident half-edge cycle does not necessarily constitute a SubdivisionFace (namely if it encloses no area).</li>
+      </ul>
+    </li>
+    <li>SubdivisionFace: Added property AllEdges that returns an IEnumerable&lt;SubdivisionEdge&gt; for all half-edges on all OuterEdge and InnerEdges cycles.</li>
+    <li>SubdivisionSearch, PolygonGrid.SubdivisionMap &amp; VoronoiResults.SubdivisionMap: Added missing attribute Serializable to all three classes.</li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>Added class AssertionException which is merely a renamed Exception class for use with the new ThrowHelper.Assert method.</li>
+    <li>ThrowHelper:
+      <ul>
+        <li>Added overloaded method Assert that checks a condition and calls ThrowAssertionException on failure. Unlike Debug/Trace.Assert, this method does not depend on the DEBUG/TRACE symbols and does not attempt to produce any output.</li>
+        <li>Added overloaded method ThrowAssertionException that corresponds to the three public constructors of the new AssertionException class.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.4.0 (released 2011-02-12)</h4>
+  <p>Subdivision Search</p>
+  <ul>
+    <li>Added class SubdivisionSearch that performs fast point location in planar subdivisions. The search structure is based on a trapezoidal map of the subdivision, using randomized incremental construction according to <em>Computational Geometry</em> by de Berg et al.</li>
+    <li>The SubdivisionSearch algorithm performs point location in logarithmic time but requires superlinear construction time and linear space, relative to the number of edges in the subdivision. Use the new Subdivision.Find method for slower one-off searches without such overhead.</li>
+    <li>Added structure SubdivisionElement and enumeration SubdivisionElementType to efficiently represent either a half-edge, face, or vertex within a Subdivision. This is the result type for both new point location algorithms.</li>
+  </ul>
+  <p>Geometry.PointComparer:</p>
+  <ul>
+    <li>Renamed to PointComparerY to indicate that the lexicographic sorting order prefers y-coordinates.</li>
+    <li>Added class PointComparerX which is equivalent to PointComparerY but prefers x-coordinates.</li>
+    <li>LexiCompare: Renamed exact &amp; epsilon overload to CompareExact &amp; CompareEpsilon, respectively. The Lexi… prefix was meaningless and misleading since all comparisons performed by both classes are lexicographic.</li>
+  </ul>
+  <p>Geometry.Subdivision:</p>
+  <ul>
+    <li>Added method Find that performs a brute-force search for a given point, returning the same SubdivisionElement for the same input as the new SubdivisionSearch algorithm. Find does not require a dedicated search structure, at the expense of linear (or worse) search performance.</li>
+    <li>Fixed yet another bug that occasionally corrupted the cycle structure.
+      <ul>
+        <li>Edge cycles that enclose no area are always inner cycles. However, if the cycle’s pivot vertex was not the tip of a single-edge protrusion, <em>and</em> the neighboring vertices happened to be oriented in the wrong direction, cycle search would mistakenly assume an outer cycle.</li>
+        <li>This possibility was not covered by de Berg et al. in <em>Computational Geometry,</em> and never occurred to me either. Cycle search now performs an extra test to determine whether a cycle encloses any area at all, and immediately assumes an inner cycle on failure.</li>
+        <li>The runtime overhead is low since cycle search iterates over all half-edges in a cycle anyway. We identify zero-area cycles by checking if the twins of all half-edges belong to the same cycle, similar to the new property SubdivisionEdge.IsFaceAreaZero.</li>
+      </ul>
+    </li>
+    <li>Intersection: Fixed face mapping to produce better results and avoid exceptions.
+      <ul>
+        <li>Face mapping used collinearity testing of connected edges that were split by the edge intersection algorithm. Unfortunately, this proved very unreliable since a correct epsilon for the involved floating-point comparisons is impossible to establish in the general case.</li>
+        <li>Edge intersection now directly tracks the incident faces of all half-edges in both original subdivisions, indexed by the keys of the corresponding half-edges in the combined subdivision. A final pass through the combined subdivision’s half-edges then determines the face mapping.</li>
+        <li>This requires some extra memory but does not impact the speed of the algorithm. More importantly, the new method is guaranteed to be correct and cannot throw exceptions.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>Collections.CollectionsUtility:
+      <ul>
+        <li>Added method IndexArray that creates an Int32 array whose elements equal their index positions.</li>
+        <li>Added generic method Randomize that creates a random permutation of the element order in a given IList&lt;T&gt;.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>GeoAlgorithms: Added method ConnectPoints that returns the LineD instances connecting a given set of PointD coordinates.</li>
+        <li>LineD/F/I.Locate &amp; LocateCollinear: Testing for Between now precedes testing for Before/After. This allows epsilon overloads to correctly register approximate Between hits on (nearly) horizontal or vertical line segments.</li>
+        <li>SubdivisionEdge: Added property IsFaceAreaZero that determines whether the boundary of the incident Face encloses no area, by checking whether the Twins of all half-edges in the cycle bound the same Face (and therefore also belong to the same cycle). This is faster and more reliable than computing FaceArea since no floating-point calculations are involved.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.GuiTest:</p>
+  <ul>
+    <li>Benchmark:
+      <ul>
+        <li>Added Subdivision Search test that compares the new Find algorithms: brute force, ordered and randomized SubdivisionSearch structure.</li>
+        <li>Subdivision Intersection: Removed warning notice regarding exceptions as the intersection algorithm now appears to be stable, even for random line sets.</li>
+      </ul>
+    </li>
+    <li>Geometry: Subdivision Intersection:
+      <ul>
+        <li>Intersect: Renamed to Rectangle and added Diamond button which intersects a diamond inscribed in the specified rectangle.</li>
+        <li>Added display to show face mapping, i.e. previous &amp; intersecting face keys for the current face key under the mouse cursor.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.3.1 (released 2011-01-10)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>LineD/F/I.Locate: Moved Start/End comparisons to beginning of methods, as in LocateCollinear. This is somewhat slower when the query point does not match Start/End, but much faster and more reliable when it does.</li>
+        <li>LineIntersection.Find: Commented out expensive Debug.Assert calls that were intended merely as documentation, not as actual tests.</li>
+        <li>LineLocation: Clarified that Left &amp; Right are always viewed from the line segment’s start point to its end point.</li>
+        <li>VoronoiResults: Fixed open Voronoi regions that include two corners of the clipping bounds sometimes claiming the opposite border of the clipping bounds, rather than the adjacent one.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.3.0 (released 2011-01-02)</h4>
+  <p>Geometry.LineIntersection.Find:</p>
+  <ul>
+    <li>Added intersection checking based on cross-products between end points, as described by Thomas H. Cormen et al., <em>Introduction to Algorithms</em> (3rd ed.), The MIT Press 2009, p.1018. The combination of the new algorithm with the existing algorithm (based on line equation parameters) is somewhat slower but much more resilient against floating-point inaccuracies.</li>
+    <li>In the exact overload, cross-product and denominator comparisons now use a default epsilon of 1e-10 to further increase numerical stability, with a negligible performance impact.</li>
+    <li>In the epsilon overload, heuristic epsilon fudging was replaced with explicit epsilon comparisons of any computed intersection between divergent lines against their end points. Together with the other changes, this is not only faster but also much more accurate, and mirrors the point comparisons performed in other branches of the algorithm.</li>
+    <li>In both overloads, any line equation parameters are checked against the initial cross-product results, and contradictions force a recursive Find call with a doubled epsilon. This is of course very slow but should happen quite rarely.</li>
+    <li>In the epsilon overload, the specified epsilon is always raised to a minimum of 1e-10, i.e. the default epsilon used by the exact overload. Smaller epsilons are pointless as they merely trigger multiple recursions with greater epsilons.</li>
+  </ul>
+  <p>Geometry.Subdivision:</p>
+  <ul>
+    <li>Added factory method Intersection that intersects two planar subdivisions. The algorithm differs from the one outlined by de Berg et al. in <em>Computational Geometry</em> as follows:
+      <ul>
+        <li>To determine intersections, we don’t use a plane sweep over the combined set of edges from both subdivisions to determine intersections. Instead, we exploit the fact that all edge intersections <em>within</em> a subdivision are already known, and perform a brute-force intersection of all the edges in the first subdivision with those in the second. This is quite fast, especially if one subdivision is much smaller than the other.</li>
+        <li>To determine face mappings, we don’t examine the vertices of the combined subdivision during the face-building plane sweep. Instead, we later match all edges in the two original subdivisions with the (collinear combinations of) identical edges in the combined subdivision.</li>
+      </ul>
+    </li>
+    <li>FromLines &amp; FromPolygons: Changed to return empty subdivisions for empty input collections, rather than throw an exception.</li>
+    <li>Fixed half-edges on inner cycles sometimes not receiving Face pointers, due to incorrect chaining of inner cycles during cycle detection.</li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>MathUtility: Added overloaded method Equals that determines whether two Double or Single numbers are equal, given a specified epsilon.</li>
+    <li>Geometry:
+      <ul>
+        <li>MultiLineIntersection: Added method Split that splits a given set of line segments on the intersection points found by the Find &amp; FindSimple methods. This allows creating subdivisions from random line sets, which is not otherwise possible since the lines might intersect.</li>
+        <li>MultiLinePoint.Shared: Fixed XML comment erroneously claiming that the Shared coordinates were always copied from the first Lines element whose Locations value equals Start or End, if any. The intersection algorithms make no such guarantee, and the Shared coordinates may in fact be computed even when one or more Locations equal Start or End.</li>
+        <li>PointD/F.Equals &amp; IsCollinear, RectD/F.Equals, SizeD/F.Equals: Inlined all epsilon comparisons for better performance.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.GuiTest:</p>
+  <ul>
+    <li>Benchmark:
+      <ul>
+        <li>Added Subdivision Intersection test for the eponymous new algorithm.</li>
+        <li>Geometry Algorithms test:
+          <ul>
+            <li>Raised test epsilon from Double.Epsilon to 1e-10.</li>
+            <li>The old value was the worst case for epsilon algorithms, producing the same results as exact algorithms but with additional cost.</li>
+            <li>The new value is more realistic and dramatically speeds up epsilon algorithms since 1e-10 is big enough to abbreviate calculations on near-zero values.</li>
+            <li>Changed iterations from 1 to 10 million and output format from µsec to nsec, compensating for the much better performance of the epsilon cases.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Added dialog Subdivision Intersection that tests the eponymous new algorithm. Note that you can copy &amp; paste Voronoi-based subdivisions from the existing Planar Subdivision dialog.</li>
+        <li>Line Intersection dialog:
+          <ul>
+            <li>Added Split button that splits all lines on the detected intersection points. If the Split and FindSimple algorithms both work correctly, the number of lines should increase but the number of detected intersection points should stay the same.</li>
+            <li>Increasing the comparison epsilon should no longer produce nonsensical intersection points, thanks to the improved numerical stability of the LineIntersection.Find algorithm.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.2.2 (released 2010-12-15)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>Subdivision:
+          <ul>
+            <li>Added property IsEmpty that indicates whether the subdivision is empty.</li>
+            <li>Clone:
+              <ul>
+                <li>Fixed Epsilon property not being copied.</li>
+                <li>Fixed SubdivisionEdge.Face references of copied half-edges still referring to original faces.</li>
+              </ul>
+            </li>
+            <li>RemoveEdge: Fixed Vertices collection still referring to removed half-edges.</li>
+            <li>Added method Validate that performs Debug.Assert tests on all structural invariants.</li>
+          </ul>
+        </li>
+        <li>SubdivisionFace: Added read-only field Owner that holds the containing Subdivision. Since all half-edges have an incident face, their containing Subdivision is now available with one dereferencing step as well.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest:
+      <ul>
+        <li>Updated NUnit version to 2.5.9.</li>
+        <li>Geometry: All Subdivision tests call Validate on every created Subdivision when DEBUG is defined.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.2.1 (released 2010-11-24)</h4>
+  <ul>
+    <li>Geometry.Subdivision.RemoveEdge:
+      <ul>
+        <li>Added overload that returns the keys of the changed and removed faces, if any.</li>
+        <li>Fixed data corruption when new inner cycle contains the face’s previous OuterEdge.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.2.0 (released 2010-11-19)</h4>
+  <ul>
+    <li>Collections:
+      <ul>
+        <li>Added class Int32HashSet that provides an Int32Dictionary&lt;TValue&gt; without values, i.e. a dynamic hashtable optimized for Int32 keys. Int32HashSet is similar to the standard class HashSet&lt;T&gt; but does not implement the complex ISet&lt;T&gt; interface.</li>
+        <li>JIT improvements have somewhat eroded the speedup achieved by Int32Dictionary&lt;TValue&gt; and Int32HashSet, but key searches are still a respectable 50-60% faster (in optimized x64 builds) than Dictionary&lt;Int32, TValue&gt; and HashSet&lt;Int32&gt;, respectively.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>LineD/F/I:
+          <ul>
+            <li>Added method DistanceSquared that computes the squared distance from a given point to the nearest point in the line segment.</li>
+            <li>Intersect: Added PointD/F/I overload that determines the intersection of the perpendicular dropped from a given point on the line or its infinite extension.</li>
+          </ul>
+        </li>
+        <li>Subdivision:
+          <ul>
+            <li>Faces: Now always contains the unbounded face at index position zero and with a Key of zero, even for a newly constructed Subdivision.</li>
+            <li>GetFace: Added PointD overload that finds the smallest face which contains a given point, using a linear search through all Faces.</li>
+            <li>Added method GetNearestEdge that finds the half-edge that is nearest to and facing a given point, using GetFace(PointD) and SubdivisionFace.GetNearestEdge.</li>
+            <li>Added method RemoveEdge that removes a half-edge from the subdivision, adjusting half-edge links and removing any eliminated faces and vertices.</li>
+          </ul>
+        </li>
+        <li>SubdivisionEdge:
+          <ul>
+            <li>Added method ForEach that executes an arbitrary Action&lt;SubdivisionEdge&gt; on each half-edge within the same cycle.</li>
+            <li>Added method GetOtherFaceEdge that attempts to find a half-edge within the same cycle that differs from the specified half-edge.</li>
+          </ul>
+        </li>
+        <li>SubdivisionFace: Added method GetNearestEdge that finds the incident half-edge, on any outer or inner boundary, that is nearest to and facing a given point.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest:
+      <ul>
+        <li>Benchmark: Added Collections test suite that compares the standard HashSet&lt;Int32&gt; and the new Int32HashSet.</li>
+        <li>Geometry: Added Planar Subdivision dialog that shows a subdivision created from a random Voronoi diagram. Use the mouse cursor to highlight nearest half-edges and remove edges.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest:
+      <ul>
+        <li>Updated NUnit version to 2.5.8.</li>
+        <li>LineTest: Fixed test diagonals always using LineD type rather than LineD/F/I. Fortunately, all affected tests succeeded anyway!</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.1.5 (released 2010-09-28)</h4>
+  <ul>
+    <li>Changed “Company” attribute of all assemblies from “Christoph Nahr” to “Kynosarges”, in accordance with the new Class Diagrammer release.</li>
+    <li>Windows.WindowsUtility: Added method FindContextMenuTarget to find the PlacementTarget of the ContextMenu that contains a given object (typically a clicked MenuItem).</li>
+  </ul>
+  <h4>Version 5.1.4 (released 2010-09-02)</h4>
+  <ul>
+    <li>Collections.EqualityComparerAdapter&lt;T&gt;: Added optional hash function parameter to support both methods of the IEqualityComparer &amp; IEqualityComparer&lt;T&gt; interfaces.</li>
+    <li>XmlUtility.AttributeAsEnum&lt;T&gt;: Fixed nonfunctional method. The specified attribute name was ignored because I had somehow managed to put quotes around it.</li>
+  </ul>
+  <h4>Version 5.1.3 (released 2010-08-26)</h4>
+  <p>Mutable Tuples for WPF Data Binding</p>
+  <ul>
+    <li>Existing tuple types such as KeyValuePair&lt;TKey, TValue&gt, Tuple&lt;T1, …&gt;, and ValueTuple&lt;T1, …&gt; all represent <em>immutable</em> tuples. This is usually desirable but prevents their use when mutability is required, e.g. two-way data binding with the items of WPF list controls.</li>
+    <li>This release therefore adds a set of <em>mutable</em> tuples. They are implemented as classes with public properties so as to facilitate their use with collections and WPF controls.</li>
+    <li>Added classes MutableTuple&lt;T1, T2&gt;, MutableTuple&lt;T1, T2, T3&gt;, and MutableTuple&lt;T1, T2, T3, T4&gt; that represent mutable tuples with 2–4 components.</li>
+    <li>Added static class MutableTuple with Create methods that can infer the required generic type arguments.</li>
+  </ul>
+  <p>Other Changes</p>
+  <ul>
+    <li>ThrowHelper:
+      <ul>
+        <li>Added method ThrowTypeLoadExceptionWithFormat.</li>
+        <li>ThrowArgumentExceptionWithFormat: Added overload with two formatting parameters.</li>
+      </ul>
+    </li>
+    <li>Collections: Added generic class EqualityComparerAdapter&lt;T&gt; that wraps an equality predicate in the IEqualityComparer &amp; IEqualityComparer&lt;T&gt; interfaces, similar to ComparerAdapter&lt;T&gt;.</li>
+    <li>Windows.WindowsUtility:
+      <ul>
+        <li>Added generic methods FindLogicalChild&lt;T&gt; and FindLogicalParent&lt;T&gt; that search a logical tree for the nearest child or parent, respectively, of the specified type.</li>
+        <li>Added generic method FindVisualChild&lt;T&gt; that searches a visual tree for the nearest child of the specified type, i.e. the inverse of FindVisualParent&lt;T&gt;.</li>
+        <li>FindVisualParent&lt;T&gt;: Fixed exception when encountering a parent that is not a Visual or Visual3D. Surprisingly, this can actually happen (e.g. Run containing text) and when it does, VisualTreeHelper throws an exception rather than returning a null reference.</li>
+      </ul>
+    </li>
+    <li>XmlUtility: Added generic method AttributeAsEnum&lt;T&gt; that parses an XElement attribute as an enumeration value. As with ReadAttributeAsEnum&lt;T&gt;, the enumeration may have the Flags attribute.</li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.5.7.</li>
+  </ul>
+  <h4>Version 5.1.2 (released 2010-07-14)</h4>
+  <p>Tektosyne.Geometry: Subdivisions &amp; Voronoi Diagrams</p>
+  <ul>
+    <li>ISubdivisionMap&lt;T&gt;: Added property Target holding an optional untyped object that defines all mapped values.</li>
+    <li>PolygonGrid.ToSubdivision:
+      <ul>
+        <li>Changed return type to public nested class PolygonGrid.SubvisionMap which provides more specific comments and a strongly-typed Target property.</li>
+        <li>Stored the generating PolygonGrid in the Target property of the returned SubdivisionMap.</li>
+      </ul>
+    </li>
+    <li>Voronoi:
+      <ul>
+        <li>Fixed slightly incorrect clipping bounds calculation that could later lead to Debug.Assert failures when VoronoiResults attempted to compute VoronoiRegions.</li>
+        <li>That was because RectD.Right &amp; Bottom coordinates are computed, not stored, so when the RectD containing the final clipping bounds is created from LTRB coordinates, these properties may differ slightly from the original values. Unfortunately the Voronoi class used the original LTRB coordinates before they were converted into a RectD, while the VoronoiResults class used the LTRB coordinates extracted from that RectD. The slight difference between the respective Right &amp; Bottom values would cause comparison failures.</li>
+        <li>Now the Voronoi class immediately converts the final clipping bounds into a RectD and re-extracts all LTRB coordinates before they are used to construct the Voronoi diagram, eliminating this difference.</li>
+      </ul>
+    </li>
+    <li>VoronoiEdge: Replaced PointI fields Site &amp; Vertex with equivalent Int32 fields Site1, Site2, Vertex1 &amp; Vertex2. This is somewhat clearer as there is no X/Y relationship between these values.</li>
+    <li>VoronoiResults:
+      <ul>
+        <li>Added method ToDelaunySubdivision that converts all DelaunayEdges to a planar Subdivision.</li>
+        <li>Added method ToVoronoiSubdivision that converts all VoronoiRegions to an ISubdivisionMap&lt;Int32&gt; which associates all bounded faces with GeneratorSites indices.</li>
+        <li>Added method ClearVoronoiRegions that resets the VoronoiRegions property to a null reference. The new method ToVoronoiSubdivision always creates VoronoiRegions, and retaining them may be undesirable.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.1.1 (released 2010-07-08)</h4>
+  <p>Tektosyne.Geometry: Subdivision Epsilon Locked</p>
+  <ul>
+    <li>Subdivision accepts a comparison epsilon for the comparer that sorts its Vertices collection. Previously, this epsilon would be set to a positive value during construction if requested, and then reset to zero. This turned out to be a very bad idea.</li>
+    <li>Because vertices are sorted lexicographically by comparing coordinates individually, changing the comparison epsilon can change the ordering of vertices even when they are far apart in terms of absolute distance, just as long as they are close on <em>one</em> axis. This would cause any algorithm that relied on vertex comparisons to crash and burn. The only option was to lock in the epsilon used during construction.</li>
+    <li>Subdivision:
+      <ul>
+        <li>Replaced property VertexComparer with property Epsilon which sets the Epsilon of the PointComparer used by the Vertices collection, but also checks that the Vertices collection is empty and caches the new epsilon for internal use.</li>
+        <li>FromLines &amp; FromPolygons:
+          <ul>
+            <li>All comparisons now use the Subdivision’s current Epsilon. Cycle search previously used exact comparisons regardless of the specified comparison epsilon, which could cause errors when that epsilon was positive.</li>
+            <li>Fixed incorrect edge link detection when decreasing angle wrapped around from positive to greater positive value, or increasing angle wrapped around from negative to smaller negative value.</li>
+          </ul>
+        </li>
+        <li>GetEdge &amp; GetFace: Removed epsilon parameters. The methods now always use the Subdivision’s current Epsilon to ensure correct search results.</li>
+        <li>GetFace: Fixed flow control bug triggered by boundary verification.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.Geometry: SubdivisionFace Mapping</p>
+  <ul>
+    <li>Added interface ISubdivisionMap&lt;T&gt; that maps the faces of a Subdivision to arbitrary objects, and vice versa. This allows correlating a subdivision with data such as map regions or coordinates in a different system.</li>
+    <li>PolygonGrid:
+      <ul>
+        <li>Added method GetElementVertices which returns the polygon vertices of a grid element, shifted to the specified grid location.</li>
+        <li>Added method ToSubdivision which creates a Subdivision whose faces equal all grid elements, and a mapping between faces and grid locations. This is actually not particularly useful since using the PolygonGrid directly is much more efficient, but it makes for great test cases (which uncovered the epsilon issue and other bugs fixed in this release).</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.Geometry: Other Changes</p>
+  <ul>
+    <li>GeoAlgorithms:
+      <ul>
+        <li>Added method NearestPoint that performs a brute-force search for given coordinates in an unsorted PointD collection.</li>
+        <li>Added method PolygonArea that computes the area of an arbitrary polygon, with the sign indicating the orientation of its vertices.</li>
+        <li>Added method PolygonCentroid that computes the centroid (“center of gravity”) of an arbitrary polygon.</li>
+        <li>ConvexHull: Added params keyword to polygon parameter, allowing comma-separated coordinates.</li>
+      </ul>
+    </li>
+    <li>PointComparer:
+      <ul>
+        <li>Added method CompareEpsilon that is identical with Compare but always uses the current Epsilon, and therefore provides a faster Comparison&lt;PointD&gt; instance if Epsilon is known to be positive.</li>
+        <li>Added method FindNearest that searches a lexicographically sorted PointD collection for given coordinates, using a heuristic approximation followed by a radius-limited search.</li>
+      </ul>
+    </li>
+    <li>Subdivision: Added method GetNearestVertex that runs FindNearest on the Vertices collection.</li>
+    <li>SubdivisionEdge:
+      <ul>
+        <li>Added property FacePolygon that returns the (inner or outer) boundary of the incident Face which contains the SubdivisionEdge.</li>
+        <li>Added properties FaceArea &amp; FaceCentroid that compute the PolygonArea &amp; PolygonCentroid, respectively, for the FacePolygon.</li>
+      </ul>
+    </li>
+    <li>SubdivisionFace:
+      <ul>
+        <li>Removed redundant methods GetInnerPolygon &amp; GetOuterPolygon – use the new property FacePolygon on InnerEdges &amp; OuterEdge instead.</li>
+        <li>Moved methods Locate &amp; LocateEpsilon to class SubdivisionEdge. These methods also operate only on edge cycles, without regard to the containing face.</li>
+      </ul>
+    </li>
+    <li>Collections.QuadTree: Renamed compilation constant USE_BITMASK to QUADTREE_BITMASK.</li>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>Changed test suite selection from buttons to drop-down box, as there were too many buttons.</li>
+        <li>Added Nearest Point Search which compares the new methods NearestPoint &amp; FindNearest.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.1.0 (released 2010-06-14)</h4>
+  <p>Tektosyne.Geometry: Doubly-Connected Edge List</p>
+  <ul>
+    <li>The doubly-connected edge list is a powerful and flexible representation of a planar subdivision, i.e. any arbitrary collection of edges and faces, such as the vector map of a landscape. This release adds a C# implementation of the DCEL described by Mark de Berg et al. in <em>Computational Geometry</em>.</li>
+    <li>The current version is a preliminary implementation. You can create DCELs from collections of lines or polygons, but you cannot modify the created DCELs, and essential algorithms such as mutual intersection and point location are still missing. I decided to release this version anyway since the existing code should be stable, and I wanted to publish the necessary changes to the Graph interfaces (described below).</li>
+    <li>Added class Subdivision that represents a planar subdivision as a doubly-connected edge list. The class implements IGraph2D&lt;T&gt; with vertex coordinates as graph nodes.</li>
+    <li>Added classes SubdivisionEdge &amp; SubdivisionFace that represent one half-edge and one face of a planar subdivision, respectively.</li>
+  </ul>
+  <p>Tektosyne.Graph: Arbitrary Distance Measure</p>
+  <ul>
+    <li>Graph types used a concept of distances (i.e. IGraph2D.GetDistance) that was defined as the minimum number of movement steps between graph nodes. This was a historical artifact of the original PolygonGrid implementation of the IGraph2D interface, but it is actually unnecessary for pathfinding and impossible to implement efficiently by non-gridlike graphs, such as Subdivision.</li>
+    <li>Therefore, the distance measure is now changed to an arbitrary floating-point value. PolygonGrid continues to count movement steps, but Subdivision uses the Euclidean distance between vertices. Path costs were likewise changed since they are estimated by distances. The invariant still holds that the cost for moving from one node to another cannot be less than the distance between the two nodes.</li>
+    <li>Changed types of distances and path costs from Int32 to Double throughout the Graph namespace.</li>
+    <li>IGraph2D&lt;T&gt;: Removed GetDistance overload that takes a distance argument. Calculating this node set is difficult and also unnecessary in the general case. PolygonGrid retains this overload since it can offer an efficient and useful implementation.</li>
+    <li>Visibility&lt;T&gt;: Renamed parameter maxRange to maxDepth, as it actually limits the recursion depth while scanning for direct neighbors, rather than the distance from the source node. A future release will provide an improved Visibility algorithm with a proper distance limit, and hopefully without the old VisibilityGraph kludge.</li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>OrdinalString &amp; NaturalString: Removed useless null comparisons from comparison operators that were apparently left over from a version when these structures had been classes.</li>
+    <li>StringUtility: Added generic method ValidateCollection that outputs the string representations for all elements in a collection, or “(null)” and “(empty)” for null references and empty strings, respectively.</li>
+    <li>Collections.Int32Dictionary&lt;TValue&gt;: Added methods GetAny, GetAnyKey &amp; GetAnyValue which return one arbitrary element while any are left. This allows using the dictionary as an unordered schedule – a non-prioritized priority queue, if you will.</li>
+    <li>Geometry:
+      <ul>
+        <li>LineD/F/I:
+          <ul>
+            <li>Added properties Slope &amp; InverseSlope that compute the slope or inverse slope of the line, if possible.</li>
+            <li>Added methods FindX &amp; FindY that compute the x- or y-coordinate for a given y- or x-coordinate, respectively, on the line or its infinite extension.</li>
+            <li>Fixed inadvertent use of double-precision constants in several LineF/I methods that would cause unnecessary precision elevation of intermediate results.</li>
+          </ul>
+        </li>
+        <li>PointD/F/I: Added overloaded method AngleBetween that computes the angle between two vectors.</li>
+        <li>PolygonGrid:
+          <ul>
+            <li>Changed to to reflect new IGraph2D&lt;T&gt; semantics.</li>
+            <li>GetDistance: Renamed to GetStepDistance, and added new method GetDistance which returns the GetStepDistance result converted to Double.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Pathfinding:
+      <ul>
+        <li>Added overdue test for Flood Fill algorithm.</li>
+        <li>Added short description to all tests.</li>
+        <li>Added New button to all tests that runs the algorithm on a new random hexagon grid.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.0.2 (released 2010-05-09)</h4>
+  <p>Graph classes now take a generic type argument for the node type.</p>
+  <ul>
+    <li>Changed graph nodes from PointI coordinates to arbitrary generic type T, allowing node types that cannot easily be mapped to PointI coordinates.</li>
+    <li>Removed conversion of graph nodes to unique indices, and changed internal node storage from indexed arrays to hashtables, allowing node types that cannot easily be mapped to unique indices.</li>
+    <li>Graph:
+      <ul>
+        <li>IPlanarGraph: Renamed to IGraph2D since we break everything anyway!</li>
+        <li>IPlanarAgent &amp; IPlanarPath: Renamed to IGraphAgent &amp; IGraphPath, respectively, since these interfaces never reference IGraph2D’s two-dimensional world coordinates.</li>
+        <li>Change term “Location” to “Node” in all method &amp; property names that refer to IGraph2D nodes.</li>
+        <li>IGraph2D&lt;T&gt;:
+          <ul>
+            <li>Removed obsolete members Locations &amp; IndexOfLocation.</li>
+            <li>Contains: Replaced all overloads with the single method Contains(T).</li>
+            <li>GetNeighbors: Changed return type from List&lt;PointI&gt; to IList&lt;T&gt;.</li>
+            <li>GraphToWorld: Renamed to GetWorldCenter.</li>
+            <li>WorldNodeRadius: Changed to method GetWorldRadius that takes a node argument.</li>
+          </ul>
+        </li>
+        <li>AStar, Coverage, FloodFill, Visibility:
+          <ul>
+            <li>Changed internal node collections from indexed arrays to hashtables. These are somewhat slower, but also reduce memory consumption since we no longer pre-allocate arrays for the entire graph.</li>
+            <li>Other internal collections are likewise no longer pre-allocated to maximum capacity, so as to maximize memory savings with the transition to hashtables.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>PolygonGrid:
+          <ul>
+            <li>Now implements IGraph2D&lt;PointI&gt with graph nodes that represent grid coordinates, just as before. The public interface is nearly unchanged, except as noted below.</li>
+            <li>Changed GraphToWorld &amp; WorldNodeRadius to GetWorldCenter &amp; GetWorldRadius, respectively, and removed Locations &amp; IndexOfLocation, in conformance with new IGraph2D&lt;T&gt; interface.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.0.1 (released 2010-05-02)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>GeoUtility.AreCollinear &amp; Area2: Moved to PointD/F/I as instance methods IsCollinear &amp; CrossProductLength.</li>
+        <li>PointD/F/I.CrossProductLength: Added overload that takes a single PointD parameter and assumes that the two vectors share the origin.</li>
+        <li>LineD:
+          <ul>
+            <li>Contains: Moved to LineIntersection for use with new Find method.</li>
+            <li>Intersect: Now forwards to new method LineIntersection.Find.</li>
+          </ul>
+        </li>
+        <li>LineF/I: Added methods Intersect, Locate &amp; LocateCollinear which were already present in LineD.</li>
+        <li>LineIntersection:
+          <ul>
+            <li>Added static overloaded method Find which implements LineD.Intersect but takes four explicit PointD parameters for the line segments. Since the algorithm operates on start &amp; end points anyway, this allows efficient forwarding from all three Line structures.</li>
+            <li>Added static overloaded method LocateCollinear which is identical to LineD.LocateCollinear but takes two explicit PointD parameters for the line segment, for efficient use with Find.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 5.0.0 (released 2010-04-30)</h4>
+  <p>Upgraded solution to Microsoft .NET Framework 4.0 Client Profile and Microsoft Visual Studio 2010. This involved the following changes:</p>
+  <ul>
+    <li>Removed assembly-level declarative security attributes, as .NET 4.0 has obsoleted this CAS feature.</li>
+    <li>Fixed many parameter tags in XML comments, as the C# 4 compiler checks them much more thoroughly.</li>
+    <li>Pair&lt;T1, T2&gt; &amp; Triplet&lt;T1, T2, T3&gt;:
+      <ul>
+        <li>Redesigned as an equivalent but lightweight alternative to the new System.Tuple class.</li>
+        <li>Renamed to ValueTuple&lt;T1, T2&gt; &amp; ValueTuple&lt;T1, T2, T3&gt;, and added structure ValueTuple&lt;T1, T2, T3, T4&gt;.</li>
+        <li>First, Second &amp; Third: Changed to public read-only fields Item1, Item2 &amp; Item3.</li>
+        <li>ToString: Simplified output to “(Item1, Item2, Item3, Item4)”.</li>
+        <li>Added static class ValueTuple with Create methods that can infer the required generic type arguments.</li>
+      </ul>
+    </li>
+    <li>StringUtility.Join: Removed both overloads, which are obsoleted by equivalent String.Join overloads.</li>
+    <li>Windows.TaskEvents.RestartTimer: Removed parameterless overload, which is obsoleted by Stopwatch.Restart.</li>
+  </ul>
+  <p>Tektosyne.Geometry: Geometric Primitives</p>
+  <ul>
+    <li>Points, sizes, and rectangles used to be represented as a hodge-podge of BCL types from the System.Drawing &amp; System.Windows namespaces, with <code>using</code> directives smoothing over their inconsistent naming.</li>
+    <li>For all purposes not directly related to GDI or WPF output, these types have now been replaced by a set of immutable structures with consistent naming, functionality, and convertibility.</li>
+    <li>The naming scheme follows the one established by the <code>using</code> directives in previous releases, except that double-precision variants receive a “D” suffix, both for consistency and to avoid a naming clash with the equivalent System.Windows types.</li>
+    <li>Added structures PointD/F/I, SizeD/F/I, and RectD/F/I that represent points, sizes, and rectangles based on Double, Single, and Int32 components, respectively.</li>
+    <li>LineD/F/I:
+      <ul>
+        <li>Renamed structure Line to LineD in conformance with new naming scheme.</li>
+        <li>ToLineI &amp; LineI(LineD/F): Changed to truncating cast in conformance with BCL types.</li>
+        <li>Added method Round that rounds coordinates to nearest Int32 values.</li>
+        <li>Added property LengthSquared that computes the squared absolute length, avoiding the final Math.Sqrt operation of the Length property if you only need the squared value anyway.</li>
+        <li>Removed redundant property Degrees. Use the new Angle class to convert from radians.</li>
+      </ul>
+    </li>
+    <li>PointD/F/I combine the functionality of the WPF Point and Vector types. The WPF Vector type contains exactly the same data as the WPF Point type, and serves no apparent purpose except to annoy developers who cannot simply add two Points without converting one to a Vector first.</li>
+    <li>PointD/F/I and SizeD/F/I each offer addition &amp; subtraction with other instances of the same type only. I believe these operations should be symmetrical, and I never found much use for the Point-Size operations defined by the GDI types.</li>
+    <li>RectD/F use the same geometric inclusion model as the WPF Rect type, i.e. Right/Bottom are considered part of the rectangle. RectI uses the same index inclusion model as the GDI Rectangle type, i.e. Right/Bottom are <em>not</em> considered part of the rectangle. Unifying the inclusion models would have been nice, but too much existing code expects that Int32-based rectangles follow the GDI Rectangle behavior.</li>
+    <li>Added static classes GdiConversion &amp; WpfConversion that convert between the new geometric primitives and the equivalent BCL structures in System.Drawing &amp; System.Windows, respectively.</li>
+    <li>Removed static class GeoUtility. The conversion methods were moved to GdiConversion &amp; WpfConversion, and the other methods to the corresponding geometric primitives.</li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>Changed more properties to public fields where the property wrapper was obviously pointless.</li>
+    <li>Change GetHashCode algorithms from (x * 37 + y) to (x ^ y), using bit shifts if necessary, and inlined GetHashCode calls for geometric primitives.</li>
+    <li>Replaced unhelpful descriptions of construction parameters (“The initial value for the Foo property”) with more helpful semantic descriptions.</li>
+    <li>ThrowHelper: Marked all methods as [MethodImpl(MethodImplOptions.NoInlining)] to aid JIT compiler inlining.</li>
+    <li>Collections: Documented the fact that all SyncRoot properties return the same object for a read-only wrapper as for the underlying writable collection. This is actually the reason why SyncRoot is public in the first place, but I had forgotten to state it explicitly.</li>
+    <li>Geometry:
+      <ul>
+        <li>Moved all graph-related classes &amp; interfaces to new namespace Tektosyne.Graph. This includes AStar, Coverage, FloodFill, PathNode, Visibility, IPlanarAgent, IPlanarGraph, and IPlanarPath.</li>
+        <li>Added static class Angle with constants &amp; methods to manipulate angles in radians and degrees.</li>
+        <li>MultiLinePoint, VoronoiEdge &amp; VoronoiResult: Lowered constructor visibility to internal.</li>
+      </ul>
+    </li>
+    <li>Windows.WindowsUtility.ScrollStep: Added overload that takes separate width &amp; height parameters instead of a Size instance.</li>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>The x64 JIT compiler’s optimizations have changed in .NET 4.0, and usually for the better.</li>
+        <li>The standard class SortedDictionary&lt;TKey, TValue&gt; (= binary search tree with red-black balancing) is nearly twice as fast as in .NET 3.5 SP1.</li>
+        <li>Collections.Sorting: Performance of all custom sorting algorithms is greatly improved, and QuickSort is now nearly as fast as the standard Array.Sort.</li>
+        <li>Sorting test: Changed item count from 10–120 to 20–240 in steps of 20, compensating for better performance.</li>
+        <li>Geometry &amp; Intersection tests: Increased maximum item count from 100 to 120, compensating for better performance.</li>
+        <li>Dictionary test: Increased item count from 40,000 to 60,000 and iterations from 20 to 100. This required removing SortedList from the test cases, as this class is far slower than the others.</li>
+        <li>Range Tree test: Increased item count from 40,000 to 60,000 so that results remain comparable with Dictionary test.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.5.5.</li>
+  </ul>
+  <h4>Version 4.5.0 (released 2010-04-12)</h4>
+  <p>Global Optimizations:</p>
+  <ul>
+    <li>The following observations apply to x64 code generated by .NET 3.5 SP1. The x86 JIT compiler and other .NET versions have different performance profiles.</li>
+    <li>Popular wisdom claims that trivial property accessors perform as well as fields, thanks to JIT inlining, but benchmarking showed that search speed in BraidedTree&lt;TValue&gt; and Int32Dictionary&lt;TValue&gt; nearly doubled when trivial properties were replaced with fields. The reason is not quite clear. Possibly the JIT compiler stops inlining even trivial accessors under certain conditions, or possibly it can apply more aggressive optimizations when not distracted by inlining. Either way, this speedup is too big to ignore, so I rolled back property use throughout the library.</li>
+    <li>Among other optimizations, I also manually inlined trivial error checking methods. This resulted in another significant speedup for collection classes, and here the blame falls squarely on JIT inlining failure.</li>
+    <li>Resulting performance gains over previous release: BraidedTree&lt;Int32, TValue&gt; 40-95%; MultiLineIntersection.Find 40-50% for constant and linear output and 15% for quadratic output, FindSimple 20% for quadratic output; minor gains elsewhere.</li>
+    <li>Replaced all performance-sensitive public read-only instance properties that are only set during construction with public read-only fields. Note that read-only static members were already implemented as public read-only fields, even in the BCL, so it’s not a big stretch.</li>
+    <li>Replaced all automatic properties with field-backed properties, raised all performance-sensitive backing fields to internal visibility, and changed internal property accesses to field accesses where possible.</li>
+    <li>Manually inlined all parameterless CheckWritable &amp; CheckDictionary methods, and inline-checked all values against IKeyedValue&lt;TKey&gt; before calling CollectionsUtility.ValidateKey.</li>
+    <li>Added attribute [StructLayout(LayoutKind.Auto)] to complex structures that are not intended for interoperation with unmanaged code. C# forces sequential layout by default which is quite useless in managed code, and might hurt performance.</li>
+    <li>Changed all uses of Object.Equals with generic type arguments to EqualityComparer&lt;T&gt;.Default.Equals which is much faster for value types. This affects Pair&lt;T1, T2&gt;, Triplet&lt;T1, T2, T3&gt;, BraidedTree&lt;TKey, TValue&gt;’s value search, and various CollectionsUtility methods.</li>
+  </ul>
+  <p>Other Changes:</p>
+  <ul>
+    <li>Class Reference: Suppressed documentation of internal types &amp; members, as there were too many of them lately.</li>
+    <li>Removed [NonSerialized] attribute from static fields (such as Empty) since those never get serialized anyway.</li>
+    <li>MathUtility: Added overloaded method IsPrime that determines whether a given Int32 or UInt32 number is prime.</li>
+    <li>Collections:
+      <ul>
+        <li>Added static class ComparerCache&lt;T&gt; which caches the Comparer&lt;T&gt;.Default &amp; EqualityComparer&lt;T&gt;.Default properties for the generic type argument. These properties already provide their own caching, but their getters are still very slow.</li>
+        <li>Added class Int32Dictionary&lt;TValue&gt; that provides a specialized DictionaryEx&lt;TKey, TValue&gt; for Int32 keys, increasing key search speed by 60-90%.</li>
+        <li>Changed property IsSynchronized to explicit interface implementation on all collection classes. This particular property is so useless that it should remain hidden.</li>
+        <li>ArrayEx&lt;T&gt;.CopyFrom: Added missing check for IsReadOnly.</li>
+        <li>BraidedTree&lt;TKey, TValue&gt;, KeyValueList&lt;TKey, TValue&gt; &amp; QuadTree&lt;TValue&gt;: Revised CopyTo methods. The previous implementations were correct, but stylistically terrible due to mindless copying &amp; pasting…</li>
+        <li>DictionaryEx&lt;TKey, TValue&gt;:
+          <ul>
+            <li>Clone &amp; Copy: Clarified that the enumeration order is not preserved, as elements may be inserted in a different order.</li>
+            <li>Equals: Changed to test for identical elements regardless of enumeration order, as hashtables do not define any fixed ordering.</li>
+          </ul>
+        </li>
+        <li>KeyValueList&lt;TKey, TValue&gt;:
+          <ul>
+            <li>Documentation now correctly states that IsUnique checks for unique key-and-value pair, not unique keys.</li>
+            <li>Add: Added missing check for null key and validation against IKeyedValue&lt;TKey&gt;.</li>
+          </ul>
+        </li>
+        <li>QuadTree&lt;TValue&gt;.Nodes: Changed type from DictionaryEx&lt;TKey, TValue&gt; to Int32Dictionary&lt;TValue&gt; for a rather minor speedup.</li>
+        <li>QuadTreeNode&lt;TValue&gt;.Signature: Changed type from UInt32 to Int32. The value itself is still unsigned, but this change makes the class CLS-compliant.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Added [Serializable] attribute to all remaining types where it makes sense.</li>
+        <li>AStar, Coverage, FloodFill &amp; Visibility: Locations properties now return a read-only ListEx&lt;PointI&gt;.</li>
+        <li>Line/F/I:
+          <ul>
+            <li>Changed to immutable structures, i.e. Start &amp; End are now read-only fields.</li>
+            <li>Added methods ToLineF/I that convert a Line/F to a LineF/I, just like the explicit conversion operators.</li>
+            <li>Removed conversions to &amp; from equivalent Rect/F/I strucures. While lossless, these conversions were also useless since any Line coordinate might end up in any of the four corners of a Rect…</li>
+            <li>Size: Renamed to Vector and changed type to Point/F/I instead of SizeF/I or System.Windows.Vector. Tektosyne no longer uses the latter type except for WPF output.</li>
+          </ul>
+        </li>
+        <li>PathNode: Lowered visibility of constructor and writable fields to internal, and entirely removed public access to Next pointer.</li>
+      </ul>
+    </li>
+    <li>Xml.XmlUtility: Added generic methods Serialize&lt;T&gt; &amp; Deserialize&lt;T&gt; that convert a serializable object to &amp; from its formatted XML representation, using the NetDataContractSerializer class.</li>
+  </ul>
+  <ul>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>Dictionary test: Added column for new class Int32Dictionary&lt;TValue&gt;.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest:
+      <ul>
+        <li>Greatly improved coverage of error cases for collection classes.</li>
+        <li>ArrayExTest &amp; ListExTest: Integrated read-only &amp; unique element test suites with regular test suites.</li>
+        <li>Replaced most methods carrying the [ExpectedException] attribute with inlined Assert.Throws&lt;T&gt; calls.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.4.3 (released 2010-04-04)</h4>
+  <ul>
+    <li>Collections.QuadTree&lt;TValue&gt;:
+      <ul>
+        <li>Added constant ProbeLevel that determines when FindNode(Point) switches to the depth probe algorithm.</li>
+        <li>MaxDepth: Renamed to MaxLevel which more accurately reflects its semantics.</li>
+        <li>FindNode(Point): Clarified that depth probe starts at level log4 m, where m is Nodes.Count, when m reaches 4^ProbeLevel.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>Range Tree test: Range search covers a greater range and shows iteration count &amp; relative range.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.4.2 (released 2010-04-02)</h4>
+  <ul>
+    <li>Collections:
+      <ul>
+        <li>Added generic class ComparerAdapter&lt;T&gt; that wraps a given Comparison&lt;T&gt; method in the IComparer &amp; IComparer&lt;T&gt; interfaces, for compatibility with those annoying old BCL classes that use object-oriented instead of functional composition.</li>
+        <li>Added generic classes QuadTree&lt;TValue&gt; &amp; QuadTreeNode&lt;TValue&gt; that provide a quadrant tree with Point keys and multiple elements per node. Searching &amp; enumeration are accelerated by an additional hashtable that finds nodes by their position within the tree structure.</li>
+        <li>BraidedTree&lt;TKey, TValue&gt;:
+          <ul>
+            <li>Now implements non-generic interface ICollection instead of IDictionary. The latter wouldn’t actually work as there was no IDictionaryEnumerator implementation. This is a weird old .NET 1.0 artifact that is incompatible with IEnumerator and cannot be implemented with C# yield statements.</li>
+            <li>Added overloaded method FindRange that returns all elements whose keys fall within a specified range, and that optionally meet an additional condition.</li>
+            <li>FindNodeOrPrevious: Fixed documentation to correctly state that the result is RootNode rather than a null reference if there is no node before the specified key.</li>
+          </ul>
+        </li>
+        <li>KeyValueList&lt;TKey, TValue&gt;: Now implements generic interface IDictionary&lt;TKey, TValue&gt; (but not the non-generic IDictionary interface, see above).</li>
+        <li>Sorting:
+          <ul>
+            <li>Added overloaded method BinarySearch&lt;T&gt; that performs a binary search over an arbitrary sorted IList&lt;T&gt;, with or without a custom Comparison&lt;T&gt; method.</li>
+            <li>Added overloaded method BestBinarySearch&lt;T&gt; that calls the BinarySearch&lt;T&gt; method of the Array or List(Ex)&lt;T&gt; classes for such arguments, and the new BinarySearch&lt;T&gt; method otherwise.</li>
+            <li>When the search value is not found, the new methods don’t simply return -1, but rather the bitwise complement of the collection index of the first element that is greater than the search value, just like the Array and List(Ex)&lt;T&gt; methods. This allows efficient range searching in IList&lt;T&gt; collections.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>Added Range Tree test that compares the new QuadTree&lt;TValue&gt; class to a BraidedTree&lt;TKey, TValue&gt; with Point keys.</li>
+        <li>Changed Dictionary test from 100 x 10,000 keys to 10 x 40,000 keys so that the results can be directly compared with the Range Tree test.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.4.1 (released 2010-03-20)</h4>
+  <ul>
+    <li>MersenneTwister.Default: Added warning that static instance is not thread-safe because any Next call changes its internal state.</li>
+    <li>Collections:
+      <ul>
+        <li>BraidedTree&lt;TKey, TValue&gt;:
+          <ul>
+            <li>FindNode(TValue): Renamed to FindNodeByValue to avoid ambiguity when TKey and TValue are the same type.</li>
+            <li>RemoveNode: Throws an exception if the specified node belongs to a different tree structure, or to none at all. Null references or the current RootNode still result in silent failure.</li>
+          </ul>
+        </li>
+        <li>BraidedTreeNode&lt;TKey, TValue&gt;:
+          <ul>
+            <li>Constructors: Added BraidedTree&lt;TKey, TValue&gt; parameter that initializes the new Tree property.</li>
+            <li>Removed unnecessary constructor that took a key but no value.</li>
+            <li>Added Tree property that stores the containing BraidedTree&lt;TKey, TValue&gt;. This property is set upon construction and remains unchanged until the node is removed from its tree, at which point it is permanently reset to a null reference.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Added static class MultiLineIntersection that provides two algorithms for calculating all intersections between a given set of line segments: a brute force algorithm and Bentley &amp; Ottmann’s sweep line algorithm. Both variants are necessary because the sweep line algorithm’s worst case is much slower than the brute force algorithm. Moreover, only the brute force algorithm supports epsilon comparisons.</li>
+        <li>Added structure MultiLinePoint that holds one intersection point found by either MultiLineIntersection algorithm.</li>
+        <li>Line:
+          <ul>
+            <li>Intersect:
+              <ul>
+                <li>Changed to return the lexicographically first intersection point, according to PointComparer, if the two line segments partially or entirely overlap. This ensures deterministic results for any two line segments, regardless of their orientation.</li>
+                <li>Adjusted epsilon overload so that intersection detection and collinear classification no longer depends on Line lengths, as long as the two line segments are of roughly equal length.</li>
+              </ul>
+            </li>
+            <li>Locate: Adjusted epsilon overload so that collinear classification no longer depends on Line length.</li>
+            <li>Locate &amp; LocateCollinear: Replaced Vector arithmetic with double variables for a slight speedup.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest:
+      <ul>
+        <li>Benchmark: Added Intersection test that compares the brute force and sweep line algorithms of the new MultiLineIntersection class.</li>
+        <li>Geometry: Added Intersection dialog to demonstrate the brute force algorithm of the new MultiLineIntersection class with a variable comparison epsilon.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.4.0 (released 2010-03-04)</h4>
+  <ul>
+    <li>Collections:
+      <ul>
+        <li>Added generic classes BraidedTree&lt;TKey, TValue&gt; and BraidedTreeNode&lt;TKey, TValue&gt; that provide a “braided” search tree, i.e. a binary search tree whose nodes are connected with a doubly linked list along the sorting order.</li>
+      </ul>
+    </li>
+    <li>MathUtility &amp; Geometry.GeoUtility:
+      <ul>
+        <li>Removed epsilon checks from all Compare &amp; Equals overloads.</li>
+        <li>Removed all CompareUnchecked &amp; EqualsUnchecked overloads, as they are now obsolete.</li>
+        <li>Checking epsilons in basic comparison methods was one of those well-intentioned ideas that didn’t work out too well. The unchecked versions are much faster, so you’d only ever call a checked version once at the start of a complex algorithm. Well, it’s easier to just test for a positive epsilon directly…</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Added class PointComparer that establishes a lexicographic ordering for Point instances, either with exact or epsilon comparisons. The actual comparison methods are static, so instantiating the PointComparer is optional.</li>
+        <li>GeoAlgorithms.Compare: Moved to new class PointComparer and renamed to LexiCompare, due to name clash with interface methods.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Benchmark:
+      <ul>
+        <li>Added Dictionary test for adding, iterating, searching &amp; removing elements in BraidedTree&lt;TKey, TValue&gt; and several BCL classes: Dictionary&lt;TKey, TValue&gt; (= hashtable), SortedDictionary&lt;TKey, TValue&gt; (= red-black tree), and SortedList&lt;TKey, TValue&gt;.</li>
+        <li>Geometry: Fixed times reported for Line Intersection &amp; Point in Polygon. As it turns out, the high-precision timer is too imprecise to measure individual calls to these methods. Rounding errors accumulated in each iteration, resulting in times that were far too high. The tests now measure entire loop bodies and then divide results by iteration counts.</li>
+        <li>Geometry &amp; Sorting: Input arrays now start with 10 elements. Smaller sizes were meaningless due to timer rounding errors. Sorting times now include copying the test array, as the required time is negligible at the measured array sizes.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.3.3 (released 2010-02-23)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>GeoAlgorithms: Added overloaded method Compare that establishes a lexicographic ordering for Point instances, either with exact or epsilon comparisons.</li>
+        <li>GeoUtility:
+          <ul>
+            <li>Added Equals &amp; EqualsUnchecked overloads for Line, LineF, Rect, RectF, Size &amp; SizeF.</li>
+            <li>Equals(Point) &amp; Equals(PointF): Replaced second MathUtility.Compare call with CompareUnchecked for a slight speedup.</li>
+          </ul>
+        </li>
+        <li>Line:
+          <ul>
+            <li>Added static method Contains that tests a specified LineLocation value for Start, Between, or End.</li>
+            <li>Added overloaded methods Locate &amp; LocateCollinear that determine the location of a specified point relative to the Line, either with exact or epsilon comparisons.</li>
+            <li>Removed overloaded methods Contains, ContainsUnchecked, IsLeft &amp; IsLeftOrOn which are now special cases of Locate.</li>
+          </ul>
+        </li>
+        <li>LineLocation: Added enumeration values Left &amp; Right to cover non-collinear points detected by Line.Locate.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.3.2 (released 2010-02-17)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>Added enumerations LineLocation &amp; LineRelation for new LineIntersection structure.</li>
+        <li>LineIntersection: Changed to structure that holds all results for revised Line.Intersect method.</li>
+        <li>Line.Intersect: Revised to return LineIntersection instance with additional result data, including the external intersection point of lines that do not touch, as in the original O’Rourke implementation.</li>
+        <li>Line, LineF &amp; LineI: Added method Reverse that reverses the Start &amp; End points.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.3.1 (released 2010-02-12)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>Added enumeration LineIntersection that specifies the possible types of intersection between two lines.</li>
+        <li>GeoAlgorithms:
+          <ul>
+            <li>Added method Area2 that calculates twice the area of a specified triangle.</li>
+            <li>Added overloaded method AreCollinear that determines whether three specified points are collinear, either with exact or epsilon comparisons.</li>
+            <li>Added methods RandomLine &amp; RandomPoint that create a random Line or Point, respectively, within a specified area.</li>
+            <li>CreateRandomPolygon: Shortened name to RandomPolygon since GeoAlgorithms generally don’t use verb prefixes.</li>
+          </ul>
+        </li>
+        <li>Line, LineF &amp; LineI: Clarified that these structures represent (finite) line <em>segments</em> rather than (infinite) lines.</li>
+        <li>Line:
+          <ul>
+            <li>Added methods Contains &amp; ContainsUnchecked that determine whether the Line contains a specified point.</li>
+            <li>Added methods IsLeft &amp; IsLeftOrOn that determine whether a specified point is to the left of, or directly on, the infinite extension of the Line.</li>
+            <li>Added method Intersect that determines if and where two Line instances intersect.</li>
+            <li>All new methods are overloaded for exact and epsilon comparisons.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.3.0 (released 2010-02-04)</h4>
+  <ul>
+    <li>MathUtility:
+      <ul>
+        <li>Compare: Added missing overload description to Class Reference.</li>
+        <li>Added overloaded method CompareUnchecked which is identical to Compare but does not check the specified epsilon.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>GeometryUtility:
+          <ul>
+            <li>Shortened class name to GeoUtility.</li>
+            <li>Moved methods CreateRandomPolygon &amp; PointInPolygon to new static class GeoAlgorithms.</li>
+            <li>Added overloaded methods Equals &amp; EqualsUnchecked that compare two Point or PointF instances, given a specified epsilon.</li>
+          </ul>
+        </li>
+        <li>GeoAlgorithms:
+          <ul>
+            <li>Added method ConvexHull that determines the convex hull for a given set of points, using Graham’s scan.</li>
+            <li>Changed PointInPolygon overload with epsilon comparisons to use CompareUnchecked, for a speedup of about 50%.</li>
+            <li>Changed PointInPolygon overload with exact comparisons to separate implementation, for a further speedup of 200%.</li>
+          </ul>
+        </li>
+        <li>Added class Voronoi that finds Voronoi diagrams and Delaunay triangulations, using Fortune’s sweep line algorithm.</li>
+        <li>Added class VoronoiResults and structure VoronoiEdge that hold the results of the Voronoi algorithm.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest:
+      <ul>
+        <li>File: Added Benchmark Tests dialog to test running time of sorting &amp; geometric algorithms.</li>
+        <li>Geometry:
+          <ul>
+            <li>Added Convex Hull dialog to test the ConvexHull algorithm with random point sets.</li>
+            <li>Addec Voronoi &amp; Delaunay dialog to test the Voronoi algorithm with random point sets.</li>
+            <li>Both dialogs feature Copy &amp; Paste buttons to copy the current point set to the Windows clipboard (in XML format) and to process the point set currently stored in the clipboard, respectively.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.5.3.</li>
+  </ul>
+  <h4>Version 4.2.0 (released 2009-12-12)</h4>
+  <ul>
+    <li>MathUtility: Removed Compare overloads without specified epsilons. The assumed values were Double.Epsilon or Single.Epsilon, respectively, but since those are the smallest representable differences, the result was simply an exact comparison. We can already do that much more efficiently without utility methods, so both overloads were redundant.</li>
+    <li>MersenneTwister: Added static read-only field Default containing a default-constructed instance. Applications that use MersenneTwister typically create such a shared instance anyway.</li>
+    <li>Geometry:
+      <ul>
+        <li>Added enumeration PolygonLocation that specifies the location of a point relative to an arbitrary polygon.</li>
+        <li>GeometryUtility:
+          <ul>
+            <li>Added method CreateRandomPolygon that creates a random arbitrary simple polygon within a specified area.</li>
+            <li>Added method PointInPolygon that determines the PolygonLocation for a given point and polygon.</li>
+          </ul>
+        </li>
+        <li>Polygon: Renamed to RegularPolygon since new Geometry methods operate on arbitrary polygons which don’t use this class.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Geometry:
+      <ul>
+        <li>Added Point in Polygon dialog to test the PointInPolygon algorithm with random polygons.</li>
+        <li>Polygon: Renamed to Regular Polygon, and fixed non-inflated polygon not being drawn.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.1.9 (released 2009-08-30)</h4>
+  <ul>
+    <li>Windows.MessageDialog: Automatically resizes to primary message, like a standard MessageBox, but not to secondary message. This required some tricky coding since WPF normally resizes a window either to all its contents, or not at all.</li>
+  </ul>
+  <h4>Version 4.1.8 (released 2009-07-16)</h4>
+  <ul>
+    <li>StringUtility.PackSpace: Changed to use static Regex.Replace method instead of Regex instance.</li>
+    <li>Xml.XmlUtility.ReadAttributeAsEnum&lt;T&gt;:
+      <ul>
+        <li>Removed obsolete non-generic overload.</li>
+        <li>Multiple constant names for bit field enumerations may be separated merely by whitespace, without the preceding comma required by Enum.Parse. This allows reading bit field enums that were serialized to the XML Schema type xsd:list.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.5.1.</li>
+  </ul>
+  <h4>Version 4.1.7 (released 2009-06-27)</h4>
+  <ul>
+    <li>Windows.BitmapUtility.Read &amp; Win32Api.SafeMemoryHandle.Get/SetMemory: Changed to unsafe and fixed arithmetic overflows on 64-bit systems. These methods had cast IntPtr addresses to Int32 values which caused occasional overflows on 64-bit systems. The fix was to cast the addresses to byte* instead, which is always the correct size but requires that the methods are marked as unsafe.</li>
+  </ul>
+  <h4>Version 4.1.6 (released 2009-06-21)</h4>
+  <ul>
+    <li>Fortran: Added Int16 overloads for methods Min, Max, and Sum (but not for Modulo because its intermediate calculations produce Int32 values).</li>
+    <li>MathUtility: Added extension method Restrict that restricts a number to a specified range, with overloads for all common numeric types.</li>
+    <li>Windows:
+      <ul>
+        <li>Added immutable structure ColorVector that represents a displacement in sRGB color space.</li>
+        <li>BitmapUtility: Added methods Shift &amp; ShiftPbgra32 that shift the color channels of a locked WriteableBitmap or PBGRA32 color value, respectively.</li>
+      </ul>
+    </li>
+    <li>Xml.XmlUtility: Added overloads ReadAttributeAsInt16 &amp; ReadAttributeAsInt64.</li>
+  </ul>
+  <h4>Version 4.1.5 (released 2009-05-25)</h4>
+  <ul>
+    <li>Class Reference: Updated to Sandcastle Help File Builder version 1.8.0.1 which fixed the missing <code>this</code> qualifier for extension methods.</li>
+    <li>Collections:
+      <ul>
+        <li>Added generic class ArrayEx&lt;T&gt; that provides an array with arbitrary rank, one-dimensional indexing regardless of rank, and a read-only wrapper of the same public type.</li>
+        <li>Replaced protected backer fields ReadOnlyFlag &amp; UniqueFlag with protected property setters in all applicable classes.</li>
+      </ul>
+    </li>
+    <li>Geometry.PolygonGrid:
+      <ul>
+        <li>Added generic method CreateArrayEx&lt;T&gt; that returns an ArrayEx&lt;T&gt; instead of a standard Array.</li>
+        <li>CreateArray: Accepts generic type parameter instead of explicit Type object, and returns typed two-dimensional array instead of untyped Array object.</li>
+        <li>Removed obsolete method CreateBooleanArray – use new method CreateArray&lt;T&gt; instead.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.1.4 (released 2009-05-17)</h4>
+  <ul>
+    <li>Publish.proj: Changed archiver for distribution package from Info-ZIP to 7-Zip.</li>
+    <li>Tektosyne.UnitTest: Updated NUnit version to 2.4.8.</li>
+  </ul>
+  <h4>Version 4.1.3 (released 2009-02-13)</h4>
+  <ul>
+    <li>Changed AssemblyVersion back to AssemblyFileVersion since WPF cannot handle auto-incremented build numbers. XAML requires two compilation passes between which an auto-incremented build number may increase, resulting in version mismatches and .NET load errors for signed assemblies.</li>
+    <li>Removed all unspecific thread safety warnings on static classes, as they were self-evident and not consistently applied.</li>
+    <li>Marked all static Empty fields of serializable types as non-serialized.</li>
+    <li>Collections: Changed all static Empty properties to static read-only fields, which are fully thread-safe due to static initialization.</li>
+    <li>Windows.WindowsUtility.SelectItem: Renamed to SelectAndShow, changed to accept null items, and added overload that accepts item index.</li>
+  </ul>
+  <h4>Version 4.1.2 (released 2009-02-08)</h4>
+  <ul>
+    <li>Windows: Removed class AnimationWorker which was merely an elaborate hack, now superseded by the much simpler WindowsUtility.DoEvents hack for the same purpose.</li>
+  </ul>
+  <h4>Version 4.1.1 (released 2009-01-17)</h4>
+  <ul>
+    <li>Windows.WindowsUtility:
+      <ul>
+        <li>Added generic method FindVisualParent&lt;T&gt; that searches a visual tree for the nearest parent of the specified type.</li>
+        <li>FindListItem: Renamed to FindParentListItem. The functionality is unchanged but the method now simply forwards to FindVisualParent&lt;ListBoxItem&gt;.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.1.0 (released 2009-01-11)</h4>
+  <ul>
+    <li>Added explicit CultureInfo.CurrentCulture argument to all String.Format and ToString calls that generate display output.</li>
+    <li>Changed all named XAML elements to private visibility, reducing the number of undesired entries in the Class Reference. Contrary to the MSDN Library documentation, “private” is actually a valid value for the <code>x:FieldModifier</code> attribute.</li>
+    <li>Added static class ThrowHelper for throwing common exceptions.
+      <ul>
+        <li>Explicit <code>throw</code> statements translate into ca. 30-60 extra bytes of machine code that are never needed during normal execution, reducing general throughput and discouraging inlining by the JIT compiler. ThrowHelper puts <code>throw</code> statements into separate methods, thus pooling their code in one remote place where it can do no harm.</li>
+        <li>Added several Throw… methods for all common exception types and parameters.</li>
+        <li>Changed <code>throw</code> statements throughout the library to ThrowHelper calls where appropriate.</li>
+      </ul>
+    </li>
+    <li>Collections:
+      <ul>
+        <li>CollectionsUtility:
+          <ul>
+            <li>Added extension method Swap that swaps the elements at two specified IList&lt;T&gt; indices.</li>
+            <li>Added extension method ConditionalSwap that compares the elements at two specified IList&lt;T&gt; indices, and swaps them only if they are out of order.</li>
+            <li>Moved method InsertionSort to new static class Sorting.</li>
+          </ul>
+        </li>
+        <li>Added static class Sorting containing sorting algorithms that operate on IList&lt;T&gt; collections.
+          <ul>
+            <li>Added methods HeapSort, QuickSort &amp; ShellSort for the eponymous standard sorting algorithms. ShellSort is stable like InsertionSort but much faster. QuickSort works on any IList&lt;T&gt;, unlike the BCL Sort method. HeapSort is unstable and slow, and was added only for completeness.</li>
+            <li>Added method BestQuickSort that runs the fastest available QuickSort implementation, depending on the concrete type of the IList&lt;T&gt; collection. For Array and List(Ex)&lt;T&gt; collections, this is the BCL Sort method which is still faster than the new QuickSort method.</li>
+            <li>All algorithms check for less than two elements, and the complex unstable algorithms also check for exactly two or three elements.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.0.5 (released 2008-12-24)</h4>
+  <ul>
+    <li>BooleanFlag.ValueChanged &amp; ValueSet: Guarded raising of events against asynchronous removal of last event handler.</li>
+    <li>Geometry.PolygonGrid.DisplayToGridCore: Guarded debug assertions with comparison epsilons. Since coordinates were changed from float to double, these assertions would get incorrectly triggered by discrepancies in floating-point rounding when running in debug mode.</li>
+    <li>Windows:
+      <ul>
+        <li>BitmapUtility: Added Read overload that accepts two additional flags to request horizontal and/or vertical mirroring of the source bitmap. This lets you perform simple bitmap transformations without the inevitable blurring caused by WPF drawing.</li>
+        <li>TaskEvents: Guarded raising of all events against asynchronous removal of last event handler.</li>
+        <li>WindowsUtility: Added method DoEvents that processes all queued WPF messages with the risk of reentrancy, just like the eponymous Windows Forms method. As with the AnimationWorker class, I use this method only because WPF does not offer any better options for synchronous display updates.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.0.4 (released 2008-12-08)</h4>
+  <ul>
+    <li>Added structures NaturalString &amp; OrdinalString that implicitly sort a wrapped string with StringUtility.CompareNatural, i.e. using a natural rather than lexical sorting order. The sorting rules are CurrentCulture and Ordinal, respectively.</li>
+    <li>StringUtility:
+      <ul>
+        <li>CompareNatural, IsRichText, IsValidEmail &amp; PackSpace: Changed to extension methods.</li>
+        <li>Added extension method CompareOrdinal that calls CompareNatural with Ordinal sorting rules.</li>
+        <li>Validate: Added generic overload that accepts a specified replacement text.</li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Polygon.ToFigure: Froze returned PathFigure to improve performance and prevent changes to the cached object.</li>
+        <li>PolygonGrid: Added method DrawOptimized that eliminates duplicate lines. This roughly halves the total number of lines drawn, with corresponding savings in memory consumption and rendering time.</li>
+        <li>PolygonGrid.Figures: Froze returned PathFigureCollection to improve performance and prevent changes to the cached object. Since Figures no longer attempts to modify an existing PathFigureCollection that might have been created by another thread, multiple threads may now modify the same PolygonGrid instance without causing a Dispatcher exception.</li>
+      </ul>
+    </li>
+    <li>Windows:
+      <ul>
+        <li>Added class AnimationWorker that synchronizes arbitrary operations with WPF rendering updates. This works like the Windows Forms DoEvents call and carries the same risk of reentrancy, but WPF does not appear to offer a better solution to this problem.</li>
+        <li>BitmapBuffer &amp; BitmapUtility: Added Overlay overloads that perform color substitution during alpha blending.</li>
+        <li>WindowsUtility:
+          <ul>
+            <li>Added method FindListItem that finds the ListBoxItem (or derived type, i.e. ListViewItem or ComboBoxItem) which contains a specified DependencyObject. Use this method to determine the list item for an embedded control that received an input event.</li>
+            <li>Added extension method GetTypeface that creates a WPF control’s current Typeface from its Font properties.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest: Bitmap Overlay Test: Added Color Substitution button to demonstrate the new Overlay overloads.</li>
+  </ul>
+  <h4>Version 4.0.3 (released 2008-11-08)</h4>
+  <ul>
+    <li>Added static read-only Empty fields that contain a default-initialized instance to all structs (Pair &amp; Triplet, Geometry.Line/LineF/LineI, Net.MapiAddress).</li>
+    <li>Win32Api:
+      <ul>
+        <li>Added structure MemoryStatusEx for new method Kernel.GlobalMemoryStatusEx.</li>
+        <li>Kernel:
+          <ul>
+            <li>Added method GlobalMemoryStatusEx that returns valid values on 64-bit operating systems, unlike GlobalMemoryStatus.</li>
+            <li>Added method MoveMemory (translated to RtlMoveMemory) for fast copying of memory blocks.</li>
+          </ul>
+        </li>
+        <li>User: Added method GetCursorPos that determines the current screen position of the mouse cursor, unlike System.Windows.Input.Mouse.GetPosition which only determines positions relative to WPF input elements.</li>
+      </ul>
+    </li>
+    <li>Windows:
+      <ul>
+        <li>Added class HwndWrapper that wraps a Win32 window handle (HWND) in a Windows Forms IWin32Window interface. This allows using a WPF Window’s handle with a Windows Forms method that expects a Windows Forms IWin32Window instance.</li>
+        <li>CustomColorDialog: Added Show overload that takes a WPF Window &amp; Color instead of a Windows Forms IWin32Window &amp; GDI+ Color.</li>
+        <li>StackTextBlock:
+          <ul>
+            <li>Added default constructor to allow use in XAML pages.</li>
+            <li>DefaultText: Setting this property correctly sets the Text property when the message stack is empty.</li>
+          </ul>
+        </li>
+        <li>WindowsUtility:
+          <ul>
+            <li>Added extension methods ToGdiColor &amp; ToWpfColor that convert between GDI+ and WPF Color values.</li>
+            <li>Added method GetVisualDpi that returns the dpi resolution at which a Visual has been rendered.</li>
+            <li>Added property ScreenDpi that returns the dpi resolution of the primary desktop.</li>
+            <li>Changed method GetMemoryStatus to use GlobalMemoryStatusEx for 64-bit compatibility.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.0.2 (released 2008-09-15)</h4>
+  <ul>
+    <li>StringUtility.Validate&lt;T&gt;: Added missing &lt;typeparam&gt; tag to XML comment.</li>
+    <li>Collections.CollectionsUtility:
+      <ul>
+        <li>Added missing &lt;typeparam&gt; tags to XML comments of all generic methods.</li>
+        <li>Renamed Equals methods to SequenceEqual for conformance with System.Linq.Enumerable.</li>
+        <li>Renamed non-generic MoveItem and SequenceEqual overloads to MoveItemUntyped and SequenceEqualUntyped, respectively, since C# cannot resolve overloads for generic and non-generic collections if both types are in scope.</li>
+        <li>SequenceEqual(Untyped) overloads for ICollection &amp; ICollection&lt;T&gt; dispose of any created enumerators before returning.</li>
+        <li>Added SequenceEqual(Untyped) overloads for IList &amp; IList&lt;T&gt; that use indexers instead of enumerators for element comparison.</li>
+        <li>Changed all MoveItem(Untyped) and SequenceEqual(Untyped) overloads to extension methods.</li>
+      </ul>
+    </li>
+    <li>Geometry.GeometryUtility:
+      <ul>
+        <li>Added extension methods ToInt32Rect &amp; ToRectI that convert integer-based rectangles between their Int32Rect and RectI representations.</li>
+        <li>Added ToRect overload that takes an Int32Rect argument. Amazingly, Microsoft failed to provide a conversion even between these two types that both reside in System.Windows.</li>
+      </ul>
+    </li>
+    <li>Windows:
+      <ul>
+        <li>Added enumeration ScrollDirection that had already been part of Tektosyne 3.x.</li>
+        <li>BitmapBuffer &amp; BitmapUtility: Changed all Int32Rect arguments to RectI for conformance with our geometric type system.</li>
+        <li>WindowsUtility:
+          <ul>
+            <li>Added method CreateLineFigure that converts a Point array to a PathFigure of connected lines.</li>
+            <li>Added extension method ScrollStep that scrolls a ScrollViewer by an arbitrary step size.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.0.1 (released 2008-09-03)</h4>
+  <ul>
+    <li>Geometry:
+      <ul>
+        <li>GeometryUtility:
+          <ul>
+            <li>Added extension method Round with three overloads that convert double-based Point, Size &amp; Rect structures to their integer-based equivalents.</li>
+            <li>Added extension methods ToPoint, ToSize &amp; ToRect that convert integer-based Point, Size &amp; Rect structures to their double-based equivalents.</li>
+          </ul>
+        </li>
+        <li>Polygon.ToFigure: Changed optional offset argument from Point to Vector.</li>
+      </ul>
+    </li>
+    <li>Windows:
+      <ul>
+        <li>BitmapBuffer &amp; BitmapUtility: Added method MakeTransparent that changes all opaque pixels of a specified color to transparent black.</li>
+        <li>BitmapUtility:
+          <ul>
+            <li>Added method ColorToOpaquePbgra32 that converts a Color value to its PBGRA32 representation, assuming full opacity.</li>
+            <li>Added Grow overload that takes a RenderTargetBitmap instead of a WriteableBitmap.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 4.0.0 (released 2008-08-24)</h4>
+  <p>Upgraded solution to Microsoft .NET Framework 3.5 SP1 and Windows Presentation Foundation. This triggered a namespace reorganization:</p>
+  <ul>
+    <li>Added namespace Geometry for types &amp; algorithms related to geometry and pathfinding.</li>
+    <li>Added namespace Windows for types &amp; algorithms related to WPF, including Windows Forms interoperation.</li>
+    <li>Removed obsolete namespaces Drawing, Mathematics &amp; WinForms. Drawing and WinForms were focused on the obsolete GDI+ and Windows Forms technologies, respectively, while Mathematics did not reflect a standard namespace and contained too few types after reorganization.</li>
+    <li>Moved classes Fortran, MathUtility &amp; MersenneTwister from obsolete namespace Mathematics to namespace Tektosyne.</li>
+    <li>Moved abstract geometric types &amp; algorithms from obsolete namespaces Drawing &amp; Mathematics to new namespace Geometry.</li>
+    <li>Moved GUI-specific types &amp; algorithms from obsolete namespaces Drawing &amp; WinForms to new namespace Windows.</li>
+    <li>Renamed namespace NetMail to Net for conformance with general naming scheme.</li>
+  </ul>
+  <p>Tektosyne:</p>
+  <ul>
+    <li>Removed obsolete delegate Combination. Use the more versatile System.Func&lt;…&gt; delegates instead.</li>
+    <li>Collections:
+      <ul>
+        <li>Removed obsolete static class Apply. Use the extension methods in class System.Linq.Enumerable instead.</li>
+        <li>CollectionsUtility:
+          <ul>
+            <li>Removed obsolete method CreateList. Use the new collection initializer syntax of C# 3 instead.</li>
+            <li>Removed obsolete method ToArray. Use the eponymous extension method in class System.Linq.Enumerable instead.</li>
+            <li>Equals: Unchanged. Theoretically obsoleted by System.Linq.Enumerable.SequenceEqual, but that method does not compare the <em>number</em> of elements in each sequence before comparing individual elements. This severely impacts performance when comparing sequences with different sizes but long identical prefixes. See <a href="https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=361633">Microsoft Connect Feedback</a>.</li>
+            <li>InsertionSort: Changed to extension method of interface IList&lt;T&gt;.</li>
+            <li>Added unit tests for Equals&lt;T&gt; and InsertionSort&lt;T&gt;.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Geometry:
+      <ul>
+        <li>Please refer to section <a href="ReadMe.html#Geometry">Geometric Primitives</a> in the ReadMe file regarding our workaround for Microsoft’s chaotic dispersal of geometric types across the BCL.</li>
+        <li>Changed all floating-point coordinates to Double or corresponding WPF types (Point, Rect, Size).</li>
+        <li>Added class GeometryUtility containing several Circumscribe overloads based on the old Drawing.DrawingUtility.CoverRectangle method.</li>
+        <li>Line: Renamed to LineI and added new structure Line using Double coordinates.</li>
+        <li>Polygon: Added Draw and ToFigure methods for easy generation of WPF drawings.</li>
+        <li>PolygonGrid: Added Draw method and Figures property for easy generation of WPF drawings.</li>
+      </ul>
+    </li>
+    <li>Windows:
+      <ul>
+        <li>Added adapter class ContainerVisualHost for hosting a single ContainerVisual (typically DrawingVisual) within a FrameworkElement.</li>
+        <li>Added enumeration DefaultTheme and static class DefaultThemeSetter to select a specific WPF default theme at the start of a WPF application.</li>
+        <li>FormattingPanel: Changed to class FormatTextBlock (derived from TextBlock) and removed SetWidth methods since WPF controls automatically resize to the required width.</li>
+        <li>StatusBarMessagePanel: Changed to class StackTextBlock (derived from TextBlock) and removed visual customization which is now handled in XAML code.</li>
+        <li>Added class WindowsUtility containing relevant methods &amp; properties of the old WinForms classes Application &amp; WinFormsUtility.</li>
+        <li>Added a superset of the bitmap manipulation functionality offered by the old Drawing.DrawingUtility class.
+          <ul>
+            <li>Added class BitmapBuffer that caches a bitmap’s pixel data. Prior to .NET 3.5 SP1, the WPF WriteableBitmap class only allowed reading &amp; writing entire pixel blocks. BitmapBuffer exposes a secondary pixel buffer with various helper methods that simplify pixel manipulation.</li>
+            <li>Added class BitmapUtility with helper methods for the WPF WriteableBitmap class. This includes manipulating PBGRA32 color values as well as accessing a bitmap’s BackBuffer, a feature that was added by .NET 3.5 SP1. You may use either BitmapBuffer or BitmapUtility for pixel manipulation, depending on whether you want a separate buffer.</li>
+          </ul>
+        </li>
+        <li>Added several classes intended for Windows Forms interoperation.
+          <ul>
+            <li>Added Windows Forms class ComponentControl which hosts non-Control components such as ErrorProvider, HelpProvider, and ToolTip.</li>
+            <li>Added Windows Forms class NumericUpDownHost (derived from ComponentControl) which hosts one NumericUpDownEx control and forwards all relevant properties. Use this control for hosting NumericUpDown controls in WPF WindowsFormsHost elements.</li>
+            <li>Added class WindowsFormsHostEx that shifts input focus to the hosted Windows Forms control, allowing you to reliably activate Windows Forms controls using the keyboard shortcuts of WPF labels.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Xml.XmlUtility:
+      <ul>
+        <li>Changed all Move… and Read… methods to extension methods of class XmlReader.</li>
+        <li>Renamed all Read<em>X</em>Attribute methods to ReadAttributeAs<em>X</em> for conformance with the Read(Element)ContentAs<em>X</em> methods of class XmlReader.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Tektosyne.GuiTest:</p>
+  <ul>
+    <li>Can now run from a shared network drive since .NET 3.5 SP1 extends “Full Trust” permissions to local network shares.</li>
+    <li>Removed test dialogs for the obsolete ControlBuilder and RichTextDialog classes.</li>
+    <li>Added test dialogs for MapiMail class and for new BitmapBuffer class.</li>
+  </ul>
+  <h4>Version 3.4.6 (released 2008-08-21)</h4>
+  <ul>
+    <li>Pair &amp; Triplet: Changed unit tests to match new GetHashCode implementations.</li>
+    <li>Collections:
+      <ul>
+        <li>CollectionsUtility.InsertionSort:
+          <ul>
+            <li>Allowed null reference for the Comparison&lt;T&gt; argument. This requests the Comparer&lt;T&gt;Default.Compare method.</li>
+            <li>Added second overload that implicitly specifies a null reference for the Comparison&lt;T&gt; argument.</li>
+          </ul>
+        </li>
+        <li>ListEx: Added two remaining overloads of standard method List&lt;T&gt;.CopyTo.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.4.5 (released 2008-08-08)</h4>
+  <ul>
+    <li>Pair &amp; Triplet: Changed GetHashCode to take all properties into account.</li>
+    <li>IO.RootedPath: Changed GetHashCode to take both RootFolder and AbsolutePath into account.</li>
+    <li>NetMail:
+      <ul>
+        <li>Added structure MapiAddress holding the display name and e-mail address of the sender or recipient of a Simple MAPI message.</li>
+        <li>MapiMail: Changed all KeyValuePair&lt;String, String&gt; arguments to the new MapiAddress structure.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.4.4 (released 2008-07-25)</h4>
+  <ul>
+    <li>Added immutable generic structures Pair &amp; Triplet to store two or three arbitrary values, respectively.</li>
+    <li>StringUtility: Added generic Validate overload for culture-invariant formatting of arbitrary objects.</li>
+    <li>WinForms.NumericUpDownEx: Added protected method OnLostFocus that correctly resets to Minimum when focus is lost while entry field does not contain a valid Decimal number.</li>
+  </ul>
+  <h4>Version 3.4.3 (released 2008-06-10)</h4>
+  <p>Upgraded source code to Visual Studio 2008. The binaries still target .NET 2.0.</p>
+  <ul>
+    <li>Replaced NAnt.build with Publish.proj for MSBuild. This script only builds the distribution package; use MSBuild on Tektosyne.sln or Tektosyne.csproj to perform unsigned builds from the command line.</li>
+    <li>Tektosyne.csproj: Removed SearchReplace.cs and corresponding pre-build event since VS2008 can generate resource properties with public access level.</li>
+    <li>Tektosyne.GuiTest:
+      <ul>
+        <li>Replaced separate application manifest file with embedded “app.manifest” standard file.</li>
+        <li>Replaced Common Controls dependency in manifest file with Application.EnableVisualStyles call.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.UnitTest:
+      <ul>
+        <li>Updated NUnit version to 2.4.7.</li>
+        <li>Changed NUnit output file when run within VS2008 to TestResult.xml in the Tektosyne root directory.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.4.2 (released 2008-06-02)</h4>
+  <ul>
+    <li>Tektosyne.csproj: Added missing quotes around command name and first argument in prebuild event. This should finally allow Tektosyne to compile in directories containing spaces, including folders under “My Documents”. Thanks to Pat O’Hara for solving this mystery!</li>
+    <li>Collections: Added static property Empty to all collections that provide a read-only wrapper, returning an empty immutable collection that is created on access and cached for repeated access. Clients can use these collections instead of null references to indicate an empty result set.</li>
+  </ul>
+  <h4>Version 3.4.1 (released 2008-04-28)</h4>
+  <ul>
+    <li>Strings: Added several new error messages.</li>
+    <li>DetailException.Message: Changed default value to system-supplied localized description.</li>
+    <li>WinForms.MessageDialog.Show: When showing exception data, the secondary message area now displays the exception’s Message text, then its Detail text if any, and then its full string representation.</li>
+  </ul>
+  <h4>Version 3.4.0 (released 2008-03-21)</h4>
+  <ul>
+    <li>Added attribute [DebuggerStepThrough] to all trivial property getters &amp; setters to simplify debugging.</li>
+    <li>StringUtility: Added method CompareNatural that performs a “natural” string comparison. This method breaks strings into sequences of decimal digits and other characters, and sorts the former by their numeric values.</li>
+    <li>Drawing.PolygonGrid:
+      <ul>
+        <li>Added properties VisibilityGraph and WorldNodeRadius required by IPlanarGraph interface. VisibilityGraph is backed by a new InstanceData field which is only recreated when the Element property changes.</li>
+        <li>Removed properties AStar and Coverage. Pathfinding algorithms don’t logically belong in this class, and things got too complicated with the two new algorithms.</li>
+      </ul>
+    </li>
+    <li>Mathematics:
+      <ul>
+        <li>Added class FloodFill that determines all adjacent locations in an IPlanarGraph for which a specified predicate succeeds. This is essentially a simpler version of the Coverage algorithm that ignores path costs and does not require the caller to supply an IPlanarAgent.</li>
+        <li>Added class Visibility that determines all locations in an IPlanarGraph which are visible from a specified location, using a specified predicate for opacity. This is a line-of-sight algorithm based on trigonometric calculations that consider the world coordinates of each location.</li>
+        <li>AStar &amp; Coverage: Added implicit support for moving agents that distinguish between temporary and permanent occupation of a graph node. AStar support for such agents is not perfect – please see the Class Reference for details.</li>
+        <li>IPlanarAgent: <b>Breaking Semantic Changes</b>
+          <ul>
+            <li>CanMakeStep: Should only test for <em>temporary</em> residence (during a movement) and never call CanOccupy.</li>
+            <li>CanOccupy: Should only test for <em>permanent</em> residence (at the end of a movement) and return true by default.</li>
+            <li>Removed obsolete property PartialOccupation. The distinction between temporary and permanent residence is now implicit by having CanOccupy return false under certain conditions.</li>
+          </ul>
+        </li>
+        <li>IPlanarGraph:
+          <ul>
+            <li>Added property VisibilityGraph to provide a graph variant that is guaranteed to work with line-of-sight algorithms, regardless of the original graph’s concept of neighboring locations.</li>
+            <li>Added property WorldNodeRadius to allow line-of-sight algorithms to determine which locations might obscure each other.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>WinForms.MessageDialog &amp; RichTextDialog: Changed to resizable dialog border when a text box is created. The dialog’s minimum size is its creation size, and the text box grows as the dialog is resized.</li>
+    <li>WinForms.ListViewColumnSorter:
+      <ul>
+        <li>Added boolean property NaturalSort that requests StringUtility.CompareNatural instead of String.Compare for lexical sorting.</li>
+        <li>Added enumeration property StringComparison that specifies options for lexical sorting, whether standard or natural.</li>
+      </ul>
+    </li>
+    <li>WinForms.NumericUpDownEx:
+      <ul>
+        <li>FormatValue: Fixed crash when attempting to use Hexadecimal format.</li>
+        <li>IsTextValid: Changed implementation to use TryParse instead of exceptions.</li>
+      </ul>
+    </li>
+    <li>Tektosyne.GuiTest:
+      <ul>
+        <li>Added “trustInfo” element to manifest file. Supposedly this makes Vista happy if you have UAC enabled (I don’t).</li>
+        <li>Added menu item Mathematics: Visibility to test the new Visibility algorithm on a random graph. Black hexagons are considered opaque, all others transparent. Squares indicate the hexagons visible from the central hexagon.</li>
+        <li>Drawing: Save &amp; Print Grid: Fixed Print Grid button not working on 64-bit Windows. Turned out that the Windows Forms class PrintDialog has a property called UseEXDialog that must be manually set to <code>true</code>, or else the dialog won’t work at all!</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.3.3 (released 2007-08-19)</h4>
+  <ul>
+    <li>Collections: Fixed XML documentation of all Keys/Values properties.</li>
+    <li>Drawing.Line/LineF: Fixed format error in ToString methods.</li>
+    <li>WinForms: Fixed XML documentation of Application.MemoryStatus and MenuItemEx.IsEnabled properties.</li>
+  </ul>
+  <h4>Version 3.3.2a (released 2007-05-25)</h4>
+  <p>Compatibility fixes only, no functional changes.</p>
+  <ul>
+    <li>Tektosyne appears to work fine on Windows Vista. The ReadMe file was updated accordingly.</li>
+    <li>Changed manifest file for <code>Tektosyne.GuiTest</code> to reference the 64-bit version of the Common Controls library when running on 64-bit Windows. Previously, trying to run this application on 64-bit Windows would generate a meaningless error message.</li>
+    <li>Added notes regarding very long path names and Visual C# Express to the <a href="ReadMe.html#Building">ReadMe file</a>. Janis Bridges originally reported these issues for Hexkit, but I figured they might affect Tektosyne users as well. (<b>Update:</b> The problem wasn’t very long paths but paths containing spaces, see version 3.4.2)</li>
+  </ul>
+  <h4>Version 3.3.2 (released 2007-04-30)</h4>
+  <ul>
+    <li>Updated NAnt.build for NAnt 0.85 final.</li>
+    <li>Updated Visual Studio solution and NAnt.build for NUnit 2.4.0 final.</li>
+    <li>Added NUnit assembly <code>nunit.framework.dll</code> to the Tektosyne distribution since this is apparently the only way to reliably reference this assembly.</li>
+  </ul>
+  <h4>Version 3.3.1 (released 2007-04-05)</h4>
+  <ul>
+    <li>Collections.DictionaryEx/SortedDictionaryEx/SortedListEx:
+      <ul>
+        <li>Added AddRange method, as in List/ListEx and derived classes.</li>
+        <li>Constructors that take an IDictionary argument check for key mismatches on IKeyedValue values.</li>
+      </ul>
+    </li>
+    <li>Drawing.PolygonGrid.DisplayToGridClipped: Added final check for valid grid coordinates. This catches invalid return values for grids that are one element wide and/or high.</li>
+    <li>WinForms.BitmapPanel: Fixed nonfunctional scrollbars by hacking around a bug in .NET 2.0.</li>
+  </ul>
+  <h4>Version 3.3.0 (released 2006-11-05)</h4>
+  <ul>
+    <li>Prefixed all Utility classes with their enclosing namespace for disambiguation.</li>
+    <li>Mathematics: Added new A* option to eliminate zero-cost oscillations.
+      <ul>
+        <li>AStar: Added pathfinding option UseWorldDistance that prefers path nodes with a minimal world distance from the target location, given equal path costs.</li>
+        <li>IPlanarGraph and Drawing.PolygonGrid: Added method GraphToWorld as a generalized wrapper for PolygonGrid.GridToDisplay.</li>
+      </ul>
+    </li>
+    <li>WinForms: Automated the creation of standard components.
+      <ul>
+        <li>ContainerForm: Added properties ErrorProvider, HelpProvider, and ToolTip with on-demand creation and automatic disposal of these components.</li>
+        <li>NumericUpDownEx: Added method UpdateToolTip to manually refresh the tool tip message when the Minimum or Maximum values change after a ToolTip component has been assigned.</li>
+        <li>Templates.FormTemplate: CreateControl returns a ContainerForm instead of a Form.</li>
+        <li>Templates.NumericUpDownTemplate: SetProperties automatically sets ErrorProvider and ToolTip to the corresponding components of the nearest ContainerForm parent.</li>
+      </ul>
+    </li>
+    <li>Xml.XmlUtility: Added typesafe generic overload for ReadEnumAttribute.</li>
+  </ul>
+  <h4>Version 3.2.2 (released 2006-10-08)</h4>
+  <ul>
+    <li>Drawing.PolygonGrid:
+      <ul>
+        <li>Added static method AreCompatible to check a given Polygon and PolygonGridShift value for compatibility within the same PolygonGrid.</li>
+        <li>Element: Setting this property only resets GridShift to a default value if the new Element is incompatible with the current GridShift.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.2.1 (released 2006-08-28)</h4>
+  <ul>
+    <li>Collections: Added missing ArgumentNullException checks to AsReadOnly constructors.</li>
+    <li>Drawing:
+      <ul>
+        <li>Added enumeration Compass defining the eight major compass directions.</li>
+        <li>Added structure LineF representing a directed line with floating-point coordinates.</li>
+        <li>Line.TransformAngle: Replaced with Degrees, a simple conversion without the special offset that I mistakenly believed necessary for transformation matrices.</li>
+      </ul>
+    </li>
+    <li>Drawing.Polygon:
+      <ul>
+        <li>Added property HasTopIndex to determine whether Connectivity index zero corresponds to a topmost edge or vertex.</li>
+        <li>Added methods AngleToCompass, CompassToIndex, and IndexToCompass to convert between Compass directions and angles or Connectivity indices, respectively.</li>
+        <li>Added method Resize to create a new Polygon with a new Length and otherwise identical property values.</li>
+        <li>AngleToIndex, IndexToAngle: Added missing half-segment shift when HasTopIndex is false.</li>
+        <li>Circumscribe, Inflate, Inscribe: Copied missing VertexNeighbors value to new instance.</li>
+      </ul>
+    </li>
+    <li>Drawing.PolygonGrid:
+      <ul>
+        <li>Added method AsReadOnly with property IsReadOnly to create a read-only wrapper around a given PolygonGrid. Attempting to change the read-only view throws an exception. Changes to the original instance are reflected in the read-only view.</li>
+        <li>Added overloaded method DisplayToGridClipped that clips invalid display coordinates to the nearest valid grid coordinates.</li>
+        <li>Added overloaded method GetElementBounds that returns the bounding rectangle for a grid element or a region of adjacent grid elements.</li>
+      </ul>
+    </li>
+    <li>Drawing.Utility: Added method CoverRectangle that converts a RectangleF into a Rectangle that entirely covers the source rectangle.</li>
+    <li>WinForms:
+      <ul>
+        <li>Templates.FormTemplate &amp; Tektosyne.Controls.xsd: Added field ShowIcon and replaced obsolete fields Closed/Closing with FormClosed/FormClosing.</li>
+        <li>Templates.DialogTemplate: ShowIcon is set to false, and HelpButton is set to true if a valid event host and HelpRequested handler are specified.</li>
+        <li>Utility.InitializeDialog: ShowIcon is set to false, and HelpButton remains unchanged.</li>
+      </ul>
+    </li>
+    <li>Xml.Utility: Added method overloads ReadDoubleAttribute and ReadSingleAttribute.</li>
+  </ul>
+  <h4>Version 3.2.0 (released 2006-06-27)</h4>
+  <ul>
+    <li>Drawing: Many changes to support arbitrary polygons.
+      <ul>
+        <li>Added class Polygon and enumeration PolygonOrientation. Polygon represents a regular polygon with an arbitrary side count and length, and one of the orientations defined by PolygonOrientation.</li>
+        <li>Added class PolygonGrid and enumeration PolygonGridShift. PolygonGrid represents a rectangular grid based on a four-sided or six-sided Polygon, and with shifted rows or columns as defined by PolygonGridShift.</li>
+        <li>Removed obsolete types Hexagon, HexagonEdge, and HexagonRectangle.</li>
+      </ul>
+    </li>
+    <li>Drawing.Utility: Added method GetBounds with two overloads to determine the minimum bounding rectangle for a set of Point or PointF coordinates.</li>
+    <li>Mathematics.Fortran:
+      <ul>
+        <li>Added overloaded method Modulo. The so-called “modulus” operator % actually calculates the remainder, which is different from the true modulus function for negative values.</li>
+        <li>Min, Max, Sum: Added Int64 overloads.</li>
+      </ul>
+    </li>
+    <li>WinForms.Templates.ControlTemplate &amp; Tektosyne.Controls.xsd: Added fields MinimumHeight, MinimumWidth, Paint, and Resize.</li>
+    <li>WinForms.Utility.CreateButtons: All created buttons are anchored to the bottom of the hosting dialog. This allows CreateButtons to be used with resizable dialogs.</li>
+    <li>Tektosyne.GuiTest: Added Drawing menu.
+      <ul>
+        <li>Polygon &amp; Polygon Grid: Show test dialogs for classes Polygon and PolygonGrid.</li>
+        <li>Save &amp; Print Grid: Create PNG file or printed page for arbitrary PolygonGrid. This dialog supersedes the package <code>MakeHexMap.zip</code> that was available as a separate download.</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 3.1.0 (released 2006-05-08)</h4>
+  <ul>
+    <li>Class Reference: Added general thread safety statements, and specific notes on classes whose static methods may require manual synchronization.</li>
+    <li>Strings.resx: Updated to Microsoft ResX Schema 2.0 and added auto-generated Strings class with strongly-typed resource properties. A build-time hack elevates the default visibility of this class, as described in the <a href="ReadMe.html#Resources">ReadMe</a> file.</li>
+    <li>Renamed all System.Drawing.Graphics variables from “paint” to “graphics”, for conformance with other variable names.</li>
+    <li>Application: Renamed to WinForms.Application and removed properties Company, Directory, Product, and Version which are duplicated in System.Windows.Forms.Application.</li>
+    <li>BooleanFlag, IO.RootedPath: Changed null comparisons with object casts to Object.ReferenceEquals calls. The method call is more readable and gets compiled to the same optimized code.</li>
+    <li>Collections.Utility: Added generic method InsertionSort, providing a stable sort algorithm which the BCL lacks.</li>
+    <li>Drawing.Utility: Changed DialogFont value to SystemFonts.MessageBoxFont which reflects the user’s system font size selection, unlike the old value of SystemFonts.DialogFont.</li>
+    <li>Global: Replaced method GetMemoryStatus with property WinForms.Application.MemoryStatus and deleted empty class.</li>
+    <li>WinForms.Utility: Added method GetButtonText which translates DialogResult values into localized button labels.</li>
+  </ul>
+  <h4>Version 3.0.1 (released 2005-12-08)</h4>
+  <ul>
+    <li>Unsealed all public classes outside of namespace Win32Api</li>
+    <li>BooleanFlag.GetHashCode: Changed to Int32 equivalent of Value</li>
+    <li>WinForms.Templates: Renamed class TemplateBase to Template</li>
+  </ul>
+  <h4>Version 3.0.0 (released 2005-10-30)</h4>
+  <ul>
+    <li>Upgraded solution to Microsoft .NET Framework 2.0</li>
+    <li>Moved project Tektosyne to eponymous subdirectory</li>
+    <li>Renamed project Tektosyne.Test to Tektosyne.GuiTest</li>
+    <li>Added project Tektosyne.UnitTest for NUnit 2.2.2</li>
+    <li>Changes due to introduction of generics:
+      <ul>
+        <li>All classes with reflective Equals method implement IEquatable&lt;T&gt;</li>
+        <li>Added generic class EventArgs for the transmission of a single value</li>
+        <li>Replaced all custom EventArgs and EventHandler classes with generic classes</li>
+        <li>Replaced all CodeSmith-generated collections with generic collections (see below)</li>
+      </ul>
+    </li>
+    <li>Removed obsolete classes and members:
+      <ul>
+        <li>PrecisionTimer obsoleted by System.Diagnostics.Stopwatch</li>
+        <li>StringUtility.IsEmpty/IsNotEmpty obsoleted by System.String.IsNullOrEmpty</li>
+        <li>StringUtility.NotNull obsoleted by new ?? operator</li>
+        <li>StringUtility.Split obsoleted by new System.String.Split overload</li>
+        <li>StringUtility.StartsWith obsoleted by new System.String.StartsWith overload</li>
+        <li>WinForms.MenuItemEx.Name obsoleted by System.Windows.Forms.Menu.Name</li>
+      </ul>
+    </li>
+    <li>Added generic delegate Combination for aggregating values</li>
+    <li>Added ctor with inner exception parameter to all exception classes</li>
+    <li>StringUtility (formerly Strings.Utility): Added method IsValidEmail</li>
+    <li>Booleans:
+      <ul>
+        <li>Renamed SetOnlyFlag to BooleanSetFlag and placed in BooleanFlag file</li>
+        <li>Renamed SetClearFlag to BooleanSetClearFlag and placed in BooleanFlag file</li>
+        <li>Moved BooleanFlag to Tektosyne.BooleanFlag, along with derived classes</li>
+        <li>Removed empty Booleans namespace</li>
+      </ul>
+    </li>
+    <li>Collections:
+      <ul>
+        <li>Added classes Apply and KeyMismatchException</li>
+        <li>Added generic collection classes DictionaryEx, ListEx, KeyedList, MultiKeyedList, QueueEx, SortedDictionaryEx, SortedListEx, StackEx</li>
+        <li>Replaced class DictionaryList with generic class KeyValueList</li>
+        <li>Replaced interface IDictionaryValue with IKeyedValue and IMutableKeyedValue</li>
+      </ul>
+    </li>
+    <li>Collections.Utility:
+      <ul>
+        <li>Changed methods to use generics and IMutableKeyedValue</li>
+        <li>Added generic methods CreateList, Equals, MoveItem, ToArray, ValidateKey</li>
+      </ul>
+    </li>
+    <li>IO:
+      <ul>
+        <li>Added class RootedPath</li>
+        <li>Renamed class Path to PathEx</li>
+        <li>Utility.CopyAndReplace: Revised parameter naming</li>
+      </ul>
+    </li>
+    <li>IO.PathEx (formerly Path):
+      <ul>
+        <li>Added methods AddDirectorySeparator, NormalizeDirectorySeparator, and RemoveDirectorySeparator</li>
+        <li>Equals: Null references and empty strings are equivalent</li>
+        <li>Equals: Removes trailing directory separators before comparison</li>
+        <li>Shorten: Never returns a null reference</li>
+      </ul>
+    </li>
+    <li>Mathematics.Utility:
+      <ul>
+        <li>Added overloaded method Compare for epsilon comparisons</li>
+      </ul>
+    </li>
+    <li>Strings:
+      <ul>
+        <li>Renamed class Utility to Tektosyne.StringUtility</li>
+        <li>Removed ValidString and empty Strings namespace</li>
+      </ul>
+    </li>
+    <li>WebMail:
+      <ul>
+        <li>Renamed namespace WebMail to NetMail, mirroring .NET 2.0 change</li>
+        <li>Address: User cancellation generates empty result instead of exception</li>
+        <li>ResolveName: Changed out parameters to returned key-and-value pair</li>
+        <li>Address, ResolveName, SendMail:
+          <ul>
+            <li>Current working directory is saved &amp; restored</li>
+            <li>Unmanaged memory is protected by SafeGlobalHandle and SafeMapiHandle</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Win32Api:
+      <ul>
+        <li>Added classes SafeMemoryHandle, SafeGlobalHandle, SafeMapiHandle for unmanaged memory</li>
+        <li>Mapi: Changed IntPtr output parameters to SafeMapiHandle</li>
+        <li>MapiFlags: Changed to base type Int32 for CLS compliance</li>
+        <li>MapiMessage: Changed IntPtr fields to SafeGlobalHandle and implemented IDisposable</li>
+      </ul>
+    </li>
+    <li>WinForms.TaskEvents:
+      <ul>
+        <li>Changed property Timer to class Stopwatch</li>
+        <li>Added methods RestartTimer() and RestartTimer(Int64)</li>
+      </ul>
+    </li>
+    <li>WinForms.Utility:
+      <ul>
+        <li>Added method IsControlRightToLeft</li>
+        <li>Replaced DefaultFont with Drawing.Utility.DialogFont</li>
+      </ul>
+    </li>
+    <li>WinForms.Templates.MessageBoxTemplate:
+      <ul>
+        <li>Added parameter DefaultButton</li>
+        <li>Checks for right-to-left fonts</li>
+      </ul>
+    </li>
+    <li>Xml.Utility: Added methods CreateReaderSettings and CreateWriterSettings</li>
+  </ul>
+  <h4>Version 2.8.0 (released 2005-06-03)</h4>
+  <ul>
+    <li>AssemblyVersion includes build date in Major.Minor.Build.Revision:
+      <ul>
+        <li>Build equals the number of days since 1 January 2000 local time</li>
+        <li>Revision equals half the number of seconds since midnight local time</li>
+      </ul>
+    </li>
+    <li>Reflowed all XML comments to a line width of 100 characters</li>
+    <li>Source code lines may extend to 100 characters or more</li>
+    <li>WinForms:
+      <ul>
+        <li>Added delegate ExceptionEventHandler with ExceptionEventArgs</li>
+        <li>Added delegate MessageEventHandler with MessageEventArgs</li>
+        <li>Added delegate ProgressEventHandler with ProgressEventArgs</li>
+        <li>Added class TaskEvents, replacing class StatusMessage</li>
+        <li>Renamed class MessagePanel to StatusBarMessagePanel</li>
+      </ul>
+    </li>
+    <li>WinForms.ListViewColumnSorter:
+      <ul>
+        <li>Changed number parsing from Double.Parse to Double.TryParse</li>
+        <li>Numbers may contain currency symbols, parentheses, and trailing signs</li>
+      </ul>
+    </li>
+    <li>WinForms.MessageDialog: Increased size of details box</li>
+    <li>WinForms.Templates: Added classes ProgressBar/Splitter/TrackBarTemplate</li>
+    <li>Xml.Utility: Added methods ReadBoolean/Byte/Enum/Int32/StringAttribute</li>
+  </ul>
+  <h4>Version 2.7.4 (released 2005-03-06)</h4>
+  <ul>
+    <li>Reordered class members to conform to MSDN sequence</li>
+    <li>Strings.Utility.PackSpace: Removed RegexOptions.Compiled</li>
+  </ul>
+  <h4>Version 2.7.3 (released 2005-02-28)</h4>
+  <ul>
+    <li>WinForms.Templates:
+      <ul>
+        <li>MessageDialogTemplate: Added missing ShowDialog overload</li>
+        <li>RichTextDialogTemplate: Added missing ShowDialog overload</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 2.7.2 (released 2005-02-20)</h4>
+  <ul>
+    <li>IO.Utility:
+      <ul>
+        <li>Added method SearchDirectory</li>
+        <li>Renamed SearchTree to SearchDirectoryTree</li>
+        <li>Both methods now accept nonexistent directories</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 2.7.1 (released 2005-01-21)</h4>
+  <ul>
+    <li>Class Reference no longer lists .NET Framework internals</li>
+    <li>Added class PropertyValueException for invalid property values</li>
+    <li>DetailException: Base class changed to Exception, as per FxCop</li>
+    <li>Strings.InvalidStringArgumentException:
+      <ul>
+        <li>Renamed to Tektosyne.ArgumentNullOrEmptyException</li>
+        <li>Intended for use with any kind of composite object</li>
+        <li>Base class changed to ArgumentException</li>
+        <li>ctor() and ctor(String) set localized error message</li>
+      </ul>
+    </li>
+    <li>Strings.Utility:
+      <ul>
+        <li>Added Join overload for object arrays</li>
+        <li>Join overloads use ToString rather than type conversion</li>
+      </ul>
+    </li>
+    <li>WebMail.MapiException:
+      <ul>
+        <li>Base class changed to Exception, as per FxCop</li>
+        <li>ctor() sets Message property according to Code</li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Version 2.7.0 (released 2004-12-29)</h4>
+  <ul>
+    <li>Reformatted WhatsNew file for clarity</li>
+    <li>Class Reference now compiled with NDoc 1.3</li>
+    <li>Drawing.Collections: Added class StringPointDictionary</li>
+    <li>Mathematics.AStar and Coverage:
+      <ul>
+        <li>Added properties Agent and Graph, removed property Strict</li>
+        <li>Updated to use new IPlanarAgent members</li>
+      </ul>
+    </li>
+    <li>Mathematics.IPlanarAgent:
+      <ul>
+        <li>Added property PartialOccupation and method CanOccupy</li>
+        <li>Added property RelaxedRange, replacing Strict properties</li>
+      </ul>
+    </li>
+    <li>WebMail.MapiException: ctor(MapiError) sets Message property according to Code</li>
+    <li>WebMail.MapiMail: Added method GetErrorStringAndCode</li>
+    <li>WinForms.ControlBuilder: Added support for modal message dialogs</li>
+    <li>WinForms.StatusMessage: Show updates the status bar’s parent control</li>
+    <li>WinForms.Templates:
+      <ul>
+        <li>Added classes MessageBoxTemplate,MessageDialogTemplate, RichTextDialogTemplate</li>
+        <li>Moved common XML attribute Name to class TemplateBase</li>
+      </ul>
+    </li>
+    <li>WinForms.Utility: Added method GetSystemIcon</li>
+    <li>Xml.Utility: Added method ReadTextElement</li>
+  </ul>
+  <h4>Version 2.6.5 (released 2004-10-09)</h4>
+  <ul>
+    <li>PrecisionTimer: Removed unreliable method GetTimeSlice</li>
+    <li>IO.Path: Added method GetTempFileName</li>
+    <li>Mathematics.AStar: Changed range testing to IsNearTarget call</li>
+    <li>Mathematics.IPlanarAgent: Added method IsNearTarget</li>
+    <li>WinForms.NumericUpDownEx: Fixed number formatting in tool tips</li>
+    <li>WinForms.StatusMessage: Added property Timer</li>
+  </ul>
+  <h4>Version 2.6.4 (released 2004-09-12)</h4>
+  <ul>
+    <li>Drawing.Hexagon: Added static method GetOpposingEdge</li>
+    <li>Drawing.HexagonRectangle:
+      <ul>
+        <li>Added static method GetNeighborEdge</li>
+        <li>Changed methods GetNeighbor, IsLeftRow, IsRightRow to static</li>
+        <li>Fixed evil bug in method IndexOfLocation</li>
+      </ul>
+    </li>
+    <li>Mathematics.AStar:
+      <ul>
+        <li>Changed Absolute/RelativeLimit to search radius limits</li>
+        <li>Fixed suboptimal results for complex paths</li>
+      </ul>
+    </li>
+    <li>Mathematics.Coverage: Optimized path calculations some more</li>
+  </ul>
+  <h4>Version 2.6.3 (released 2004-08-30)</h4>
+  <ul>
+    <li>Changed all loops over collections from foreach to for</li>
+    <li>Collections.DictionaryList.Equals: Added identity check</li>
+    <li>Mathematics.AStar:
+      <ul>
+        <li>Added properties AbsoluteLimit and RelativeLimit</li>
+        <li>Greatly increased performance thanks to list lookup tables</li>
+      </ul>
+    </li>
+    <li>WinForms: Added class StatusMessage</li>
+    <li>WinForms.FormattingPanel: Revised checks for null arguments</li>
+  </ul>
+  <h4>Version 2.6.2 (released 2004-08-08)</h4>
+  <ul>
+    <li>Application: Added property PublicKeyToken</li>
+    <li>Drawing.Utility: Added method BlendRectangle with alpha blending</li>
+    <li>Drawing.Utility.CopyRectangle: Added parameter for alpha threshold</li>
+    <li>Strings: Added class InvalidStringArgumentException</li>
+    <li>Strings.Utility.Join: Rewritten for better performance</li>
+    <li>WinForms.ControlBuilder: Added ScrollBar, HScrollBar, VScrollBar</li>
+  </ul>
+  <h4>Version 2.6.1 (released 2004-07-12)</h4>
+  <ul>
+    <li>Removed security attributes with SecurityAction.RequestOptional</li>
+    <li>Collections.DictionaryList:
+      <ul>
+        <li>Added read-only wrapper, removed synchronized wrapper</li>
+        <li>Enumerators allow modifications to collection elements</li>
+      </ul>
+    </li>
+    <li>Drawing.Collections: Added strongly-typed StringBrushDictionary</li>
+    <li>Mathematics.Collections: Added strongly-typed Int32 collections</li>
+    <li>Strings: Added namespace Collections</li>
+    <li>Strings.Utility: Changed Split to return string array</li>
+  </ul>
+  <h4>Version 2.6.0 (released 2004-07-01)</h4>
+  <ul>
+    <li>Initial release of renamed Tektosyne library</li>
+  </ul>
+  <ul>
+    <li>Signed precompiled assemblies with a strong name</li>
+    <li>Added CLSCompliant, ComVisible, and security attributes</li>
+    <li>Added XML schemas Tektosyne.Controls.xsd and Tektosyne.Menus.xsd</li>
+    <li>Moved classes in General and Reflection to top-level namespace</li>
+    <li>Moved classes MathTbx.Hexagon… to namespace Drawing</li>
+    <li>Renamed namespace BooleanTbx to Booleans, StringTbx to Strings, MathTbx to Mathematics, WinApi to Win32Api</li>
+  </ul>
+  <ul>
+    <li>Booleans.BooleanFlag hierarchy: Changed for full CLS compliance</li>
+    <li>Booleans.SetClearFlag: Replaced SetValue with Value setter</li>
+    <li>Collections.DictionaryList:
+      <ul>
+        <li>Changed all key and value comparisons to Equals calls</li>
+        <li>Fixed Capacity setter for synchronized wrapper</li>
+        <li>Fixed ICollection.CopyTo method when copying to Object[] array</li>
+        <li>Removed invisible Enumerator.Current overload</li>
+      </ul>
+    </li>
+    <li>Collections.Utility: Added method MoveItem (from WinForms.Utility)</li>
+    <li>Drawing.HexagonRectangle: Removed unused CheckBounds overload</li>
+    <li>IO: Added class Path for renamed methods Equals and Shorten</li>
+    <li>Mathematics.Coverage: Rewrote for vastly improved performance</li>
+    <li>Mathematics.Fortran: Added overloaded methods Ceiling and Floor</li>
+    <li>Strings.Utility: Added method NotNull</li>
+    <li>Strings.ValidString: No longer referenced by Tektosyne library</li>
+    <li>WebMail.MapiException: Changed for full CLS compliance</li>
+    <li>WebMail.MapiMail: Ensures that unmanaged memory is deallocated</li>
+    <li>Win32Api: Changed most MAPI enumerations for CLS compliance</li>
+    <li>WinForms: Added namespace Collections</li>
+    <li>WinForms: Added class ControlBuilder and namespace Templates</li>
+    <li>WinForms: Added classes ListViewEx, MenuItemEx, NumericUpDownEx</li>
+    <li>WinForms: Changed class MenuBuilder to match ControlBuilder</li>
+    <li>WinForms: Renamed class RicherTextBox to RichTextBoxEx</li>
+    <li>WinForms: Renamed class StatusProgressBar to StatusBarEx</li>
+    <li>WinForms.Utility: Many changes, please review entire class</li>
+  </ul>
+  <h4>Version 2.5.1 (released 2004-05-14)</h4>
+  <ul>
+    <li>Collections.DictionaryList.CopyTo: Accepts empty arrays</li>
+    <li>WinForms.MenuTemplate: Changed to derive from MenuItem</li>
+    <li>WinForms.MenuBuilder: Changed to reflect new MenuTemplate</li>
+  </ul>
+  <h4>Version 2.5.0 (released 2004-05-09)</h4>
+  <ul>
+    <li>Drawing: Added Line structure and LineCollection class</li>
+    <li>MathTbx: Added interface IPlanarPath and class Utility</li>
+    <li>MathTbx.AStar: Changed to implement IPlanarPath</li>
+    <li>MathTbx.Coverage: Changed Strict parameter to property</li>
+    <li>MathTbx.HexagonEdge: Fixed enumeration sequence</li>
+  </ul>
+  <h4>Version 2.4.2 (released 2004-04-19)</h4>
+  <ul>
+    <li>WinForms: Added ListViewColumnSorter class</li>
+    <li>WinForms.Utility: Added SelectListItem method</li>
+  </ul>
+  <h4>Version 2.4.1 (released 2004-03-31)</h4>
+  <ul>
+    <li>General.Timer: Renamed to PrecisionTimer, added method GetTimeSlice</li>
+    <li>MathTbx.AStar: Added parameter <em>range</em> and method GetLastNode</li>
+    <li>MathTbx.HexagonRectangle.Clone: Fixed method and comments</li>
+    <li>MathTbx.Coverage: Added <em>strict</em> parameter, further increased speed</li>
+    <li>MathTbx.MersenneTwister: Updated home page address</li>
+    <li>WinForms.MessagePanel: Added DefaultText property and Clear method</li>
+  </ul>
+  <h4>Version 2.4.0 (released 2004-02-24)</h4>
+  <ul>
+    <li>Added ToolboxTest application for convenient testing</li>
+    <li>Collections.Utility: Added method Restrict</li>
+    <li>MathTbx.AStar, Coverage, IPlanarAgent: Removed state parameters</li>
+    <li>MathTbx.AStar.UpdateParents: Fixed cost calculation bug (?)</li>
+    <li>MathTbx.Coverage: Greatly increased speed for large regions</li>
+    <li>MathTbx.HexagonRectangle: Fixed Bottom/Right handling</li>
+    <li>MathTbx.IPlanarGraph: Added Locations and IndexOfLocation</li>
+    <li>StringTbx.Utility: Added method IsRichText</li>
+    <li>WinForms: Added classes RicherTextBox and RichTextDialog</li>
+    <li>WinForms.MessageDialog.Show: Correctly sets Owner property</li>
+    <li>WinForms.Utility.KeysToMenuString: Digit keys fixed</li>
+  </ul>
+  <h4>Version 2.3.0 (released 2004-01-27)</h4>
+  <ul>
+    <li>Toolbox.NET is now distributed under the MIT license</li>
+    <li>Added namespace General with classes Timer and Utility</li>
+    <li>Drawing.Utility: Added method GrowBitmap</li>
+    <li>MathTbx: Added classes AStar, Coverage, MersenneTwister, and PathNode; and interfaces IPlanarAgent and IPlanarGraph</li>
+    <li>MathTbx.Hexagon: Added argument checking to constructor</li>
+    <li>MathTbx.HexagonRectangle: Width and Height must be positive</li>
+    <li>MathTbx.HexagonRectangle: Implements IPlanarGraph interface</li>
+    <li>WinApi.Kernel: Added methods Get/SetSystemTimeAdjustment and QueryPerformanceCounter/Frequency</li>
+    <li>WinForms.Utility.GetMemoryStatus: Moved to General.Utility</li>
+  </ul>
+  <h4>Version 2.2.2 (released 2003-12-22)</h4>
+  <ul>
+    <li>Collections.DictionaryList: Added InnerKeys/Values to fix AddRange(DictionaryList) and Equals for synchronized wrapper</li>
+  </ul>
+  <h4>Version 2.2.1 (released 2003-11-28)</h4>
+  <ul>
+    <li>Moved version history to separate WhatsNew file</li>
+    <li>Collections.Utility.ChangeKey: Accepts existing newKey for dictionary</li>
+    <li>StringTbx.Utility.Split: Returns empty collection for empty input string</li>
+  </ul>
+  <h4>Version 2.2.0 (released 2003-11-14)</h4>
+  <ul>
+    <li>Collections.Utility: Added DeleteKey and ProcessKey methods</li>
+    <li>Drawing.Collections: Added strongly typed collection classes</li>
+    <li>MathTbx: Added HexagonRectangle and HexagonEdge classes</li>
+    <li>MathTbx.Hexagon: Added static method Inflate</li>
+    <li>MathTbx.Hexagon.Outline: Fixed inverted sequence of points</li>
+    <li>WinForms.MenuBuilder.Shortcuts: Maps to MenuItem objects</li>
+    <li>WinForms.Utility: Added static method MenuItemEnabled</li>
+  </ul>
+  <h4>Version 2.1.1 (released 2003-09-28)</h4>
+  <ul>
+    <li>BooleanTbx: Added class BooleanEventArgs</li>
+    <li>WinForms.Utility.CreateLabel: Returns created label</li>
+  </ul>
+  <h4>Version 2.1.0 (released 2003-09-23)</h4>
+  <ul>
+    <li>Added build script for NAnt 0.8.3</li>
+    <li>Changed empty string comparisons to zero length tests, as per FxCop 1.21</li>
+    <li>Corrected erroneous XML comments throughout the library</li>
+    <li>Created individual directories for all sub-namespaces</li>
+    <li>Structured all source files with #region directives</li>
+    <li>WebMail.MapiMail.SendMail: Accepts multiple recipients</li>
+    <li>WinApi: Added enumerations which replace all constant fields</li>
+    <li>WinApi.MapiError.GetString: Moved to WebMail.MapiMail.GetErrorString</li>
+  </ul>
+  <h4>Version 2.0.3 (released 2003-06-24)</h4>
+  <ul>
+    <li>BooleanTbx.BooleanFlag: Added null checks to all comparisons</li>
+    <li>Collections.DictionaryList.AddRange: Fixed premature capacity increase</li>
+    <li>StringTbx.ValidString: Added comparison methods and operators</li>
+  </ul>
+  <h4>Version 2.0.2 (released 2003-06-13)</h4>
+  <ul>
+    <li>WinForms.Utility.CreateButtons: Returns list of created buttons</li>
+  </ul>
+  <h4>Version 2.0.1 (released 2003-06-11)</h4>
+  <ul>
+    <li>Collections.DictionaryList: Fixed null reference exceptions</li>
+  </ul>
+  <h4>Version 2.0.0 (released 2003-06-11)</h4>
+  <ul>
+    <li>Changed foreach iterations to use correct item type</li>
+    <li>Collections: Removed class UnsortedList (use DictionaryList instead)</li>
+    <li>Collections.DictionaryList: Rewritten without CollectionBase</li>
+    <li>WinForms: Added class HelpEventConverter</li>
+    <li>WinForms.MessageDialog: Adjusted control layout</li>
+    <li>WinForms.StatusProgressBar: Added Dispose and fixed OnDrawItem</li>
+    <li>WinForms.Utility: Added static method CreateButtons</li>
+    <li>WinForms.Utility.ScrollDirection: Moved to namespace scope</li>
+  </ul>
+  <h4>Version 1.9.3 (released 2003-05-17)</h4>
+  <ul>
+    <li>Deleted HintPath assembly references to .NET Framework 1.0</li>
+    <li>WinForms.Utility.MoveListItem: Removed BeginUpdate/EndUpdate calls to avoid obscure bug with Windows.Forms list controls</li>
+  </ul>
+  <h4>Version 1.9.2 (released 2003-05-11)</h4>
+  <ul>
+    <li>Cosmetic changes, released for synchronization with Hexkit only</li>
+  </ul>
+  <h4>Version 1.9.1 (released 2003-05-04)</h4>
+  <ul>
+    <li>Class reference now links to .NET Framework 1.1 documentation</li>
+    <li>IO.Utility: Added static methods PathEquals and StripDirectory</li>
+    <li>StringTbx.Utility: Added static method StartsWith</li>
+  </ul>
+  <h4>Version 1.9.0 (released 2003-04-30)</h4>
+  <ul>
+    <li>Project moved to .NET Framework 1.1 and Visual Studio .NET 2003</li>
+    <li>Added some argument error strings to resource table</li>
+    <li>WebMail.MapiMail: Added static methods Address and ResolveName</li>
+    <li>WebMail.MapiMail.Send: Renamed to SendMail for MAPI conformance</li>
+    <li>WinApi.Mapi: Added MAPIAddress, MAPIFreeBuffer, MAPIResolveName</li>
+    <li>WinApi.Mapi: Moved MapiFlags and MapiError to namespace WinApi</li>
+    <li>StringTbx.ValidString: Removed implicit boolean conversion</li>
+    <li>IO.Utility: Added argument null checks to public methods</li>
+  </ul>
+  <h4>Version 1.8.2 (released 2003-04-04)</h4>
+  <ul>
+    <li>Revised some exception types and messages</li>
+    <li>BooleanTbx.SetClearFlag: Added instance method SetValue</li>
+    <li>Collections.Utility.CountKey: Removed erroneous null checking</li>
+  </ul>
+  <h4>Version 1.8.1 (released 2003-03-29)</h4>
+  <ul>
+    <li>Revised some comments regarding raising and handling events</li>
+    <li>Collections.IDictionaryValue: Corrected misleading documentation</li>
+    <li>BooleanTbx: Added classes BooleanFlag, SetOnlyFlag, SetClearFlag</li>
+    <li>WinForms: Added class CustomColorDialog, extending ColorDialog</li>
+  </ul>
+  <h4>Version 1.8.0 (released 2003-03-20)</h4>
+  <ul>
+    <li>Added missing argument checking and exception comments</li>
+    <li>WinForms: Added class FormattingPanel, extending StatusBarPanel</li>
+    <li>WinForms: Added class StatusProgressBar, extending StatusBar</li>
+    <li>WinForms.MessageDialog: Fixed icon sizing and aliasing problems</li>
+    <li>WinForms.Utility: Added static method GetStatusPanelWidth</li>
+    <li>Xml: Added interface IXmlSerializable to control XML serialization</li>
+  </ul>
+  <h4>Version 1.7.0 (released 2003-03-04)</h4>
+  <ul>
+    <li>Added class DetailException, extending ApplicationException</li>
+    <li>StringTbx.Utility: Added static methods IsEmpty and IsNotEmpty</li>
+    <li>StringTbx.ValidString: Added instance property IsNotEmpty</li>
+    <li>WebMail.MapiException: Derived from ApplicationException</li>
+    <li>WinForms: Added class MessageDialog for detailed messages</li>
+    <li>Xml.Utility: Added static method GetXmlMessage</li>
+  </ul>
+  <h4>Version 1.6.1 (released 2003-02-24)</h4>
+  <ul>
+    <li>Collections: Added class DictionaryList</li>
+    <li>Collections.Utility.ChangeKey/CountKey: Added IList overloads</li>
+    <li>Collections.Utility.ChangeKey(IDictionary): Checks for UnsortedList</li>
+  </ul>
+  <h4>Version 1.6.0 (released 2003-02-20)</h4>
+  <ul>
+    <li>Classes extensively renamed and refactored</li>
+    <li>MathTbx.Fortran.Sum: Accepts “params” arrays</li>
+    <li>WebMail.MapiMail.Send: Accepts multiple attachments</li>
+    <li>WinForms.BitmapPanel: Fixed missing background color</li>
+    <li>Xml.Utility: Added static method MoveToStartElement</li>
+  </ul>
+  <h4>Version 1.5.0 (released 2003-02-01)</h4>
+  <ul>
+    <li>Added class Xml to supplement namespace Xml</li>
+    <li>Mail.MailException: Supports serialization</li>
+    <li>StringTbx.ValidString: Added equality comparison</li>
+  </ul>
+  <h4>Version 1.4.0 (released 2003-01-22)</h4>
+  <ul>
+    <li>Initial separate release of Toolbox library</li>
+  </ul>
+  <h4>Version 1.0.0 (released 2002-05-27)</h4>
+  <ul>
+    <li>Initial release with <a href="http://kynosarges.org/Hexkit.html">Hexkit</a></li>
+  </ul>
+</body>
+</html>
